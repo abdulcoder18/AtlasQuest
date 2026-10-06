@@ -5,7 +5,7 @@
 //
 // Leave empty to run fully offline (everything still works; cloud features hide).
 
-export const SUPABASE_URL = "";
-export const SUPABASE_ANON_KEY = "";
+export const SUPABASE_URL = "https://rfibbbesxrskqvjtjdzt.supabase.co";
+export const SUPABASE_ANON_KEY = "sb_publishable_4C1QqwkytEAPGou_XOyx5A_jOeFI7GS";
 
 export const cloudEnabled = () => Boolean(SUPABASE_URL && SUPABASE_ANON_KEY);
