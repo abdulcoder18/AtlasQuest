@@ -214,6 +214,7 @@ html[data-theme="dark"] .orb { background: var(--paper-3); opacity: .55; }
   display: inline-flex; align-items: center; justify-content: center;
   height: 38px; min-width: 38px; border: var(--bw) solid var(--ink); border-radius: 12px;
   background: var(--paper-2); color: var(--ink); cursor: pointer;
+  text-decoration: none;
   box-shadow: 2px 2px 0 var(--shadow-ink);
   transition: transform var(--tr-fast), box-shadow var(--tr-fast), background var(--tr-fast), color var(--tr-fast);
 }
