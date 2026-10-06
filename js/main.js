@@ -36,13 +36,71 @@ function buildNav() {
     nav.append(el("a", { class: "navlink", href, dataset: { href } }, icon(ic), label));
   }
 }
-function toggleDrawer(open) {
+let hoverOpened = false;
+function toggleDrawer(open, byHover = false) {
+  if (byHover) hoverOpened = true;
   const d = $("drawer"), sc = $("drawerScrim"), b = $("drawerBtn");
   const willOpen = open !== undefined ? open : !d.classList.contains("open");
   d.classList.toggle("open", willOpen);
   sc.classList.toggle("open", willOpen);
   b.setAttribute("aria-expanded", String(willOpen));
+  if (!willOpen) hoverOpened = false;
 }
+function session2HoverOpened() { return hoverOpened; }
+function toggleLbPanel() {
+  const p = $("lbPanel");
+  p.classList.toggle("open");
+  if (p.classList.contains("open")) renderLbPanel();
+}
+async function renderLbPanel() {
+  const p = $("lbPanel");
+  p.innerHTML = "";
+  p.append(el("div", { class: "spread" },
+    el("h3", { class: "h3" }, "Leaderboard"),
+    el("button", { class: "iconbtn", style: { width: "30px", height: "30px", minWidth: "30px" }, onclick: () => $("lbPanel").classList.remove("open"), html: icons.x }),
+  ));
+  p.append(el("div", { class: "faint small", style: { marginBottom: "8px" } }, "Top explorers · updates live"));
+
+  const m = await import("./supabase.js").catch(() => null);
+  const globalRows = (m && m.cloudReady()) ? await m.fetchGlobalLeaderboard() : [];
+  const gb = el("div", { class: "stack" });
+  gb.append(el("h3", { class: "h3", style: { fontSize: ".9rem" } }, "World top 10"));
+  if (!globalRows.length) {
+    gb.append(el("p", { class: "faint small" }, m && m.cloudReady() ? "No players yet — be the first!" : "World board needs the cloud connection (see Settings)."));
+  } else {
+    globalRows.slice(0, 10).forEach((pr, i) => {
+      gb.append(el("div", { class: "friend-row" },
+        el("span", { class: "rank" }, "#" + (i + 1)),
+        el("div", { class: "spread" },
+          el("div", {},
+            el("div", { class: "fr-name" }, pr.username),
+            el("div", { class: "fr-meta" }, "Lv " + pr.level + " · " + pr.xp + " XP")),
+          el("span", { class: "faint small" }, String(pr.xp)))));
+    });
+  }
+  p.append(gb);
+
+  // friends section (local friends + met players)
+  const { getFriends, getMetPlayers } = await import("./store.js");
+  const friends = getFriends().map(f => ({ name: f.name, avatar: f.avatar, level: (f.level || 1), xp: (f.xp || 0) }));
+  const met = getMetPlayers().map(p => ({ name: p.name, avatar: p.avatar, level: p.level, xp: p.xp }));
+  const seen = new Set();
+  const merged = [...friends, ...met].filter(p => { const k = p.name.toLowerCase(); if (seen.has(k)) return false; seen.add(k); return true; })
+    .sort((a, b) => (b.xp || 0) - (a.xp || 0)).slice(0, 10);
+  p.append(el("h3", { class: "h3", style: { fontSize: ".9rem", marginTop: "12px" } }, "Your friends & met players"));
+  if (!merged.length) p.append(el("p", { class: "faint small" }, "Add friends or play matches to fill this board."));
+  merged.forEach((f, i) => {
+    p.append(el("div", { class: "friend-row" },
+      el("span", { class: "rank" }, "#" + (i + 1)),
+      el("div", { class: "spread" },
+        el("div", {},
+          el("div", { class: "fr-name" }, f.name),
+          el("div", { class: "fr-meta" }, "Lv " + f.level + " · " + f.xp + " XP")),
+        el("span", { class: "faint small" }, String(f.xp)))));
+  });
+}
+
+
 function markActiveNav() {
   const here = location.hash || "#/";
   document.querySelectorAll("#mainnav .navlink").forEach(a => {
@@ -80,6 +138,29 @@ setRefreshTopbar(refreshTopbar);
 
 function wireTopbar() {
   $("settingsBtn").innerHTML = icons.gear + '<span class="btn-label">Settings</span>';
+  $("drawerBtn").classList.add("drawer-btn");
+  $("lbBtn").innerHTML = icons.trophy;
+  $("drawerClose").innerHTML = icons.x;
+  // #4: hover opens the drawer live
+  $("drawerBtn").addEventListener("mouseenter", () => { if (!$("drawer").classList.contains("open")) { sfx.click(); toggleDrawer(true, true); } });
+  // close on leaving the drawer (only if it was hover-opened) with a small grace delay
+  let hoverCloseTimer = null;
+  $("drawer").addEventListener("mouseleave", () => {
+    if (!hoverOpened) return;
+    clearTimeout(hoverCloseTimer);
+    hoverCloseTimer = setTimeout(() => toggleDrawer(false), 350);
+  });
+  $("drawer").addEventListener("mouseenter", () => clearTimeout(hoverCloseTimer));
+  $("drawerBtn").addEventListener("mouseleave", () => {
+    if (!hoverOpened) return;
+    clearTimeout(hoverCloseTimer);
+    hoverCloseTimer = setTimeout(() => {
+      if (!$("drawer").matches(":hover")) toggleDrawer(false);
+    }, 350);
+  });
+  // #5: leaderboard panel toggle
+  $("lbBtn").innerHTML = icons.trophy;
+  $("lbBtn").addEventListener("click", () => { sfx.click(); toggleLbPanel(); });
   $("accountRow").addEventListener("click", () => { sfx.click(); toggleDrawer(false); openAuthModal(); });
   $("settingsBtn").classList.add("with-label");
   $("drawerBtn").innerHTML = icons.menu + '<span class="btn-label">Menu</span>';
@@ -239,11 +320,34 @@ export function playChallenge(ch, code) {
 setLoreOpener((c) => openLore(c));
 // social.js needs playChallenge via dynamic import of this module (circular-safe)
 
+/* ---------------- auth gate (#1) ---------------- */
+function gateCheck() {
+  if (!cloudReady()) return;           // cloud not configured -> no gate
+  if (cloudUser()) return;             // signed in -> no gate
+  if (localStorage.getItem("aq_guest") === "1") return; // guest choice remembered
+  setTimeout(openGateModal, 600);
+}
+function openGateModal() {
+  import("./supabase.js").then(async (m) => {
+    if (m.cloudUser() || localStorage.getItem("aq_guest") === "1") return;
+    const { openModal } = await import("./ui.js");
+    const body = el("div", { class: "stack", style: { textAlign: "center" } },
+      el("img", { src: "assets/gen/mascot-web.png", alt: "", style: { width: "110px", margin: "0 auto", borderRadius: "12px", border: "2px solid var(--ink)", background: "var(--paper-2)" } }),
+      el("h2", { class: "h2", style: { margin: "10px 0 4px" } }, "Welcome, explorer"),
+      el("p", { class: "sub", style: { margin: "0 auto", maxWidth: "400px" } }, "Play everything as a guest — or save your XP, levels and leaderboard rank with a free account."),
+      el("button", { class: "btn primary big", style: { width: "100%" }, onclick: async () => { modal.close(); openAuthModal(); } }, icon("zap"), "Save my progress — free"),
+      el("button", { class: "btn ghost", style: { width: "100%" }, onclick: () => { localStorage.setItem("aq_guest", "1"); modal.close(); toast("Playing as guest — progress stays on this device.", "check"); } }, "Continue as guest")
+    );
+    openModal({ title: null, body });
+  });
+}
+
 /* ---------------- boot ---------------- */
 async function boot() {
   applyTheme(); // restore saved paper/night edition before first paint
   initCloud();  // connect Supabase if configured (auth + global leaderboard)
   view.innerHTML = "";
+  document.addEventListener("aq:auth", gateCheck);
   view.append(el("div", { class: "empty" },
     el("img", { src: "assets/gen/mascot-web.png", alt: "", style: { width: "92px", margin: "0 auto 10px", display: "block", animation: "mascotBob 2s ease-in-out infinite alternate" } }),
     el("span", { class: "skel", style: { display: "block", width: "220px", height: "18px", margin: "0 auto 10px" } }),

@@ -1,7 +1,7 @@
 // AtlasQuest — local store: profile, settings, stats, friends. Persisted in localStorage.
 const KEY = "atlasquest_v1";
 
-export const AVATAR_COLORS = ["#f5d920", "#d8432f", "#8a857a", "#edeae2", "#f5d920", "#d8432f", "#8a857a", "#edeae2"];
+export const AVATAR_COLORS = ["#58a93c", "#d8432f", "#3aa6f7", "#a78bfa", "#f5d920", "#e2794f", "#2bb5a0", "#edeae2"];
 export const LEVEL_TITLES = [
   [1,"Backpacker"],[3,"Wanderer"],[5,"Explorer"],[7,"Navigator"],[9,"Pathfinder"],
   [12,"Cartographer"],[15,"Globetrotter"],[18,"Trailblazer"],[22,"GeoMaster"],[27,"Atlas Legend"]

@@ -32,7 +32,10 @@
         <span class="brand-name">Atlas<b>Quest</b></span>
       </a>
       <div class="topbar-right">
-        <button class="iconbtn labeled" id="settingsBtn" title="Settings" aria-label="Settings"><span class="btn-label">Settings</span></button>
+        <a class="iconbtn labeled" id="versusBtn" href="#/versus" title="Versus — live matches"><span class="btn-label">Versus</span></a>
+        <a class="iconbtn labeled" id="friendsBtn" href="#/friends" title="Friends"><span class="btn-label">Friends</span></a>
+        <button class="iconbtn" id="lbBtn" title="Leaderboard" aria-label="Leaderboard"></button>
+        <button class="iconbtn" id="settingsBtn" title="Settings" aria-label="Settings"><span class="btn-label">Settings</span></button>
       </div>
     </header>
 
@@ -71,5 +74,7 @@
   <link rel="stylesheet" href="vendor/mapillary/mapillary.css">
   <script type="module" src="js/main.js"></script>
   <noscript>AtlasQuest needs JavaScript to run.</noscript>
+  <aside class="lb-panel" id="lbPanel" aria-label="Leaderboard"></aside>
+
 </body>
 </html>
