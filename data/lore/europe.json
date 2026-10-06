@@ -1,0 +1,320 @@
+{
+  "ALA": {
+    "famous": ["untouched archipelago of 6,700 islands", "Swedish-speaking culture", "midnight sun mariehamn sailing ships"],
+    "culture": "Life revolves around the sea, boats and small village communities, and almost everyone speaks Swedish even though the islands belong to Finland. Midsummer bonfires and quiet summer cottages are the heart of island life.",
+    "history": "Vikings and Swedes settled these islands over a thousand years ago, and they sailed under the Swedish crown for centuries. When Sweden lost Finland to Russia in 1809, Aland went too, and after the Crimean War the islands were demilitarized in 1856. After World War I, the League of Nations ruled in 1921 that Aland belonged to Finland, but only with wide autonomy and guaranteed Swedish language, which is still how it works today.",
+    "funFact": "The League of Nations' 1921 decision on Aland was one of the first disputes it ever resolved peacefully, a model for the United Nations."
+  },
+  "ALB": {
+    "famous": ["Skanderbeg the dragon of Albania", "thousands of concrete bunkers", "the Kanun code of mountain hospitality"],
+    "culture": "Albanian life is built on legendary hospitality, where a guest is considered a gift from God, and the mountain code of honor called the Kanun shaped customs for centuries. Coffee houses, folk iso-polyphonic singing and strong raki toasts are everyday life.",
+    "history": "Ancient Illyrians lived here, then Rome made it the province of Illyricum, and several Roman emperors may have had Illyrian roots. The Byzantines, Bulgarians and Normans all fought over the land until the Ottoman Turks conquered it in the late 1400s despite the heroic fifteen-year resistance of the national hero Skanderbeg. Albania stayed under Ottoman rule for about 450 years, declared independence in 1912, and then endured the hardline communist dictatorship of Enver Hoxha from 1944 to 1991, when he littered the country with over 170,000 bunkers.",
+    "funFact": "Enver Hoxha built around 170,000 concrete bunkers across Albania, roughly one for every eleven citizens, and today some are turned into cafes and hotels."
+  },
+  "AND": {
+    "famous": ["skiing and duty-free shopping", "co-princes: a bishop and a president", "oldest survival in the Pyrenees"],
+    "culture": "Andorrans speak Catalan, their own language squeezed between two great neighbors, and life mixes mountain farming traditions with modern tourism. Festival days honor the co-principality's strange medieval pact, and skiing or hiking dominates the weekends.",
+    "history": "Legend says Charlemagne granted the valley its charter for fighting the Moors in the 9th century. In 1278 a treaty called the Pareage made Andorra a co-principality ruled jointly by the Count of Foix in France and the Bishop of Urgell in Spain, a feudal oddity that never got abolished. The French president and the Spanish bishop of Urgell are still its co-heads of state today, making Andorra one of the oldest surviving states in the world.",
+    "funFact": "Andorra has been governed by two foreign co-princes, one French and one Spanish, for over 700 years without interruption."
+  },
+  "AUT": {
+    "famous": ["Vienna and the Habsburg emperors", "Mozart, Strauss and the Sound of Music", "alpine skiing and sachertorte"],
+    "culture": "Austria lives and breathes music, from the Vienna Opera to village brass bands, and coffeehouse culture with a slice of cake is practically sacred. Winter sports are a national passion and dirndls and lederhosen still appear at festivals.",
+    "history": "Celtic kingdoms and Roman provinces came first, then the Babenberg margraves ruled from 976 until the Habsburg family took over in 1282 and held power for over 600 years. The Habsburgs wore the crown of the Holy Roman Empire for centuries, ruled a vast multinational empire, and after 1867 shared it equally with Hungary as Austria-Hungary. The empire shattered in World War I in 1918, Austria was annexed by Hitler in 1938, and the modern republic regained full sovereignty in 1955 and chose permanent neutrality.",
+    "funFact": "The Habsburgs built their dynasty mostly through marriage, and their motto was reportedly 'Let others wage war, you, happy Austria, marry.'"
+  },
+  "BLR": {
+    "famous": ["last European bison forests", "Brest Fortress heroism", "Soviet-style grand avenues"],
+    "culture": "Belarusian traditions include weaving patterned rushnik towels, folk songs sung in a unique open-voiced style, and Kupala night bonfires. Meals feature potato dishes, earning Belarusians the nickname bulbash, the potato people.",
+    "history": "Slavic principalities like Polotsk were among the first states here, and the land became the heartland of the Grand Duchy of Lithuania from the 1200s, later part of the Polish-Lithuanian Commonwealth. The Russian Empire swallowed the region in the partitions of the late 1700s, and Soviet rule followed from 1919 with a brief independence attempt in between. World War II destroyed a third of the population, and after the Soviet collapse in 1991 Belarus became independent but stayed closely tied to Russia.",
+    "funFact": "Belovezhskaya Pushcha forest, shared with Poland, is the last refuge of the European bison, which was down to about a dozen wild animals in the 1920s and has been bred back."
+  },
+  "BEL": {
+    "famous": ["chocolate, waffles and 1,500 beers", "Brussels, capital of the EU", "Tintin, Smurfs and comics"],
+    "culture": "Belgians are passionate about food and drink, from frites to pralines, and beer is even on UNESCO's heritage list. The country splits into Dutch-speaking Flanders and French-speaking Wallonia, yet shares a love of festivals, comic strips and cycling races like the Tour of Flanders.",
+    "history": "Roman Gallia Belgica, then medieval cloth cities like Bruges and Ghent grew so rich they rivaled kings, and the dukes of Burgundy united the Low Countries in the 1400s. Spanish and Austrian Habsburgs ruled next, and Napoleon met his final defeat here at Waterloo in 1815. Belgium became independent from the Netherlands in 1830 under King Leopold I, and while the homeland prospered, Leopold II's private rule of the Congo became one of history's darkest colonial scandals.",
+    "funFact": "Belgium went 589 days without a government between 2010 and 2012, a world record, while daily life carried on normally."
+  },
+  "BIH": {
+    "famous": ["Stari Most bridge of Mostar", "Sarajevo where East meets West", "coffee served like a ritual"],
+    "culture": "Bosnian life blends Slavic, Ottoman and Central European habits, from slow-brewed coffee drunk from tiny cups to cevapi grilled sausages in somun bread. Christians, Muslims and Orthodox neighbors have shared villages for centuries, and sevdah love songs carry the melancholy of that mix.",
+    "history": "Slavs settled in the 7th century, and a medieval Kingdom of Bosnia rose in the mountains until the Ottomans conquered it in 1463, leaving grand mosques and bridges and converting a large part of the population to Islam. Austria-Hungary annexed the province in 1908, and the assassination of Archduke Franz Ferdinand in Sarajevo in 1914 sparked World War I. Bosnia then spent most of the 20th century inside Yugoslavia, became independent in 1992, endured a brutal war until 1995, and today is one country with two entities under the Dayton Peace Agreement.",
+    "funFact": "Sarajevo was the first European city with a full-time electric tram network in 1885, running before Vienna or Budapest."
+  },
+  "BGR": {
+    "famous": ["Cyrillic alphabet birthplace", "rose oil from the Valley of Roses", "yogurt and the bacteria Lactobacillus bulgaricus"],
+    "culture": "Bulgarians nod to mean no and shake their heads for yes, which confuses visitors, while martenitsa red-and-white bracelets welcome spring every March. Folk dances in fast 7/8 rhythms, rakia toasts and banitsa cheese pastry are daily staples.",
+    "history": "Thracian tribes, who gave the world the legend of Orpheus and the rebel gladiator Spartacus, lived here before Bulgars and Slavs founded the First Bulgarian Empire in 681. Its golden age under Tsar Simeon the Great around 900 saw the Cyrillic alphabet invented at the Preslav and Ohrid schools by disciples of Cyril and Methodius. Byzantium absorbed the empire in 1018, a second empire rose in 1185, the Ottomans conquered it by 1396 and ruled for 500 years, and Russia's 1878 war finally liberated Bulgaria.",
+    "funFact": "Bulgarian yogurt's special bacteria, Lactobacillus bulgaricus, exists naturally almost only in Bulgaria, and the country claims more than 3,000 years of yogurt history."
+  },
+  "HRV": {
+    "famous": ["Dubrovnik's walled old town", "football overachievers in red-white checks", "a thousand Adriatic islands"],
+    "culture": "Croatians are mad about football and water polo, and coffee culture means sitting for hours on terraces talking, never just grabbing a cup. The Dalmatian coast lives on fishing, sailing, grilled fish and peka, food slow-cooked under a metal bell.",
+    "history": "Croats arrived with other Slavs in the 7th century, and Tomislav forged a medieval kingdom around 925. Dynastic unions brought Hungary in 1102, then centuries under the Habsburgs, who organized the Military Frontier as a shield against the Ottomans, while Venice ruled the Dalmatian coast, leaving stone cities like Split, built around Roman emperor Diocletian's palace. Most of the 20th century passed inside Yugoslavia until independence in 1991, followed by a war that ended in 1995 and Croatia's entry into the EU in 2013.",
+    "funFact": "The necktie comes from Croatia: 17th-century Croatian mercenaries wore knotted scarves that the French adopted and named cravate, from Croat."
+  },
+  "CYP": {
+    "famous": ["the island of copper and Aphrodite", "haloumi, meze and commandaria wine", "the divided capital Nicosia"],
+    "culture": "Cypriot life mixes Greek and Turkish traditions around shared tables of meze, grilled halloumi and commandaria, one of the world's oldest named wines. Village festivals, Orthodox Easter and backgammon in cafes mark the calendar.",
+    "history": "Copper gave Cyprus its name, and Mycenaean Greeks settled it over 3,000 years ago, followed by pharaohs, Persians and the empire of Alexander the Great. Rome and then Byzantium ruled, Richard the Lionheart seized it in 1191 during the Crusades, and the Lusignan kings, Venetians and Ottomans held it in turn. Britain took control in 1878, independence came in 1960, and after conflict between Greek and Turkish communities in 1974 the island was split by a UN buffer zone that divides Nicosia to this day.",
+    "funFact": "Cypriots invented the world's oldest named wine still made, commandaria, which crusader kings loved and Richard the Lionheart reportedly drank at his wedding."
+  },
+  "CZE": {
+    "famous": ["Prague Castle and the Charles Bridge", "the world's biggest beer drinkers", "bohemian crystal and puppetry"],
+    "culture": "Czechs are the world's top per-capita beer drinkers, and pubs are community living rooms serving pilsner and goulash. Bohemian glass, classical music and a love of clever, dark humor define the national character.",
+    "history": "Great Moravia, where missionaries Cyril and Methodius arrived in 863, was the first great Slavic state here, then the Premyslid dynasty ruled Bohemia and made Saint Wenceslas its martyr-saint. King Charles IV of Luxembourg made Prague the capital of the Holy Roman Empire around 1350 and founded Central Europe's first university in 1348, but Jan Hus's burning in 1415 ignited the Hussite wars that shook Europe. Habsburg rule followed for nearly 400 years, and after World War I came Czechoslovakia in 1918, Nazi occupation, the Prague Spring crushed in 1968, and the Velvet Revolution of 1989 led by playwright Vaclav Havel before the peaceful split with Slovakia in 1993.",
+    "funFact": "Prague survived World War II almost untouched, so its center looks today much as it did in Mozart's time."
+  },
+  "DNK": {
+    "famous": ["Viking kings and the Jelling stones", "LEGO and hygge", "the world's oldest flag, the Dannebrog"],
+    "culture": "Hygge, the art of coziness with candles, coffee and good company, is practically a national institution, along with open-faced smorrebrod sandwiches. Danes trust each other and their institutions to a degree that amazes the rest of the world.",
+    "history": "Danish Vikings raided and traded across Europe, and the rune stones at Jelling from the 960s celebrate King Harald Bluetooth uniting Denmark and naming himself ruler of both Danes and Norwegians. The Kalmar Union of 1397 put Queen Margrethe I on top of all three Nordic kingdoms, and Denmark ruled Norway for over 400 years and Iceland for centuries. Absolute monarchy arrived in 1660, defeats cost Norway in 1814 and Schleswig in 1864, yet the monarchy survived as Europe's oldest, and Denmark became a model welfare state.",
+    "funFact": "Legend says the Dannebrog flag fell from the sky during a battle in Estonia in 1219, and it is the oldest state flag still in use."
+  },
+  "EST": {
+    "famous": ["digital e-government and Skype", "the Singing Revolution", "medieval Tallinn's old town"],
+    "culture": "Estonians cherish quiet, forests and saunas, and their huge Song Festival with tens of thousands of singers in folk dress is a sacred event. They are among the most digital people on Earth, voting and signing documents online.",
+    "history": "Ancient Estonian free farmers resisted crusaders for years before Danish and German knights of the Livonian Order conquered the land in the 1200s, and Tallinn got its name, meaning Danish city, from that era. Sweden ruled a golden age in the 1600s, then Russia's Peter the Great took over in 1710, and Estonians declared independence in 1918. Invaded by the Soviets and then the Nazis and re-occupied by the USSR, Estonia rose in the 1980s with the Singing Revolution, and in 1989 joined hands with Latvia and Lithuania in the 600-kilometer Baltic Way human chain before regaining freedom in 1991.",
+    "funFact": "Estonia's 1988 Song Festival, where 300,000 people sang forbidden patriotic songs, helped end Soviet rule without a single shot."
+  },
+  "FRO": {
+    "famous": ["sheep outnumber people two to one", "puffin colonies and sea cliffs", "one of the oldest parliaments on Earth"],
+    "culture": "Faroese life is shaped by the sea and the weather, with chain dances singing medieval ballads and a taste for pilot whale meat and fermented lamb. Almost everyone speaks Faroese, a Norse language close to Old Icelandic, and church and village gatherings hold the community together.",
+    "history": "Norse settlers arrived in the 800s, fleeing Norwegian kings or seeking empty green islands, and their Alting assembly, ancestor of today's Logting, met around 900. Norway brought the islands under its crown, and Denmark inherited them in 1380 when the Norse crowns united. British troops occupied the islands in World War II while Denmark was occupied by Germany, and that wartime self-rule helped the Faroes win home rule from Denmark in 1948.",
+    "funFact": "The Faroese Logting, founded around 900, is one of the oldest parliaments in the world, older than Iceland's Althing in its current form."
+  },
+  "FIN": {
+    "famous": ["sauna, more than the population", "Nokia and the world's best education", "Santa Claus's official home in Lapland"],
+    "culture": "Finns love silence, saunas, lakes and quiet forests, and almost every home has a sauna, 3 million for 5.5 million people. Sisu, unbreakable grit in the face of hardship, is the core of the national character.",
+    "history": "Sami hunters roamed first, then Swedes settled and crusaded their way in, ruling Finland for about 700 years and building Turku cathedral. Russia annexed Finland in 1809 as an autonomous Grand Duchy, and Finland declared independence in 1917 while the Russian Empire was collapsing. Finland repelled the Soviet invasion in the Winter War of 1939 against impossible odds, lost territory but kept freedom, and the Cold War taught Finns careful diplomacy until EU membership in 1995.",
+    "funFact": "During the Winter War, Finnish soldiers on skis in white camouflage inflicted such enormous losses on Soviet tank columns that the term Molotov cocktail was coined there."
+  },
+  "FRA": {
+    "famous": ["the Eiffel Tower and the Louvre", "wine, cheese and haute cuisine", "Paris, capital of fashion"],
+    "culture": "French life is organized around long meals, fine wine, fashion and debate, with a proud tradition of philosophers, cinema and strike days. Regional cultures from Provence to Brittany each keep their own language, dishes and festivals.",
+    "history": "Gauls resisted Julius Caesar before Rome conquered them in 58 to 50 BC, and after Rome fell the Frankish king Clovis converted to Christianity around 496, founding a dynasty that peaked with Charlemagne, crowned emperor in 800. The Capetian kings slowly built France from Paris outward, surviving the Hundred Years' War against England thanks in part to Joan of Arc, then reached absolutist glory under Louis XIV at Versailles. The Revolution of 1789 beheaded a king and launched the modern era, Napoleon conquered Europe before Waterloo, and a colonial empire spanning Africa and Asia gave way to today's republic.",
+    "funFact": "The Eiffel Tower, built for the 1889 World's Fair, was meant to be temporary, and Parisians hated it so much that writer Guy de Maupassant ate lunch beneath it to avoid seeing it."
+  },
+  "DEU": {
+    "famous": ["Oktoberfest and beer gardens", "autobahn, BMW and Mercedes", "castles and fairy tales of the Grimm brothers"],
+    "culture": "German life mixes precision with Gemutlichkeit, cozy friendliness, from beer gardens to Christmas markets and thousands of local festivals. Bread culture with over 3,000 registered varieties and regional pride in everything from sausages to carnival are taken seriously.",
+    "history": "Germanic tribes under Arminius stopped Rome at the Teutoburg Forest in 9 AD, and after Rome fell, Charlemagne ruled the Franks before his empire split, with the eastern part becoming the Holy Roman Empire under Otto I in 962. A patchwork of hundreds of principalities and free cities followed, and Martin Luther's 1517 theses in Wittenberg split Western Christianity and changed the world. Prussia rose under Frederick the Great, Bismarck welded the states into one German Empire in 1871, and after two catastrophic world wars the country was divided by the Berlin Wall in 1961 until reunification in 1990.",
+    "funFact": "Germans were still paying interest on bonds from the reparations of World War I until 2010, exactly 92 years after the Treaty of Versailles."
+  },
+  "GIB": {
+    "famous": ["the Rock of Gibraltar", "Barbary macaques, Europe's only wild monkeys", "where the Mediterranean meets the Atlantic"],
+    "culture": "Gibraltarians, called Llanitos, mix British pubs and red post boxes with Spanish language and Mediterranean lifestyle. Afternoon tea, fish and chips and Gibraltar's own dialect blend English and Andalusian Spanish.",
+    "history": "In 711 the Moorish general Tariq ibn Ziyad landed here and gave the Rock its name, Jabal Tariq, the mountain of Tariq, launching the Islamic conquest of Iberia. Spain retook it in 1462, and Britain captured it in 1704 during the War of the Spanish Succession, keeping it forever under the 1713 Treaty of Utrecht. Spain besieged it for four years in the Great Siege of 1779 to 1783 and failed, and Gibraltar has stayed proudly British ever since, a strategic fortress guarding the narrow strait.",
+    "funFact": "Gibraltar's Barbary macaques are mainland Europe's only wild monkeys, and legend says Britain will keep Gibraltar as long as they live on the Rock."
+  },
+  "GRC": {
+    "famous": ["the Acropolis and the Parthenon", "democracy, philosophy and the Olympic Games", "islands, olive oil and feta"],
+    "culture": "Greek life is lived outdoors, in tavernas sharing meze, at panigiri village festivals and in family-run kafeneia where coffee lasts hours. Orthodoxy and ancient heritage shape identity, and name days matter as much as birthdays.",
+    "history": "Minoan palaces on Crete and Mycenaean warriors like those of Homer's tales came first, then the city-states of Athens and Sparta stopped the Persian Empire at Marathon in 490 BC and Thermopylae, inventing democracy, drama and philosophy along the way. Alexander the Great spread Greek culture to India in the 4th century BC, Rome absorbed Greece but knelt to Greek culture, and Byzantium ruled for a thousand years from Constantinople. The Ottoman conquest of 1453 began four centuries of Turkish rule until the War of Independence broke out in 1821 and the modern Greek state rose from the ruins.",
+    "funFact": "The Greek War of Independence began on 25 March 1821, a date still celebrated with fireworks, and it was launched with the cry 'Freedom or Death'."
+  },
+  "GGY": {
+    "famous": ["Guernsey cows and dairy gold", "Victor Hugo's exile home", "the only British soil Hitler ever took"],
+    "culture": "Islanders mix English and Norman-French heritage, speaking a few words of Guernesiais and celebrating their own bailiwick customs. The sea rules everything, from fishing to cliff walks, and the gentle golden Guernsey cow is a source of island pride.",
+    "history": "The islands belonged to the Dukes of Normandy from 933, and when Normandy's duke conquered England in 1066, the Channel Islands chose to stay loyal to the English crown rather than France, a status unchanged for 900 years. French was the official language until after World War I, and Victor Hugo spent 15 years in exile on Guernsey writing Les Miserables. German forces occupied the island from 1940 to 1945, the only part of the British Isles ever taken, leaving fortifications and stories of hardship.",
+    "funFact": "Victor Hugo wrote Les Miserables while in exile in Guernsey, and his tall house in St Peter Port with its lookout still stands."
+  },
+  "HUN": {
+    "famous": ["goulash, paprika and thermal baths", "the Danube's twin cities Budapest", "Rubik's cube and genius mathematicians"],
+    "culture": "Hungarians soak in thermal baths year-round, eat paprika-spiked stews and love csardas folk dancing and the strangely beautiful language, Magyar, which puzzles most of Europe. Wine cellars in Tokaj and Villany and a fierce pride in inventions fill out daily life.",
+    "history": "The nomadic Magyar horsemen crossed into the Carpathian Basin in 895 under Arpad, and in 1000 their chief Stephen accepted a crown from the Pope, making Hungary a Christian kingdom. The Mongols devastated it in 1241, Renaissance king Matthias Corvinus made it a beacon of learning, and the Ottoman victory at Mohacs in 1526 split the country between Turks and Habsburgs for 150 years. The Habsburgs eventually ruled, and the compromise of 1867 created Austria-Hungary, whose collapse after World War I and the Treaty of Trianon in 1920 stripped Hungary of two-thirds of its land, a wound still felt today.",
+    "funFact": "Hungary has won more Olympic gold medals per capita than almost any other nation and gave the world the Rubik's cube, the ballpoint pen and holography."
+  },
+  "ISL": {
+    "famous": ["geysers, glaciers and volcanoes", "the world's oldest parliament, the Althing", "sagas, elves and no mosquitoes"],
+    "culture": "Icelanders read more books per person than anyone, still believe in hidden folk elves for many, and swim in geothermal pools whatever the weather. The medieval sagas are bedtime history, and a national love of independence runs deep.",
+    "history": "Norse chieftains fleeing the rule of Norway's king settled the empty island from 874, led by Ingolfur Arnarson at Reykjavik, and in 930 they founded the Althing, the world's oldest surviving parliament. The sagas recorded their feud-filled golden age before Norway took over in 1262, and Denmark followed in 1380, ruling for centuries. During World War II, while Denmark was occupied, Iceland drifted into independence in 1944, and volcanoes, fishing and geothermal power shaped a modern, peaceful nation.",
+    "funFact": "Iceland has no standing army, no mosquitoes, and its phone book lists people by first name because almost everyone uses patronymics."
+  },
+  "IRL": {
+    "famous": [" Guinness and a pub on every corner", "Riverdance and traditional music sessions", "Saint Patrick and the shamrock"],
+    "culture": "Irish life centers on the pub, where traditional music sessions, conversation and a pint of Guinness flow, and where the craic, the fun of good company, is everything. Gaelic sports of hurling and football pack stadiums, and Saint Patrick's Day is celebrated worldwide.",
+    "history": "Celtic Gaels ruled through High Kings at Tara, and Saint Patrick brought Christianity in the 5th century, starting a golden age of monasteries that preserved learning while Europe collapsed, producing treasures like the Book of Kells. Vikings founded Dublin in the 9th century, Norman English invaded in 1169, and centuries of English rule followed, deepening catastrophe with the Great Famine of 1845 to 1852 that killed a million people and drove a million more to emigrate. The 1916 Easter Rising led to independence for most of the island in 1922, and Ireland transformed from emigrant nation to Celtic Tiger economic success.",
+    "funFact": "Ireland's population is still smaller today than before the Great Famine of the 1840s, while 70 million people worldwide claim Irish ancestry."
+  },
+  "IMN": {
+    "famous": ["the tailless Manx cat", "the TT motorcycle races", "the world's oldest continuous parliament, Tynwald"],
+    "culture": "Manx culture keeps its own Celtic language, tailless cats and the thrill of the Tourist Trophy races, the most dangerous motorcycle event on Earth. Island traditions include Hop-tu-Naa, a Halloween older than the American version.",
+    "history": "Celtic monks and then Vikings shaped the island, and Norse settlers founded Tynwald, its open-air parliament, around 979, making it the world's oldest continuous lawmaking body. Norway ruled until 1266, when Scotland took over, and the English crown finally gained control, though the island was never part of the United Kingdom and remains a self-governing Crown dependency. The famous triskelion of three armored legs on the flag echoes its tangled Celtic and Norse past.",
+    "funFact": "The Isle of Man's parliament, Tynwald, has met continuously for over 1,000 years, and new laws must still be announced there in both English and Manx."
+  },
+  "ITA": {
+    "famous": ["the Roman Colosseum and ruins", "pizza, pasta and espresso", "Renaissance art from Leonardo to Michelangelo"],
+    "culture": "Italian life is a theater of food, family and festivity, from Sunday lunches lasting hours to passeggiata evening strolls through town. Football is a religion, fashion is an art, and every region guards its own dialect, dishes and festivals.",
+    "history": "Etruscans and Greek colonists built the first cities, and Rome, founded in 753 BC, grew into the empire that ruled the Mediterranean until its fall in 476 AD, after which Lombards, Byzantines and Normans carved up the peninsula. Rich city-states like Venice, Florence and Genoa powered the Renaissance, bankrolling Leonardo, Michelangelo and Dante, but foreign powers, especially France, Spain and Austria, preyed on the divided land for centuries. Garibaldi and Cavour drove the Risorgimento that unified Italy in 1861, fascism under Mussolini led to World War II disaster, and a republic born in 1946 became a founding member of the EU.",
+    "funFact": "Italy has more UNESCO World Heritage sites than any other country, over 50, and Rome's Trevi Fountain collects about 1.5 million euros in tossed coins a year for charity."
+  },
+  "JEY": {
+    "famous": ["Jersey cows and Jersey Royal potatoes", "a financial hub with sunny beaches", "the Battle of Jersey and wartime occupation"],
+    "culture": "Jersey blends English and French influences, with its own Jerriais language surviving in names and songs, and a love of seafood, especially oysters and lobster. Beaches, cliff paths and the island's famous cows dominate island life.",
+    "history": "Part of the Duchy of Normandy since 933, Jersey stayed loyal to the English crown after 1066 like its sister islands, becoming a self-governing bailiwick. France attacked repeatedly, and in 1781 the last Battle of Jersey saw a French invasion force defeated, a victory painted famously and commemorated still. German troops occupied Jersey from 1940 to 1945, fortifying it as part of Hitler's Atlantic Wall, and liberation on 9 May 1945 is the island's proudest holiday.",
+    "funFact": "Jersey's Liberation Day on 9 May 1945 came a full day after the rest of Europe's VE Day, because the last German garrison surrendered only then."
+  },
+  "UNK": {
+    "famous": ["Europe's youngest country", "the Bill Clinton statue in Pristina", "rugova mountains and macchiato culture"],
+    "culture": "Kosovars run on coffee, hospitality and long family tables of flia layered pastry, with clan honor and mountain hospitality still mattering. Young population, pop music and football dreams drive a country where half the people are under 30.",
+    "history": "Ancient Dardanians lived here in Illyrian times, Slavs arrived in the 6th and 7th centuries, and medieval Serbian kings made Kosovo the heart of their empire, with the 1389 Battle of Kosovo against the Ottomans becoming an epic of Serbian memory. Ottoman rule lasted nearly 500 years, shifting the population balance toward Albanian Muslims, and after the Balkan Wars of 1912 Kosovo joined Serbia, then Yugoslavia. Tito's Yugoslavia kept ethnic peace by force, but repression, the war of 1998 to 1999 and NATO's bombing campaign ended Serbian control, and Kosovo declared independence in 2008, recognized by over 100 countries but still contested by Serbia.",
+    "funFact": "Kosovo's capital Pristina has a golden statue of Bill Clinton on a boulevard named after him, thanking the US president for the 1999 intervention."
+  },
+  "LVA": {
+    "famous": ["Riga, capital of Art Nouveau", "the Baltic Song and Dance Festival", "amber from the Baltic Sea"],
+    "culture": "Latvians hold the world's largest amateur Song and Dance Festival, where tens of thousands in folk costume sing in close harmony, a tradition credited with helping win freedom. Nature, mushrooms and berry picking, and pagan-rooted Midsummer, Jani, with flower crowns, are beloved.",
+    "history": "Baltic tribes like the Curonians, feared as Viking-like sea raiders, were conquered by German crusading knights who founded Riga in 1201 and ruled for centuries through the Livonian Order. Poland-Lithuania then Sweden held the land before Russia's Peter the Great seized it in 1710, and German barons kept vast estates. Independence was declared in 1918, Soviet and Nazi occupations followed, and in 1989 two million people joined hands in the Baltic Way human chain from Tallinn to Vilnius before Latvia restored independence in 1990.",
+    "funFact": "Over a third of central Riga is Art Nouveau, one of the world's densest collections, built by architects in a single burst around 1900."
+  },
+  "LIE": {
+    "famous": ["a royal family richer than the country", "more registered companies than citizens", "postage stamps prized worldwide"],
+    "culture": "Life moves at village pace in Vaduz, with alpine festivals, brass bands and a national day when the royal family invites everyone to the castle garden for a glass of wine. Catholic tradition and outdoorsy mountain habits shape the tiny state.",
+    "history": "The House of Liechtenstein, wealthy Austrian nobles, bought the lordship of Schellenberg in 1699 and Vaduz in 1712, and Emperor Charles VI united them as a principality in 1719, creating a state the family could rule directly. Liechtenstein joined the German Confederation, stayed neutral and remained independent when Germany unified around it in 1871, disbanding its army in 1868. It clung to neutrality through both world wars, and by banking, stamps and low taxes became one of the richest places on Earth.",
+    "funFact": "In 1866 Liechtenstein sent 80 soldiers to a war and came home with 81, having made an Italian friend along the way, and then abolished its army."
+  },
+  "LTU": {
+    "famous": ["once the largest country in Europe", "basketball as a second religion", "amber called Baltic gold"],
+    "culture": "Lithuanians are basketball fanatics, treating national games like holidays, and they celebrate old pagan festivals alongside Catholic ones, with Midsummer night bonfires and flower-wreath river floats. Cold beet soup, cepelinai potato dumplings and dark rye bread are staples.",
+    "history": "Baltic tribes resisted crusaders for centuries, and Mindaugas was crowned Lithuania's only king in 1253 to deflect them. The Grand Duchy of Lithuania then exploded across Eastern Europe, becoming the largest state in Europe by the 1400s and stretching to the Black Sea, before uniting with Poland in 1569 in the vast Polish-Lithuanian Commonwealth. Russia annexed the land in the partitions of the late 1700s, independence came in 1918, Soviet occupation in 1940, and in 1990 Lithuania became the first Soviet republic to declare independence, sparking the collapse of the USSR.",
+    "funFact": "By the 15th century the Grand Duchy of Lithuania was the largest country in Europe, stretching from the Baltic to the Black Sea, about ten times its size today."
+  },
+  "LUX": {
+    "famous": ["the Gibraltar of the North fortress", "richest country per person on Earth", "castles and the Moselle wine route"],
+    "culture": "Luxembourgish, a blend of German and French, is spoken by everyone who lives there, and daily life mixes three languages in school and media. Wine festivals along the Moselle, hiking in Mullerthal's little Switzerland and snacking on gromperekichelcher potato fritters are locals' pleasures.",
+    "history": "Count Siegfried bought a rocky promontory in 963 and built a castle whose descendants' fortress grew so mighty that it was called the Gibraltar of the North. Burgundy, Spain, France and Austria all seized the stronghold in turn, and after Napoleon's fall the Congress of Vienna made Luxembourg a Grand Duchy, tied to the Netherlands until 1890. Its fortress was dismantled by the 1867 Treaty of London, which guaranteed neutrality forever, and Luxembourg turned to steel, then banking, becoming a founding pillar of the European Union.",
+    "funFact": "Luxembourg made all public transport in the entire country free in 2020, the first country in the world to do so."
+  },
+  "MLT": {
+    "famous": ["temples older than the pyramids", "the Knights of St John and the Great Siege", "Valletta, a fortress city of honey-colored stone"],
+    "culture": "Maltese life is Mediterranean and Catholic, with village festas, fireworks and band marches honoring patron saints, plus a language that is the only Semitic tongue written in Latin letters. Pastizzi ricotta pastries, lampuki fish pies and boat-building traditions fill the calendar.",
+    "history": "Stone-age builders raised megalithic temples here around 3600 BC, older than Stonehenge and the pyramids, and Phoenicians, Carthage and Rome followed, with Saint Paul shipwrecked here around 60 AD bringing Christianity. Arabs, Normans and Sicilians left their marks until Holy Roman Emperor Charles V granted Malta to the Knights of St John in 1530, who repelled Sultan Suleiman's vast invasion in the Great Siege of 1565 and built Valletta. Napoleon seized it in 1798, Britain took it in 1800, and Malta's defiance of Axis bombing in World War II earned the entire island the George Cross before independence in 1964.",
+    "funFact": "In 1942 King George VI awarded the George Cross, normally given to individuals, to the entire island of Malta for its bravery under German bombing, and it is on the flag today."
+  },
+  "MDA": {
+    "famous": ["the world's largest wine cellar at Milestii Mici", "monasteries and painted churches", "mother tongue of Latin roots"],
+    "culture": "Moldovans treat wine as heritage, with homemade vin, feasts of mamaliga cornmeal porridge and sarmale, and folk music played on the nai pan flute. Hospitality is legendary, and guests are rarely allowed to leave without a toast.",
+    "history": "Roman emperor Trajan conquered Dacia here in 101 to 106 AD, leaving the Latin roots that make Romanian a romance language, and the Principality of Moldavia was founded in 1359 under Bogdan I. Stephen the Great, ruling from 1457, fought off Ottomans and Poles in dozens of battles, building a painted monastery after each victory and later becoming a saint. The Ottomans made Moldavia a vassal, Russia annexed the Bessarabian half in 1812, Romania reunited with it in 1918, and the Soviet Union took it back in 1940, holding it until independence in 1991.",
+    "funFact": "Milestii Mici holds the world's largest wine collection, with about 2 million bottles in 200 kilometers of underground galleries once used as limestone mines."
+  },
+  "MCO": {
+    "famous": ["the Monaco Grand Prix", "the Monte Carlo Casino", "Grace Kelly became a princess"],
+    "culture": "Monaco is a playground of super yachts, casino glamour and the champagne lifestyle, but Monegasques, the true citizens, keep their own traditions with processions, a daily changing of the guard and strong family pride. Rich tax exiles outnumber the roughly 9,000 natives.",
+    "history": "The Grimaldi family has ruled Monaco since 1297, when Francesco Grimaldi disguised as a monk tricked his way into the Genoese fortress, earning the nickname Malizia, the cunning one. For centuries the tiny principality survived as a protectorate of Spain and then France, at one point even losing Menton and Nice, and nearly bankrupt, it opened the legendary Monte Carlo Casino in 1863, whose success secured its future. American actress Grace Kelly married Prince Rainier III in 1956, sealing Monaco's image as the world's most glamorous microstate.",
+    "funFact": "Monaco is smaller than New York's Central Park and yet packs around 38,000 residents, giving it the highest population density of any country."
+  },
+  "MNE": {
+    "famous": ["the fjord-like Bay of Kotor", "mountains so black they named the country", "fierce warrior clans of the highlands"],
+    "culture": "Montenegrins prize honor, hospitality and unhurried dignity, called merak, savoring coffee by the sea and grilled meat in the mountains. Epic poetry sung to the gusle fiddle celebrates the clans who fought the Ottomans for centuries.",
+    "history": "Slavic tribes built the state of Duklja, later Zeta, in these mountains, and while Venice and the Ottomans divided the coast and plains, the highland clans never fully submitted, ruling themselves through prince-bishops of the Petrovic dynasty from the 1600s. Montenegro became a kingdom in 1910, joined Yugoslavia after World War I, and remained part of it through its breakup. In a 2006 referendum it finally separated from Serbia, becoming one of Europe's youngest independent states.",
+    "funFact": "Montenegro, meaning black mountain, was so fiercely independent that Ottoman maps simply marked the highlands as unconquered, and it claimed to be the only Balkan nation never truly subdued."
+  },
+  "NLD": {
+    "famous": ["windmills, tulips and canals", "Rembrandt, Vermeer and Van Gogh", "the Dutch East India Company, first stock market"],
+    "culture": "Dutch life is bicycle-first, with more bikes than people, and coffee mornings with appeltaart, king's day in orange and a famously direct way of speaking. Cheese markets, probeertjes of herring and a liberal, pragmatic outlook define the culture.",
+    "history": "Batavian tribes fought Rome on the Rhine, and medieval counts of Holland and dukes of Burgundy built the rich Low Countries before Spanish Habsburg kings tried to crush Protestantism, igniting the Dutch Revolt led by William of Orange in 1568. After an eighty years war, the Dutch Republic won independence and in the 1600s Golden Age became the world's richest trading nation, sailing the first multinational company, the VOC, inventing the stock market and producing Rembrandt while tulip bulbs sold for house prices. Napoleon's brother briefly ruled as king, a unified kingdom formed in 1815, and centuries of land reclamation created polders a third of which lie below sea level.",
+    "funFact": "A third of the Netherlands lies below sea level, kept dry by dikes and pumps, and without its dunes, dikes and windmills half the country would flood."
+  },
+  "MKD": {
+    "famous": ["Lake Ohrid, Europe's oldest lake", "Mother Teresa's birthplace", "ancient frescoes and Byzantine icons"],
+    "culture": "Macedonian life mixes Orthodox monasteries, Ottoman-era bazaars and shared Muslim and Christian traditions, celebrated with folk dances and rakija. Ajvar pepper spread, tavce gravce bean stew and wine from Tikves are proud staples.",
+    "history": "Ancient Paeonians and Macedonians ruled here in Alexander the Great's era, Roman roads crossed the land, and Slavs arrived in the 6th century, building the empire of Tsar Samuel around Ohrid. Byzantines, Bulgarians and the medieval Serbian empire of Dusan contested it before 500 years of Ottoman rule, remembered as the centuries under the Turks. The Ilinden uprising of 1903 created a brief free republic at Krusevo, Yugoslavia absorbed the land in the 20th century, and independence in 1991 led to a long name dispute with Greece, finally settled in 2019 with the compromise name North Macedonia.",
+    "funFact": "Mother Teresa, the famous nun of Calcutta, was born Anjeze Gonxhe Bojaxhiu in Skopje in 1910, and the city's airport bears her name."
+  },
+  "NOR": {
+    "famous": ["Viking longships and saga kings", "fjords and the northern lights", "oil wealth invested for the future"],
+    "culture": "Norwegians live outdoors, hiking in mountains, skiing and cabin life, guided by a love of nature and a modest social equality. Brown cheese on waffles, cod and the world's happiest, wealthiest welfare state round out the picture.",
+    "history": "Viking kings raided from Iceland to Byzantium, and Harald Fairhair is said to have united Norway around 872 after vowing not to cut his hair until he ruled it all. Christian kings like Saint Olav forged the nation, then Denmark ruled Norway for over 400 years from 1380, and after 1814 came a forced union with Sweden that Norwegians peacefully dissolved in 1905. Occupation by Nazi Germany in World War II forged fierce resistance, and oil discovered in the North Sea in 1969 transformed Norway into one of the richest nations, saving the profits in the world's largest sovereign wealth fund.",
+    "funFact": "Norway's oil fund, built from North Sea oil since the 1990s, owns about 1.5 percent of every listed company on Earth."
+  },
+  "POL": {
+    "famous": ["winged hussars, Europe's most legendary cavalry", "pierogi, vodka and Chopin", "Solidarity, the strike that toppled communism"],
+    "culture": "Poles celebrate name days, love big family dinners of pierogi and bigos stew, and are famously hospitable and stubborn in equal measure. Catholic faith, piano music of Chopin and a poetic, defiant national spirit run deep.",
+    "history": "Mieszko I accepted Christianity in 966, founding the Piast state, and under the Jagiellonian dynasty Poland fused with Lithuania into the huge Polish-Lithuanian Commonwealth, a noble republic with elected kings whose winged hussars saved Vienna from the Ottomans in 1683. Weakened by internal feuds, Poland was carved up in the partitions of 1772, 1793 and 1795 by Russia, Prussia and Austria, vanishing from the map for 123 years while rebels kept fighting. Reborn in 1918, it was invaded by Hitler and Stalin in 1939, endured Nazi occupation and Soviet rule, and the shipyard strikes of Solidarity in 1980, led by Lech Walesa, lit the fuse that toppled communism in Europe.",
+    "funFact": "Poland's constitution of 3 May 1791 was the first in Europe and second in the world after the United States, written just before the country was partitioned away."
+  },
+  "PRT": {
+    "famous": ["Vasco da Gama and the Age of Discovery", "port wine and fado songs", "the world's oldest fixed borders"],
+    "culture": "Portuguese life blends saudade, sweet melancholy sung in fado taverns, with seafood rice dishes, custard tarts and espresso shots. Festivals honor sardines, saints and traditional azulejo tiled walls everywhere.",
+    "history": "Lusitanian guerrilla hero Viriatus resisted Rome for years before Lusitania became a Roman province, and after Visigoths and the Moorish conquest of 711, Christian counts fought back along the Atlantic. Afonso Henriques defeated the Moors at Ourique around 1139 and became Portugal's first king, fixing borders that barely changed since, making them Europe's oldest. In the 1400s and 1500s Portuguese navigators under Henry the Navigator mapped Africa's coasts, Vasco da Gama reached India in 1498 and an empire from Brazil to Macau followed, though the 1755 Lisbon earthquake, Spanish rule and later a dictatorship under Salazar tested the nation until the Carnation Revolution of 1974 restored democracy.",
+    "funFact": "Portugal's borders with Spain, set in the 1200s, have barely moved in 800 years, making them the oldest national borders in Europe."
+  },
+  "ROU": {
+    "famous": ["Bran Castle and the Dracula legend", "Transylvania's medieval towns", "bear-filled Carpathian forests"],
+    "culture": "Romanians celebrate village festivals with folk costumes and dance, eat sarmale cabbage rolls and mici grilled sausages, and pour tuica plum brandy for guests. Orthodox painted monasteries and a deep love of folklore and shepherd traditions endure.",
+    "history": "Dacian kings ruled these mountains until Emperor Trajan conquered Dacia in 101 to 106 AD, and the mixing of Roman colonists with locals gave Romanians their Latin language, unique in Eastern Europe. Medieval principalities of Wallachia and Moldavia formed, with the cruel Voivode Vlad the Impaler, inspiration for Dracula, fighting the Ottomans in the 1400s, while Transylvania passed between Hungary and the Habsburgs. Wallachia and Moldavia united in 1859 under Cuza, independence from the Ottomans came in 1877, and the communist dictatorship of Nicolae Ceausescu ended in a dramatic revolution and his execution in 1989.",
+    "funFact": "Romania's Carpathian forests hide over 6,000 brown bears, the largest population in Europe outside Russia, which sometimes wander into mountain towns."
+  },
+  "RUS": {
+    "famous": ["Trans-Siberian railway, the longest on Earth", "Hermitage and Bolshoi ballet", "Lake Baikal, the deepest in the world"],
+    "culture": "Russian life blends imperial grandeur with village tradition, from dacha gardens and banya steam baths to tea from a samovar and feasts of blini. Literature, ballet and chess are national prides, and hospitality runs vast as the country.",
+    "history": "Viking chieftain Rurik's dynasty founded Kievan Rus' in 882, and Prince Vladimir's baptism in 988 tied the Slavs to Orthodox Byzantium until the Mongols burned Kyiv in 1240 and ruled for two centuries. Moscow rose under Ivan III, and Ivan the Terrible crowned himself first tsar in 1547, expanding east while the Romanov dynasty, beginning in 1613, would rule for 300 years. Peter the Great built Saint Petersburg and dragged Russia into Europe, Catherine the Great added Poland and Crimea, the 1917 Revolution birthed the USSR under Lenin and Stalin, and after the titanic Eastern Front of World War II and Gagarin's first spaceflight, the Soviet Union collapsed in 1991 into the modern Russian Federation.",
+    "funFact": "Russia spans 11 time zones, and the Trans-Siberian Railway crosses 8 of them in a single 9,300-kilometer journey taking a week."
+  },
+  "SMR": {
+    "famous": ["the world's oldest surviving republic", "three medieval towers on the peak", "a state founded in 301 AD"],
+    "culture": "Sanmarinese life is village-simple, Catholic and fiercely proud of liberty, with crossbow tournaments and a national festival honoring the founder Saint Marinus. Ancient rituals like the investing of captains regent still take place twice a year.",
+    "history": "A Christian stonemason named Marinus fled Roman persecution around 301 AD and founded a monastic community on Monte Titano, seed of the world's oldest surviving republic. Through the Middle Ages its commune grew, defended by cliffs and shrewd diplomacy, and neither the popes, Cesare Borgia nor Napoleon dared swallow it. Even Italy's unification left San Marino untouched, partly as thanks for sheltering Garibaldi, and it stayed neutral through both world wars.",
+    "funFact": "Napoleon offered San Marino more territory and cannons in 1797, but the republic politely refused, preferring to stay small, neutral and free."
+  },
+  "SRB": {
+    "famous": ["Nikola Tesla, the electric genius", "Novak Djokovic and sports greatness", "kafana music and rakija"],
+    "culture": "Serbian life centers on the kafana tavern with live brass music, grilled cevapi and rakija toasts, and the family feast day, slava, honoring a patron saint is unique in Europe. Basketball and tennis prodigies come from every town.",
+    "history": "Slavs settled the Balkans in the 6th and 7th centuries, and the medieval Nemanjic dynasty built a Serbian kingdom and empire that peaked under Dusan in the 1300s before the fateful Battle of Kosovo against the Ottomans in 1389. Nearly 500 years of Ottoman rule followed, ended by two uprisings in 1804 and 1815 and full independence in 1878, with Rome-born emperors like Constantine remembered from an even earlier age. Serbia became the core of Yugoslavia after World War I, and after the bloody 1990s breakup it is now an EU candidate rebuilding its identity.",
+    "funFact": "Nikola Tesla, inventor of alternating current, was born in 1856 in Smiljan, then in the Austrian Empire, to a Serbian family, and his face is on Serbian banknotes."
+  },
+  "SVK": {
+    "famous": ["the High Tatras, miniature Alps", "castles per hill, from Spis to Bojnice", "folk music and bryndzove halusky"],
+    "culture": "Slovaks love folk festivals with embroidered costumes and fujara flute music, hearty bryndzove halusky dumplings with sheep cheese and mushrooms in autumn forests. Ice hockey rivals football as the favorite sport.",
+    "history": "Celtic tribes minted coins here before Rome's frontier fortresses watched the Danube, and Slavs built Great Moravia in the 800s, where missionaries Cyril and Methodius invented an alphabet for the Slavic language. Hungary's crown ruled Slovakia for a thousand years, with Bratislava as Pressburg, where Hungarian kings were crowned, until the Habsburgs folded it into their empire. Czechoslovakia formed in 1918, endured Nazi and Soviet domination, and in the Velvet Divorce of 1993 Slovakia split peacefully from the Czech Republic into its own state.",
+    "funFact": "Andy Warhol's parents emigrated from a tiny village in Slovakia, Mikova, and the family name was originally Warhola."
+  },
+  "SVN": {
+    "famous": ["Lake Bled with its island church", "Postojna Cave, underground wonderland", "Lipizzaner horses' original home"],
+    "culture": "Slovenians are proud beekeepers, with painted hive panels a folk art, and they love hiking, mushroom picking and home-grown food at tourist farms. The language has dual forms almost unique in Europe, and Balkan and Alpine habits blend in daily life.",
+    "history": "Slavic ancestors formed Carantania, one of the earliest Slavic states, in the 600s, famed for a ceremony installing dukes on a stone throne. Habsburg rule lasted roughly 600 years, Venice held the coast, and the Napoleonic Illyrian Provinces briefly stirred a Slovene national awakening. Slovenia spent most of the 20th century in Yugoslavia, was the first to break away in 1991 after a ten-day war, and became the first former Yugoslav republic to join the EU and NATO in 2004.",
+    "funFact": "Slovenia is the cradle of the Lipizzaner white horses, bred at Lipica since 1580, and of Queen Elizabeth II's favorite riding horses."
+  },
+  "ESP": {
+    "famous": ["flamenco, paella and tapas", "Gaudi's Sagrada Familia", "Alhambra and Moorish palaces"],
+    "culture": "Spanish life runs late, with lunch at three, dinner at ten and nightlife till dawn, plus ferias, flamenco and regional fiestas from running with bulls to tomato fights. Family, football and shared small plates of tapas are the rhythm of every day.",
+    "history": "Iberians, Celts and Carthaginians lived here before Rome shaped Hispania, and after Visigoths ruled, the Moorish conquest of 711 created al-Andalus, whose Cordoba became Europe's beacon of learning. Christian kingdoms fought the Reconquista for nearly 800 years until Ferdinand and Isabella finished it in 1492, the same year Columbus sailed west and launched a global empire from gold-rich Americas to the Philippines. The Armada's defeat, wars of succession and Napoleon's invasion eroded the empire, the civil war of 1936 to 1939 led to Franco's dictatorship, and democracy returned after 1975 with a boom into modern Spain.",
+    "funFact": "Spain has the world's second highest number of UNESCO World Heritage sites and hosts La Tomatina, a festival where 20,000 people throw 150 tons of tomatoes at each other."
+  },
+  "SJM": {
+    "famous": ["polar bears outnumber people", "the Global Seed Vault", "midnight sun and months of darkness"],
+    "culture": "Svalbard's small population, mostly in Longyearbyen, is a frontier mix of miners, scientists and adventurers from dozens of countries, where leaving town without a rifle against polar bears is against the law. Life runs on research, tourism and Arctic tradition.",
+    "history": "Dutch explorer Willem Barentsz spotted Svalbard in 1596, and whalers of many nations crowded its bays in the 1600s before coal mining drew settlements from the early 1900s. The Spitsbergen Treaty of 1920 granted Norway sovereignty but gave all signatory countries equal rights to work there, which is why Russia still runs the mining town of Barentsburg. Volcanic Jan Mayen, with its Beerenberg volcano, is a separate Arctic island, and Svalbard today hosts the Global Seed Vault buried in permafrost as a backup for the world's crops.",
+    "funFact": "The Svalbard Global Seed Vault holds over a million seed samples from nearly every country, buried 120 meters inside a mountain as a doomsday backup for world agriculture."
+  },
+  "SWE": {
+    "famous": ["IKEA, ABBA and Spotify", "Nobel Prize ceremonies", "fika coffee breaks and midsummer maypoles"],
+    "culture": "Swedes live by lagom, the just-right moderation, fika coffee and pastry breaks, crayfish parties in August and dancing around the midsummer maypole. Design, recycling and equality are national obsessions.",
+    "history": "Swedish Vikings sailed east as Varangians, trading down Russian rivers to Byzantium, and after the Viking Age the Kalmar Union of 1397 chained Sweden to Denmark. The Stockholm Bloodbath of 1520 pushed Swedes to rebel under Gustav Vasa, who founded independent Sweden in 1523, and in the 1600s Sweden became a Baltic empire under warrior king Gustavus Adolphus. Defeat by Russia at Poltava in 1709 ended the empire, and Sweden has not fought a war since 1814, investing its neutrality into industry and diplomacy, home of Alfred Nobel's prizes.",
+    "funFact": "Sweden has not fought a war in over 200 years, and in 1809 it lost Finland to Russia, then in 1818 accidentally became a dynasty when a French marshal was elected king."
+  },
+  "CHE": {
+    "famous": ["Swiss chocolate, cheese and fondue", "precision watches and the Red Cross", "the Alps and William Tell legend"],
+    "culture": "Swiss life runs on direct democracy, with referendums several times a year, four national languages living side by side, and obsessive punctuality and cleanliness. Hiking, skiing, yodeling clubs and Appenzell folk traditions keep the Alps central.",
+    "history": "In 1291 three mountain cantons swore an oath on the Rutli meadow to resist the Habsburgs, the founding moment remembered in the William Tell legend. The confederation grew city by city and canton by canton, famous for hired mercenaries so loyal that Swiss guards still protect the Pope. Neutrality, guaranteed at the Congress of Vienna in 1815, kept Switzerland out of both world wars, and Geneva became home of the Red Cross, founded there in 1863, and the League of Nations.",
+    "funFact": "Switzerland has enough nuclear fallout shelters for its entire population, a law requiring them in every building since the 1960s."
+  },
+  "UKR": {
+    "famous": ["Kyiv, mother of Rus' cities", "Europe's breadbasket of black soil", "borscht, vyshyvanka and painted Easter eggs"],
+    "culture": "Ukrainians wear embroidered vyshyvanka shirts, write pysanky eggs with wax and dyes, and sing polyphonic folk songs recognized by UNESCO. Wheat fields, gardens of sunflowers and a stubborn, warm hospitality define the land.",
+    "history": "Kievan Rus', founded around 882 by Viking-Slav princes, grew into a mighty medieval state and accepted Orthodox Christianity under Volodymyr the Great in 988, making Kyiv the mother of East Slavic cities before Mongols sacked it in 1240. Cossacks, free warrior horsemen of the Zaporozhian Sich, fought Polish and Russian masters, with Bohdan Khmelnytsky's uprising of 1648 becoming legend. Empires divided the land until a brief independence in 1917 to 1921, then Soviet rule brought the man-made Holodomor famine of 1932 to 1933 that killed millions, and Ukraine finally restored independence in 1991, later resisting Russian aggression from 2014 onward.",
+    "funFact": "Ukraine holds a quarter of the world's most fertile chernozem black soil, and its flag's blue and yellow stand for sky over golden wheat fields."
+  },
+  "GBR": {
+    "famous": ["Shakespeare, the Beatles and the BBC", "the Industrial Revolution's birthplace", "tea, queuing and the royal family"],
+    "culture": "British life blends pub Sundays, a cup of tea for every crisis, dry wit and love of football, cricket and village fetes. Monarchy pageantry sits beside cutting-edge music, fashion and multicultural cities.",
+    "history": "Celtic Britons and Roman Britain, with Hadrian's Wall marking the frontier, gave way to Anglo-Saxon kingdoms and Viking raids, until William the Conqueror's Norman invasion of 1066 transformed the land. Magna Carta in 1215 began limiting royal power, Tudor monarchs Henry VIII and Elizabeth I built a navy that beat the Spanish Armada, and the 1707 union with Scotland formed Great Britain. The Industrial Revolution of steam engines and factories made Britain the workshop of the world and ruler of the largest empire in history, and though two world wars drained the empire, Britain's culture, law and language still shape the globe.",
+    "funFact": "The British Empire once ruled about a quarter of the world's land and population, and the sun literally never set on it."
+  },
+  "VAT": {
+    "famous": ["the smallest country on Earth", "St Peter's Basilica and the Sistine Chapel", "the Swiss Guard's Renaissance uniforms"],
+    "culture": "Vatican life is liturgy and art, with papal audiences, Latin documents, a post office that issues its own stamps and the world's only ATM with a Latin interface. Swiss Guards in striped Renaissance uniforms guard the pope, a tradition since 1506.",
+    "history": "Popes ruled central Italy as the Papal States for over a thousand years after the Donation of Pepin in 756, commanding armies and crowning emperors. Italian unification seized Rome in 1870, leaving popes prisoners in the Vatican for 59 years until the 1929 Lateran Treaty with Mussolini's Italy created the tiny sovereign state of Vatican City. Today it remains the headquarters of the Catholic Church, crammed with Michelangelo's Sistine Chapel and two millennia of art and power.",
+    "funFact": "Vatican City is about 0.44 square kilometers with under 1,000 residents, yet it has its own football team, radio station, railway and jail, and one of the highest crime rates per capita, mostly pickpockets."
+  }
+}

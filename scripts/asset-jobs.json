@@ -1,0 +1,32 @@
+[
+  {
+    "out": "assets/gen/poster-expedition.png",
+    "size": "1024x1536",
+    "prompt": "Retro 2D travel-manga poster of a young explorer with a round compass and a hot-air balloon over pine forests and mountains, sage paper texture background, deep pine-green ink linework, leaf-green and warm orange-red accents, bold rounded title lettering reading ATLASQUEST, hand-drawn doodle margins of flags, stars and clouds, flat colors, thick rounded outlines, printed storybook feel"
+  },
+  {
+    "out": "assets/gen/banner-hero.png",
+    "size": "1920x1080",
+    "prompt": "Wide retro 2D game banner, a winding dotted map trail across sage-green paper connecting hand-drawn landmarks: a globe, a telescope on a hill, pine trees, a hot-air balloon and fluttering pennant flags, deep pine ink outlines, leaf-green accents, halftone dot texture, soft warm sunlight, generous empty space on the left for a title, flat storybook illustration style, no text"
+  },
+  {
+    "out": "assets/gen/button-pin.png",
+    "size": "512x512",
+    "prompt": "Game button icon of a round map pin with a star cutout, flat vector illustration, thick rounded dark-green outline, sage-cream background, warm orange-red accent, retro 2D mobile game asset style, centered, clean edges, no text"
+  },
+  {
+    "out": "assets/gen/icon-globe-mascot.png",
+    "size": "1024x1024",
+    "prompt": "Retro 2D game mascot: a friendly cartoon globe character wearing a tiny explorer hat and scarf, waving, flat vector illustration, thick rounded pine-green outlines, sage-cream flat background, leaf-green continents, blush cheeks, sticker style, centered, clean edges, no text"
+  },
+  {
+    "out": "assets/gen/background-quiz.png",
+    "size": "1920x1080",
+    "prompt": "Subtle seamless background texture for a game UI: very pale sage paper with soft halftone dots and extremely faint hand-drawn geography doodles (tiny compasses, stars, clouds, flags) at 10 percent opacity, warm off-white sage tone, minimal, low contrast, flat, no text, no border"
+  },
+  {
+    "out": "assets/gen/poster-empires.png",
+    "size": "1024x1536",
+    "prompt": "Retro 2D manga poster of five legendary empires as silhouetted banners: a Roman legion eagle, a Byzantine double-headed eagle, an Ottoman crescent, a Mongol horseman and a medieval castle, arranged like comic panels on aged sage paper, deep pine ink linework, leaf-green and warm orange-red spot colors, halftone screentone shading, bold title banner at top reading EMPIRES, printed storybook style"
+  }
+]

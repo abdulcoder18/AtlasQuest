@@ -1,0 +1,17 @@
+# secrets — NEVER commit
+gmi.key
+*.key
+.env
+
+# AI-generated asset originals (large; web versions are committed)
+assets/gen/*-original.png
+
+# reference material (not part of the app)
+design-refs/
+GMI Cloud.mhtml
+design/styles-backup-*.css
+
+# OS / editor junk
+Thumbs.db
+.DS_Store
+*.log

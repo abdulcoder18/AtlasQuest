@@ -1,0 +1,356 @@
+{
+  "DZA": {
+    "famous": ["the Sahara desert", "the Casbah of Algiers", "rai music"],
+    "culture": "Couscous and slow-cooked tagines anchor Algerian tables, washed down with sweet mint tea. Rai music, born in the port city of Oran, mixes folk poetry with modern beats, and Berber (Amazigh) traditions live proudly alongside Arab customs.",
+    "history": "Berber (Amazigh) farmers and Numidian kings ruled this Mediterranean land long before Carthage and Rome took over, and Roman Algeria produced the great theologian Saint Augustine. Arab armies brought Islam in the 7th century, and later Ottoman corsairs made Algiers a famous pirate regency from 1516 to 1830. France seized the country in 1830 and ruled it harshly for 132 years, treating it almost as part of France itself. The brutal war of independence from 1954 to 1962, led by the FLN, finally freed Algeria at a terrible human cost. Since then it has swung through socialist one-party rule, a civil war in the 1990s, and today a vast oil and gas state.",
+    "funFact": "Algeria is the largest country in Africa, and over four-fifths of it is Sahara sand and rock."
+  },
+  "AGO": {
+    "famous": ["kizomba dance", "the giant Kalandula falls", "the bay of Luanda"],
+    "culture": "Funge, a cassava porridge, with muamba chicken sauce is Angolan comfort food, and dance is everywhere, from kizomba's slow romance to the wild street energy of kuduro. Portuguese is the official language, but Bantu languages like Umbundu fill the markets and homes.",
+    "history": "The Kingdom of Kongo arose around 1390 near the Congo River and traded with Portugal, while inland the Ndongo and Matamba kingdoms fought to stay free. Queen Nzinga of Matamba became a legendary resistance leader against Portuguese expansion in the 1600s. Portugal claimed the coast from 1575, and Luanda grew into one of the biggest slave ports in history, shipping millions to Brazil. Angola won independence only in 1975, and then a Cold War fueled civil war between the MPLA government and UNITA rebels raged until 2002. Oil money has since rebuilt Luanda into one of Africa's flashiest cities.",
+    "funFact": "The giant sable antelope, Angola's national symbol, lives nowhere else on Earth."
+  },
+  "BEN": {
+    "famous": ["the Dahomey kingdom", "the Royal Palaces of Abomey", "birthplace of Vodun"],
+    "culture": "Benin is the spiritual home of Vodun, honored every January 10 on National Voodoo Day with drumming and dancing. Meals center on maize dough, rich sauces and grilled fish, and the vibrant Zinsou art scene keeps contemporary Beninese creativity buzzing.",
+    "history": "The Dahomey kingdom rose in the 1600s and became rich and feared, building its capital at Abomey and fielding an all-female elite army remembered as the Dahomey Amazons. Europeans called the coast the Slave Coast because Dahomey and its rivals sold captives across the Atlantic. France conquered Dahomey in 1894 and folded it into French West Africa. Independence came in 1960, a Marxist regime took over in the 1970s, and then a peaceful return to democracy in the 1990s brought the new name Benin, borrowed from the old Bight of Benin.",
+    "funFact": "Benin is considered the birthplace of Vodun (voodoo), which is an official religion there alongside Christianity and Islam."
+  },
+  "BWA": {
+    "famous": ["the Okavango Delta", "the Kalahari desert", "diamond wealth"],
+    "culture": "Botswana greets every stranger with the warm word dumela, and weddings feature seswaa, beef pounded and slow-cooked for the whole village. San rock art decorates the Tsodilo Hills, and cattle remain the traditional measure of wealth.",
+    "history": "Tswana chiefs united the Batswana into powerful kingdoms in the 1700s and 1800s, led by rulers like Khama III, who sought British protection against Boer and Ndebele raids. Bechuanaland became a British protectorate in 1885 but was never flooded with settlers. It became independent Botswana in 1966 under Seretse Khama, whose marriage to a white Englishwoman named Ruth had scandalized empires and then inspired the world. Diamonds found at Orapa in 1967 turned one of the poorest countries on Earth into one of Africa's most stable and prosperous democracies.",
+    "funFact": "The Okavango Delta is the world's largest inland delta, a fan of river water that vanishes into Kalahari sand without ever reaching the sea."
+  },
+  "IOT": {
+    "famous": ["Diego Garcia atoll", "the Chagos archipelago", "untouched coral reefs"],
+    "culture": "There is no permanent civilian population, so everyday culture belongs to the sea: seabird colonies, giant coconut crabs and reefs teeming with sharks and turtles. The displaced Chagossian community keeps its island Creole songs and memory alive abroad, mainly in Mauritius and Britain.",
+    "history": "The Chagos Islands were charted by Portuguese sailors in the 1500s and later served French and British planters who brought enslaved workers from Africa and India. In 1965 Britain split the archipelago from Mauritius, and between 1968 and 1973 the entire Chagossian population was removed so the United States could build a huge military base on Diego Garcia. Mauritius has fought for the islands ever since, and Britain has recently agreed to hand back sovereignty while leasing the base. The surrounding waters are now one of the world's largest marine reserves.",
+    "funFact": "Diego Garcia is one of the most isolated military bases on Earth, an atoll whose nearest neighbors are hundreds of miles away."
+  },
+  "BFA": {
+    "famous": ["the FESPACO film festival", "the Mossi kingdoms' legacy", "mask dances"],
+    "culture": "Ouagadougou hosts FESPACO, Africa's biggest film festival, every two years, and cinema crowds fill the streets. Masked dances of the Mossi and Bobo peoples are world-famous art, and plates of to, a millet porridge with sauce, feed every village.",
+    "history": "The Mossi kingdoms, founded around the 11th century with their capital at Ouagadougou, defended their independence for centuries, beating back even the great Islamic empires from the north. France took the area as Upper Volta in 1919. Independence in 1960 was followed by instability until the young captain Thomas Sankara seized power in 1983 and launched a whirlwind of reforms, renaming the country Burkina Faso, the Land of the Upright People. He was assassinated in 1987 but remains a hero across Africa. Recent years have been scarred by jihadist insurgency and military takeovers.",
+    "funFact": "Under Sankara the country vaccinated millions of children and planted millions of trees in just a few years."
+  },
+  "BDI": {
+    "famous": ["the sacred royal drums", "Lake Tanganyika", "tea-covered hills"],
+    "culture": "Burundians grow coffee and tea on misty green hills, and family meals revolve around beans, plantains and porridge. The royal drummers of Burundi, whose thunderous performances are UNESCO-listed, are the country's proudest cultural export.",
+    "history": "For centuries Burundi was a kingdom ruled by a mwami, or king, over a mixed population of Hutu farmers and Tutsi herders. Germany claimed it in the 1890s, and after World War I Belgium ruled it together with Rwanda as Ruanda-Urundi. Independence in 1962 kept the monarchy for only a few years, and ethnic violence between Hutu and Tutsi exploded into repeated massacres and a devastating civil war from 1993 to 2005. Peace has held since then, though politics remains tense.",
+    "funFact": "In the old kingdom, the royal drums were so sacred that their beating was said to carry the very power of the king."
+  },
+  "CMR": {
+    "famous": ["Mount Cameroon", "the Indomitable Lions", "makossa music"],
+    "culture": "Cameroonian kitchens serve peppered grilled fish, ndole stew and street-side puff-puff snacks, and makossa and bikutsi rhythms once filled dance halls across the continent. Football fans worship the Indomitable Lions, the national team.",
+    "history": "Ancient trade crossed this land from the Kanem-Bornu empire in the north to Bantu farming villages in the rainforest south. Germany claimed Kamerun in 1884; after World War I the League of Nations split it, giving most to France and a sliver to Britain. French Cameroun became independent in 1960, and in 1961 the British southern part voted to reunite with it, creating today's Cameroon. Long rule by presidents Ahidjo and Biya followed, along with tensions between the French-speaking majority and the English-speaking minority.",
+    "funFact": "Cameroon is nicknamed Africa in miniature because deserts, beaches, mountains and rainforest all fit inside one country."
+  },
+  "CPV": {
+    "famous": ["morna music and Cesaria Evora", "Creole festivals", "volcanic beaches"],
+    "culture": "Cape Verdean life blends Portuguese and West African roots into a unique Creole identity, expressed in morna and funana music. Cachupa stew is the national dish, and islanders welcome visitors with unhurried friendliness they call morabeza.",
+    "history": "The islands were empty when Portuguese sailors found them in the 1450s, making them one of the first European colonies in the tropics. Their harbors became stops for slave ships sailing to the Americas and later a coaling station for Atlantic steamers. After the slave trade died, droughts and famine pushed many islanders to emigrate. Independence came in 1975 through the struggle led by Amilcar Cabral's PAIGC together with Guinea-Bissau, and Cape Verde has since become one of Africa's most stable democracies.",
+    "funFact": "Singer Cesaria Evora, the Barefoot Diva, carried the islands' melancholy morna music to Grammy-winning fame around the world."
+  },
+  "CAF": {
+    "famous": ["forest elephants of Dzanga-Sangha", "vast rainforests", "the Ubangi River"],
+    "culture": "People fish the Ubangi River, cook manioc and plantains, and gather for music in the neighborhood bars of Bangui. The traditional forest music of the Aka people, with its polyphonic yodeling, is UNESCO-listed heritage.",
+    "history": "For centuries this was a crossroads where sultanates like Dar al-Kuti raided for slaves, armed from both the Nile and the coast. France claimed it as Ubangi-Shari around 1900 and handed huge areas to companies whose rubber regimes were brutally cruel. Independence in 1960 eventually brought Jean-Bedel Bokassa, who crowned himself emperor in a bizarre, jewel-filled ceremony in 1977. Repeated coups and civil wars have followed, most recently the 2013 Seleka crisis, while the country's forests and forest elephants remain world treasures.",
+    "funFact": "Emperor Bokassa spent a fortune on his 1977 coronation, copying Napoleon's, though almost no foreign leaders came."
+  },
+  "TCD": {
+    "famous": ["Lake Chad", "the Ennedi plateau's rock art", "the Toumai fossil"],
+    "culture": "Around Lake Chad and across the Sahel, Chadians herd camels and cattle, trade in colorful markets and follow Islam alongside older African traditions. Millet porridge with sauces is the staple, and Kanem horsemen still celebrate their heritage at festivals.",
+    "history": "The Kanem-Bornu empire flourished around Lake Chad from about 700 AD for a thousand years, trading across the Sahara, and the Ouaddai sultanate rose later to challenge it. France conquered the region between 1900 and 1914, and French Equatorial Africa became independent Chad in 1960. Decades of coups and civil wars followed, including the rule of Hissene Habre, later convicted of atrocities, and Idriss Deby, who led for 30 years. Rebels and jihadist groups still trouble its borders today.",
+    "funFact": "A skull nicknamed Toumai, found in Chad's Djurab desert in 2001, is around 7 million years old and may be one of humanity's oldest known ancestors."
+  },
+  "COM": {
+    "famous": ["ylang-ylang perfume flowers", "vanilla and cloves", "the Karthala volcano"],
+    "culture": "Comorian culture blends African, Arab and French strands: mosques stand beside Swahili-style dances, and weddings are famously lavish feasts lasting days. The islands' ylang-ylang blossoms are distilled into perfume oil, and cloves and vanilla perfume the air.",
+    "history": "Settled over the centuries by Austronesian sailors, Africans and Arab traders, the Comoros grew into a chain of sultanates on the Swahili trade route. France made them a protectorate in 1886. When independence came in 1975, three islands left while Mayotte chose to stay French, a dispute that still simmers. The country has suffered more than 20 coups or coup attempts, including the mercenary adventures of the Frenchman Bob Denard.",
+    "funFact": "The Comoros supply most of the world's ylang-ylang essence, a key ingredient in famous perfumes like Chanel No. 5."
+  },
+  "COG": {
+    "famous": ["the Congo River", "La Sape dandy fashion", "Congolese rumba"],
+    "culture": "Brazzaville's Sapeurs turn fashion into philosophy, parading in bright tailored suits in a movement called La Sape. Meals of saka-saka, cassava leaves, and smoked fish go down to the beat of Congolese rumba, shared with the giant neighbor across the river.",
+    "history": "The Teke kingdom ruled the Malebo Pool area for centuries, while the Kongo kingdom held the coast until Portugal's rise fractured it. France claimed the region in the 1880s, and during World War II Brazzaville served as the capital of Free France under Charles de Gaulle. Independence in 1960 led through a Marxist era to the oil boom and destructive civil wars of the 1990s. Today Congo-Brazzaville, as it is often called, lives on offshore oil and vast northern forests.",
+    "funFact": "Brazzaville was the capital of Free France during World War II, the symbol of the colonies that refused to surrender to Hitler."
+  },
+  "DJI": {
+    "famous": ["the salt flats of Lake Assal", "the Gulf of Tadjoura's whale sharks", "a skyline of foreign bases"],
+    "culture": "Djibouti mixes Somali (Issa) and Afar herders with French and Yemeni influences, and many gather for qat-chewing afternoons. Menus pair French baguettes with spicy Somali stews, and camel caravans still carry salt across the desert.",
+    "history": "The land between the Red Sea and the Gulf of Aden belonged to the medieval Ifat and Adal sultanates that fought Ethiopia, then passed to Ottoman and Egyptian overlords before France signed treaties with Afar and Issa chiefs in the 1880s, creating French Somaliland. The railway to Addis Ababa made the port vital to landlocked Ethiopia. Independence came in 1977 under Hassan Gouled Aptidon. Tiny Djibouti now rents bases to France, the United States, China and others, a strategic crossroads of old and new empires.",
+    "funFact": "Lake Assal is the lowest point in Africa and one of the saltiest bodies of water on Earth, about ten times saltier than the ocean."
+  },
+  "COD": {
+    "famous": ["the Congo River", "the mountain gorillas of Virunga", "Congolese rumba"],
+    "culture": "Congolese rumba and its electric offshoot soukous electrified the whole continent, and Kinshasa hosts one of Africa's biggest music scenes. Meals of fufu with moambe chicken fuel daily life, and the kwasa kwasa dance swept the continent.",
+    "history": "Great kingdoms like Kongo, Luba and Lunda ruled the forest and savanna for centuries before Arab-Swahili slave traders like Tippu Tip pushed inland. In 1885 King Leopold II of Belgium seized the Congo as his personal possession, and his rubber regime killed or maimed millions until international outrage forced Belgium to take over in 1908. Independence in 1960 came with the assassination of the young prime minister Patrice Lumumba, followed by Mobutu's 32-year dictatorship of plunder, during which the country was renamed Zaire. Congo's wars of 1996 to 2003, called Africa's World War, drew in nine countries, and its cobalt and coltan still power the world's phones.",
+    "funFact": "The Congo River is the deepest river in the world, plunging over 200 meters, and its Inga falls could supply a huge share of Africa's electricity."
+  },
+  "EGY": {
+    "famous": ["pyramids of Giza", "the Nile", "ancient pharaohs"],
+    "culture": "Egyptian kitchens fill with koshari, ful medames and grilled kebabs, while the call to prayer sets the rhythm of daily life. Cairo is the capital of Arab pop music and cinema, and big family meals remain the heart of society.",
+    "history": "Pharaohs unified Egypt around 3100 BC and built a civilization that lasted three thousand years, leaving pyramids, temples and the hieroglyphs of the Rosetta Stone. Alexander's general Ptolemy founded a Greek dynasty that ended with Cleopatra, and then Rome, Arab armies in 641, Mamluk sultans and Ottoman pashas each ruled the Nile in turn. The Suez Canal opened in 1869 and drew Britain in as an occupying power by 1882. Egypt became nominally independent in 1922, a republic after 1953, and under Gamal Abdel Nasser faced down Britain, France and Israel in the Suez Crisis of 1956.",
+    "funFact": "The Great Pyramid of Giza was the tallest building on Earth for about 3,800 years."
+  },
+  "GNQ": {
+    "famous": ["the only Spanish-speaking country in Africa", "oil-rich Malabo", "Bioko island"],
+    "culture": "The Fang and Bubi peoples keep alive storytelling and masked dances, while Spanish, French and Portuguese are official languages. Grilled fish with pepper sauce and plantain is island comfort food, and football is the island obsession.",
+    "history": "Portuguese explorer Fernao do Po sighted Bioko in 1472, and Spain took the territory in 1778 but neglected it for a century, developing it later through cocoa plantations as Spanish Guinea. Independence in 1968 brought the nightmare of Francisco Macias Nguema, whose terror wrecked the country until his nephew Teodoro Obiang overthrew and executed him in 1979. Obiang has ruled ever since, one of the world's longest-serving leaders, and big oil discoveries in the 1990s made Equatorial Guinea suddenly rich yet deeply unequal.",
+    "funFact": "It is the only African country where Spanish is an official language, and its capital sits on an island, though a new capital is being built on the mainland."
+  },
+  "ERI": {
+    "famous": ["Asmara's art deco streets", "the Dahlak islands", "Red Sea diving"],
+    "culture": "Asmara's cafes serve macchiatos and Italian-inspired pastries to a people who love cycling, cinema and modernist buildings. Eritrea shares the Ethiopian coffee ceremony and injera stews, spiced with fiery berbere sauce.",
+    "history": "The highlands felt the glow of the ancient Aksum empire, but modern Eritrea took shape as an Italian colony from 1890, which built the futuristic capital Asmara. Britain ran it after World War II, and the UN federated it to Ethiopia in 1952; when Ethiopia annexed it in 1962, a 30-year guerrilla war began. Eritrean fighters took Asmara in 1991 and won formal independence in 1993, but war with Ethiopia flared again from 1998 to 2000. Since then the country has been led by Isaias Afwerki under one-party rule with open-ended military conscription.",
+    "funFact": "Asmara is a UNESCO-listed open-air museum of 1930s Italian futurist and art deco architecture, nicknamed La Piccola Roma."
+  },
+  "SWZ": {
+    "famous": ["the Umhlanga reed dance", "Swazi craft markets", "the Hlane royal park"],
+    "culture": "Swazi life centers on cattle, clan loyalty and colorful ceremonies, especially the Umhlanga reed dance where thousands of young women honor the queen mother. Maize porridge, roasted goat and sorghum beer appear at every festival.",
+    "history": "In the chaos of Shaka's wars, the Swazi nation formed in the early 1800s under King Sobhuza I and consolidated under Mswati II, from whom the old name Swaziland came. Boer settlers and British interests pressed in until Britain made it a protectorate in 1906. Independence in 1968 restored King Sobhuza II, who in 1973 banned political parties, making it one of the world's last absolute monarchies. In 2018 King Mswati III renamed the country eSwatini, its name in the local language.",
+    "funFact": "King Sobhuza II reigned for about 82 years, from 1899 to 1982, the longest verified reign of any monarch in recorded history."
+  },
+  "ETH": {
+    "famous": ["the rock-hewn churches of Lalibela", "the birthplace of coffee", "Aksum's obelisks"],
+    "culture": "Ethiopians share injera flatbread topped with spicy wot stews, eaten by hand from one big platter, and roast coffee beans in the elaborate daily coffee ceremony. The Orthodox church shapes festivals like Timkat, and Ethiopia keeps its own calendar and clock.",
+    "history": "The Aksum empire, a trading power on the Red Sea from about 100 to 940 AD, minted its own coins and adopted Christianity in the 4th century, one of the first states to do so. The Solomonid dynasty, claiming descent from King Solomon, ruled from 1270 until the last emperor fell in 1974. Ethiopia crushed an Italian invasion at Adwa in 1896, the only African state to defeat a European colonizer and keep its independence, though Italy briefly occupied the country from 1936 to 1941. Emperor Haile Selassie became a world statesman and a god to Rastafarians, before the communist Derg overthrew him in 1974 and famine and war scarred the 1980s.",
+    "funFact": "Ethiopia runs on its own 13-month calendar, so Ethiopian New Year falls in September."
+  },
+  "GAB": {
+    "famous": ["endless rainforest", "forest elephants and gorillas", "Libreville's seafront"],
+    "culture": "Life revolves around the forest and the sea: smoked fish, plantains and manioc on the table, and the Bwiti spiritual tradition built around iboga bark. Libreville's waterfront bars pulse with rumba and Gabonese rap, and football is the national passion.",
+    "history": "Fang and Myene peoples fished and traded along the coast and rivers when France began signing treaties in 1839, and in 1849 the French founded Libreville, meaning Free Town, to resettle freed slaves. Gabon became part of French Equatorial Africa and gained independence in 1960. Omar Bongo ruled from 1967 until his death in 2009, one of the world's longest-serving leaders, and his son Ali succeeded him until being ousted in the 2023 coup. Oil, timber and manganese fund one of Africa's higher incomes.",
+    "funFact": "Libreville literally means Free Town, founded in 1849 for slaves freed from illegal slave ships."
+  },
+  "GMB": {
+    "famous": ["the winding Gambia River", "Kunta Kinteh island", "birdwatching paradise"],
+    "culture": "Gambians live by the river: fishing, growing groundnuts and gathering to hear the kora, the 21-string harp of Mandinka griots. Domoda peanut stew and benachin rice reflect Senegambian flavors, and wrestling matches light up the dry season.",
+    "history": "The Mali empire controlled the Gambia at its height, leaving Mandinka griot traditions that still tell old epics. Portuguese traders arrived in the 1400s, and Britain and France squabbled over the river until Britain held it as a colony, a long thin possession carved around the navigable water. Kunta Kinteh Island once held enslaved Africans awaiting ships to the Americas, a history made famous by Alex Haley's book Roots, which traced his ancestor Kunta Kinte here. Independence came in 1965; Yahya Jammeh's 1994 coup ended with his surprise 2016 election loss and exile.",
+    "funFact": "Alex Haley's 1976 novel Roots begins in the Gambia, where the island of his enslaved ancestor now bears the name Kunta Kinteh Island."
+  },
+  "GHA": {
+    "famous": ["the Cape Coast slave castles", "kente cloth", "gold, the Gold Coast"],
+    "culture": "Ghanaian markets overflow with kente weaving and adinkra symbols, and jollof rice sparks friendly rivalry with Nigeria. Highlife music and its descendants fill weddings and funerals, which are among the country's biggest social celebrations.",
+    "history": "Medieval empires traded gold across the Sahara from cities far to the north, and modern Ghana took the old Ghana empire's name as a nod to past glory. Here the Ashanti empire, founded by Osei Tutu around 1701, grew rich on gold and bound its people to the sacred Golden Stool, said to hold the soul of the nation. Britain fought several Anglo-Ashanti wars, made the Gold Coast a colony and shipped enslaved people through Cape Coast Castle. In 1957 Kwame Nkrumah led the Gold Coast to independence as Ghana, the first colony in sub-Saharan Africa to break free, inspiring a continent.",
+    "funFact": "The Golden Stool of the Ashanti is so sacred that tradition says it must never touch the ground."
+  },
+  "GIN": {
+    "famous": ["the source of the Niger River", "the Fouta Djallon highlands", "Mount Nimba"],
+    "culture": "Guinea's highlands are West Africa's water tower, and the rhythms of the djembe and balafon run deep in a land that produced some of Africa's greatest griots. Rice, manioc and peanut sauces fill the plate, and strong tea is drunk in three sweet rounds.",
+    "history": "Parts of Guinea belonged to the Ghana and Mali empires, whose kings collected gold and salt taxes here, and the Fulani built the theocratic state of Fouta Djallon in 1725. In the 1880s Samori Toure built the Wassoulou empire and fought France for 16 years before being captured in 1898. French Guinea became the only French colony in Africa to vote No to de Gaulle's 1958 community plan, winning instant independence and suffering French retaliation, as administrators left and even smashed equipment. Sekou Toure then ruled harshly for 26 years, and Guinea has chased stable democracy ever since.",
+    "funFact": "When Guinea voted for immediate independence in 1958, a furious France cut every cable and famously pulled even the lightbulbs out of government buildings."
+  },
+  "GNB": {
+    "famous": ["the Bijagos archipelago", "cashew orchards", "gumbe music"],
+    "culture": "Life in Guinea-Bissau moves to gumbe rhythms and Kriol speech, though Portuguese is the official language. Cashews are king, roasted and sold on every roadside, and grilled fish with rice feeds the coast and the islands.",
+    "history": "This coast was part of the Mali empire's orbit through the Kaabu state before Portuguese sailors arrived in 1446, making it one of the earliest Atlantic slave ports. Portugal clung to the territory, and from 1963 Amilcar Cabral's PAIGC fought a brilliant guerrilla campaign that liberated most of the countryside. Cabral was assassinated in 1973, months before independence was declared, but Portugal recognized the new country in 1974 after its own revolution. Chronic coups and the 1998-99 civil war have kept democracy fragile ever since.",
+    "funFact": "Amilcar Cabral, the agronomist and poet who led the independence war, is one of Africa's most admired revolutionary thinkers."
+  },
+  "CIV": {
+    "famous": ["the world's biggest cocoa harvest", "the Basilica of Yamoussoukro", "Abidjan's skyline"],
+    "culture": "Ivoirians eat attieke, a cassava couscous, and kedjenou chicken stewed in banana leaves, washed down with cocoa and coffee grown at home. Coupe-decale dance music was born in Abidjan's clubs, and footballers like Didier Drogba are national heroes.",
+    "history": "The region fed the surrounding empires before French treaties from 1843 turned it into a colony by 1893, exporting cocoa and coffee through harsh forced labor. Felix Houphouet-Boigny, a cocoa planter and independence leader, ruled from 1960 to 1993, building an economic miracle and a vast marble capital at Yamoussoukro, complete with the world's largest church. Succession disputes and a 2002 rebellion split the country between north and south, and civil war flared again after the 2010 election. Ivory Coast remains the world's top cocoa producer, growing roughly 40 percent of all chocolate's raw material.",
+    "funFact": "The Basilica of Our Lady of Peace in Yamoussoukro is the largest church building on Earth, even bigger than Saint Peter's in Rome."
+  },
+  "KEN": {
+    "famous": ["the great wildebeest migration", "world-beating runners", "the Swahili coast"],
+    "culture": "Kenya runs on chai, ugali and nyama choma, roast meat shared at roadside stalls and clubs. Swahili proverbs guide daily talk, and marathon champions from the Rift Valley highlands are national celebrities.",
+    "history": "Arab and Persian traders built Swahili ports like Mombasa and Lamu, which Portugal tried to control from Fort Jesus in 1593 before Omani sultans took over. The British declared the East Africa Protectorate in 1895 and handed fertile highlands to white settlers, dispossessing the Kikuyu and other peoples. The Mau Mau uprising of 1952 to 1960 forced Britain to negotiate, and Kenya became independent in 1963 under Jomo Kenyatta. The country has since grown into East Africa's economic engine, though elections have sometimes turned violent.",
+    "funFact": "Runners from Kenya's Rift Valley have dominated world long-distance running for decades, winning a huge share of Olympic marathon medals."
+  },
+  "LSO": {
+    "famous": ["the Kingdom in the Sky", "Basotho blankets", "Maletsunyane falls"],
+    "culture": "Basotho ride sure-footed ponies across the highlands wrapped in distinctive wool blankets, and the conical mokorotlo hat crowns the national flag. Sorghum beer and pap, a maize porridge, fuel village life, and mountain horse races draw the best riders each year.",
+    "history": "King Moshoeshoe I united scattered Sotho clans around his mountain fortress of Thaba Bosiu in the 1820s, sheltering refugees from Shaka's wars and outwitting Boer commandos. After losing lowland wars, he asked Britain for protection, and Basutoland became a British protectorate in 1868, the only African state to survive the Scramble for Africa within its mountain borders. Independence came in 1966 as the Kingdom of Lesotho, a constitutional monarchy completely surrounded by South Africa.",
+    "funFact": "Lesotho is the only country on Earth that lies entirely above 1,000 meters in altitude."
+  },
+  "LBR": {
+    "famous": ["founded by freed American slaves", "Monrovia", "Africa's oldest republic"],
+    "culture": "Liberian culture blends American borrowings with Mende, Kpelle and Grebo traditions, and English is spoken with a lively Liberian Creole twist. Rice with pepper gravy and palm butter stew are staples, and the old Poro and Sande societies still guide coming-of-age rituals.",
+    "history": "In 1822 the American Colonization Society landed freed Black Americans at Cape Mesurado, founding Monrovia, named after US President James Monroe. The settlers declared Africa's first republic in 1847, governing from their Americo-Liberian circles over indigenous peoples for more than a century. Two civil wars from 1989 to 2003, led by warlords like Charles Taylor, devastated the country before UN peacekeepers restored order. In 2005 Ellen Johnson Sirleaf became Africa's first elected female head of state, and football legend George Weah later won the presidency.",
+    "funFact": "Liberia's capital, flag and founding story all borrow from the United States, because it was settled by freed American slaves."
+  },
+  "LBY": {
+    "famous": ["the Roman ruins of Leptis Magna", "the Sahara", "oil fields"],
+    "culture": "Libyan life centers on family, Islam and the desert: couscous and bazin dough with lamb, mint tea poured in three rounds, and old town souks in Tripoli. Tuareg and Berber communities keep their own languages and the indigo veils of the caravan routes.",
+    "history": "Phoenicians founded Tripoli, Greeks built Cyrene, and Rome made Libya a granary, leaving Leptis Magna as one of the grandest Roman cities anywhere. Arab conquests brought Islam, and Ottoman governors ruled until Italy invaded in 1911, fighting Senussi resistance into the 1930s. Libya became independent in 1951 under King Idris, and the young officer Muammar Gaddafi seized power in 1969, ruling for 42 years behind his Green Book. The 2011 Arab Spring uprising, backed by NATO airstrikes, toppled and killed him, leaving Libya divided among rival governments ever since.",
+    "funFact": "Libya's Great Man-Made River pumps fossil water from beneath the Sahara through hundreds of kilometers of pipe, one of the biggest engineering projects ever built."
+  },
+  "MDG": {
+    "famous": ["lemurs", "the avenue of the baobabs", "vanilla"],
+    "culture": "Malagasy life mixes Austronesian and African roots: zebu cattle are wealth, rice fields fill the valleys, and rice is eaten at every meal. Famadihana, the joyful turning of the bones ceremony, reunites families with their ancestors, and the valiha tube zither carries Indonesian echoes.",
+    "history": "Austronesian sailors from Borneo crossed the Indian Ocean to settle the island by around 500 AD, later mingling with African and Arab traders, making Madagascar's people unlike any others. In the 1600s pirates laired on its coast, and the Merina kingdom of the highlands unified much of the island in the early 1800s under Radama I and Queen Ranavalona I. France seized the island in 1896. Independence in 1960 was followed by socialist experiments, repeated political crises and coups, yet the island's wildlife remains unlike anywhere else on Earth.",
+    "funFact": "Around 90 percent of Madagascar's wildlife, from lemurs to baobabs, exists nowhere else on the planet."
+  },
+  "MWI": {
+    "famous": ["Lake Malawi's cichlid fish", "the Warm Heart of Africa", "Mount Mulanje"],
+    "culture": "Malawians earned the nickname the Warm Heart of Africa for their hospitality, greeting strangers warmly in Chichewa and English. Chambo fish from the lake, nsima maize porridge and groundnut sauces are everyday comfort food.",
+    "history": "The Maravi empire traded ivory through the region before the Yao and Ngoni peoples arrived in the 1800s, and Yao slavers carried captives toward the coast. David Livingstone's journeys up the river led Britain to create the protectorate of Nyasaland in 1891, later tied to the Rhodesias in a federation Africans rejected. Hastings Banda led Malawi to independence in 1964 and then ruled as a dictator for three decades before voters removed him in 1994. Lake Malawi, more than 500 kilometers long, still anchors life, food and transport.",
+    "funFact": "Lake Malawi holds more fish species than any other lake in the world, around a thousand, most of them found nowhere else."
+  },
+  "MLI": {
+    "famous": ["Timbuktu", "the Niger River", "desert blues music"],
+    "culture": "Malian griots still sing centuries-old epics on the kora, and the desert blues guitar of Ali Farka Toure has fans worldwide. Rice and millet with peanut or fish sauces feed the family, and grand boubou robes come out for festivals and Eid.",
+    "history": "West Africa's great empires rose here: the Ghana empire grew rich on gold, then Sundiata Keita founded the Mali empire around 1235, and his successor Mansa Musa made a legendary 1324 pilgrimage to Mecca, spending so much gold in Cairo that prices crashed for years. Timbuktu became a byword for wealth and learning, with universities and libraries of handwritten books. The Songhai empire took over until a Moroccan army with muskets destroyed it at Tondibi in 1591. France later created French Sudan, which became independent Mali in 1960; the young nation went socialist, then suffered droughts and, in recent years, Tuareg rebellions and jihadist insurgency.",
+    "funFact": "Mansa Musa of Mali is often called the richest person who ever lived."
+  },
+  "MRT": {
+    "famous": ["the Eye of the Sahara", "iron ore desert trains", "Moorish tea and tents"],
+    "culture": "Mauritanian life blends Arab-Berber Moorish traditions with West African ones, from mint tea rituals poured in three rounds to poetry recited across the dunes. Meat and milk from camel herds remain prestige foods, and markets hum with Saharan trade.",
+    "history": "Ghana's gold trade passed through the region, and Berber tribes from these sands launched the Almoravid movement that conquered Morocco and Muslim Spain in the 11th century. Arab Beni Hassan tribes later dominated, giving the land the name Mauritania, land of the Moors. France made it a protectorate by 1904 and folded it into French West Africa until independence in 1960. Nouakchott, a fishing village chosen as the capital, exploded into a city, and slavery, long tolerated informally, was only criminalized in 2007.",
+    "funFact": "The iron ore train crossing Mauritania's desert stretches up to about two kilometers long, and workers ride the ore cars for free."
+  },
+  "MUS": {
+    "famous": ["the dodo", "turquoise lagoons", "a multicultural melting pot"],
+    "culture": "Mauritian life blends Indian, African, Chinese and French heritages: Hindu temples stand beside mosques, churches and pagodas. Dholl puri flatbreads and rougaille stews rule the table, and sega music, born of slavery, fills beach parties.",
+    "history": "No people lived on Mauritius when Dutch sailors landed in 1598, naming it after Prince Maurice and wiping out the flightless dodo within decades. The French took over in 1715, building sugar estates with enslaved workers, and the British seized the island in 1810, keeping the sugar and later bringing indentured laborers from India. Independence in 1968 began one of the developing world's great success stories, a stable multiethnic democracy. Tourism, textiles and finance now sustain the island.",
+    "funFact": "The dodo, extinct by the 1680s, lived only on Mauritius, which is why the phrase as dead as a dodo was born here."
+  },
+  "MYT": {
+    "famous": ["a giant lagoon", "ylang-ylang fields", "French island life"],
+    "culture": "Mayotte blends Swahili-Islamic tradition with French administration: mosques beside Sunday markets, baguettes next to mandazi donuts, and shimaone, a cassava and banana dish, on the table. Grand weddings with gold jewelry are the social event of the year.",
+    "history": "The sultans of Mayotte ruled the smallest Comoro island and suffered repeated Malagasy slave raids, until Sultan Andriantsoly sold the island to France in 1841. When the Comoros voted for independence in 1974, Mayotte voted to stay French and has remained a French territory ever since, becoming a full overseas department in 2011. Migrants from the poorer Comoros keep crossing the lagoon, making Mayotte a constant focus of French immigration debates.",
+    "funFact": "Mayotte sits inside one of the largest enclosed lagoons in the world, ringed by a rare double barrier reef."
+  },
+  "MAR": {
+    "famous": ["the medina of Marrakech", "couscous and mint tea", "the Atlas mountains"],
+    "culture": "Moroccan life swirls around medina souks, Friday couscous, endless glasses of mint tea and the call to prayer under medieval minarets. Gnawa trance music, Andalusi orchestras and Amazigh (Berber) folk songs all belong to the soundscape.",
+    "history": "Amazigh dynasties built Morocco's first state under the Idrisids around 788 AD, and Berber empires like the Almoravids and Almohads later ruled from Spain to the Sahara, making Fez and Marrakech capitals of learning. The Alaouite dynasty, which has reigned since 1631, claims descent from the Prophet Muhammad. France and Spain imposed a protectorate in 1912, and independence under Mohammed V came in 1956 after armed and diplomatic struggle. Kings Hassan II and Mohammed VI have ruled since, with the Western Sahara dispute still unresolved.",
+    "funFact": "The university of al-Qarawiyyin in Fez, founded in 859 by Fatima al-Fihri, is often cited as the oldest continuously operating university in the world."
+  },
+  "MOZ": {
+    "famous": ["pristine Indian Ocean beaches", "peri-peri chicken", "Ilha de Mocambique"],
+    "culture": "Mozambican kitchens sizzle with peri-peri, the fiery chili sauce carried along Portuguese trade routes, spooned over chicken and prawns. Marrabenta guitar music and timbila xylophone orchestras, UNESCO-listed heritage, animate weddings and holidays.",
+    "history": "Swahili sultanates traded gold from Great Zimbabwe's hinterland through ports the Portuguese reached with Vasco da Gama in 1498. Mozambique became a colony of plantation estates and fed the Atlantic slave trade for centuries. FRELIMO's guerrilla war from 1964 helped topple Portugal's dictatorship, and independence came in 1975, soon followed by a brutal civil war with RENAMO, backed by outside powers, that ended only in 1992. The country has since pursued peace, tourism and huge offshore gas finds.",
+    "funFact": "Mozambique's flag carries an AK-47 rifle, the only national flag in the UN showing a modern weapon."
+  },
+  "NAM": {
+    "famous": ["the Namib, the world's oldest desert", "Sossusvlei's giant dunes", "Etosha's waterholes"],
+    "culture": "Namibia blends San heritage, Herero women's Victorian-style dresses, German bakery towns and Ovambo farming life. Biltong, kapana street meat and game steaks are favorites, and English links a dozen languages.",
+    "history": "San hunter-gatherers and Khoikhoi herders lived here for millennia before Bantu-speaking Herero, Nama and Ovambo peoples settled the land. Germany claimed the territory in 1884, and its brutal suppression of Herero and Nama revolts from 1904 to 1908 is often called the first genocide of the 20th century. South Africa took over after World War I, ruling under a League of Nations mandate and extending apartheid. SWAPO's long liberation war ended with UN-supervised independence in 1990 under Sam Nujoma.",
+    "funFact": "The Namib is considered the oldest desert on Earth, and the dunes of Sossusvlei rise among the tallest anywhere."
+  },
+  "NER": {
+    "famous": ["the Agadez mud minaret", "Sahara caravan routes", "West Africa's last wild giraffes"],
+    "culture": "Tuareg caravans, Wodaabe beauty festivals like Gerewol, where men dance in makeup and finery, and Sahelian markets define Niger's cultural mix. Millet porridge, dates and camel milk sustain desert life, and Tuareg guitar rings from Niamey to Agadez.",
+    "history": "Songhai's river empire and the sultanate of Agadez, with its 16th-century mud-brick minaret, anchored this crossroads of caravan trade, later contested by Kanem-Bornu and Tuareg confederations. France pacified the harsh terrain early in the 1900s and made Niger a colony in 1922 within French West Africa. Independence in 1960 brought droughts, uranium mining and repeated coups, including one in 2023 that strained ties with France. Uranium from Arlit has lighted French cities for decades.",
+    "funFact": "West Africa's last wild giraffes survived near Niger's Koure plateau, where a herd that had dwindled below a hundred has slowly recovered."
+  },
+  "NGA": {
+    "famous": ["Nollywood", "afrobeats", "the megacity of Lagos"],
+    "culture": "Nigerian jollof rice sparks friendly wars with Ghana, suya street grills perfume the nights, and Lagos nightlife invents afrobeats hits that rule global charts. Nollywood films, full of family drama and comedy, are watched across Africa every day.",
+    "history": "The Nok culture worked iron and fired terracotta sculptures over 2,000 years ago, and later the Hausa city-states and Kanem-Bornu traded across the Sahel while the Benin empire cast bronze masterpieces and the Oyo empire commanded Yoruba lands. In 1804 Usman dan Fodio's jihad founded the Sokoto Caliphate across the north. Britain amalgamated its Northern and Southern protectorates into Nigeria in 1914. Independence in 1960 was followed by the Biafra civil war of 1967 to 1970, an oil boom, military rule and democracy since 1999, with Africa's largest population, now over 200 million.",
+    "funFact": "Nollywood produces more films each year than Hollywood, ranking among the biggest film industries on Earth."
+  },
+  "REU": {
+    "famous": ["the Piton de la Fournaise volcano", "Creole cuisine", "cirque mountain amphitheaters"],
+    "culture": "Reunion's Creole life mixes French, African, Malagasy, Indian and Chinese strands: markets sell samosas and rougail saucisse, Maloya music carries the memory of slavery, and Sundays mean family hikes into volcanic valleys.",
+    "history": "Empty when the French East India Company claimed it in 1665 as the Isle de Bourbon, Reunion grew sugar and coffee with enslaved workers from Africa and Madagascar. France abolished slavery in 1848, renamed the island Reunion and brought Indian indentured laborers. It became a full French department in 1946, making its people French citizens, and today it is an outermost region of the European Union in the Indian Ocean.",
+    "funFact": "Bourbon vanilla, the world's favorite vanilla flavor, is named after Reunion's old colonial name, the Isle de Bourbon."
+  },
+  "RWA": {
+    "famous": ["mountain gorillas", "the Land of a Thousand Hills", "the Kigali Genocide Memorial"],
+    "culture": "Rwandans share brochettes of goat meat and banana beer, greet in Kinyarwanda, and dance the Intore warrior style with towering straw headdresses. Each month the umuganda community workday brings neighbors together to build and clean.",
+    "history": "The Kingdom of Rwanda grew over centuries around a mwami, or king, ruling a society of Hutu farmers, Tutsi herders and Twa hunter-gatherers, then became part of German East Africa in 1897 and passed to Belgium after World War I. Belgium hardened the ethnic lines with identity cards, feeding later divisions. Independence in 1962 brought Hutu-led republics and waves of anti-Tutsi violence, culminating in the 1994 genocide in which about 800,000 people were killed in 100 days. The Rwandan Patriotic Front under Paul Kagame ended the genocide and has ruled since, rebuilding Rwanda into one of Africa's cleanest and fastest-changing countries.",
+    "funFact": "Rwanda banned plastic bags in 2008, and its capital Kigali is routinely ranked among Africa's cleanest cities."
+  },
+  "SHN": {
+    "famous": ["Napoleon's final exile", "Jonathan the giant tortoise", "one of the world's remotest islands"],
+    "culture": "Saint Helena's islanders, known as Saints, speak a sing-song English and wave at every passing car. Fish and potato dishes and world-class coffee define island tables, and Ascension's Green Mountain hides a man-made cloud forest.",
+    "history": "The Portuguese found the empty island in 1502, and the British East India Company garrisoned it from 1659 as a refreshment stop on the India route. Its most famous prisoner, Napoleon Bonaparte, was exiled here in 1815 and died at Longwood House in 1821. Saint Helena, Ascension and Tristan da Cunha form one of Britain's most remote overseas territories, and an airport finally opened in 2017 after centuries of dependence on mail ships.",
+    "funFact": "Jonathan the tortoise, who lives on the governor's lawn in Saint Helena, is around 190 years old and may be the oldest living land animal on Earth."
+  },
+  "STP": {
+    "famous": ["cocoa plantations", "the Pico Cao Grande", "sitting on the equator"],
+    "culture": "Islanders speak Portuguese and the Forro Creole, and island tables fill with fresh fish, breadfruit and cocoa-based sweets. The socope rhythm sets festival nights swinging, and cocoa farms still scent the hills.",
+    "history": "Uninhabited when Portuguese navigators found the islands around 1470, Sao Tome and Principe became the world's first tropical plantation colony, growing sugar with enslaved Africans. Cocoa took over in the 1800s, and around 1908 the islands were the world's largest cocoa producer, run through notorious roca estates. Independence came peacefully in 1975, and since multiparty politics arrived in 1990 the country has been one of Africa's most stable democracies.",
+    "funFact": "The islands straddle the equator, and on the islet of Rolas you can stand with one foot in each hemisphere."
+  },
+  "SEN": {
+    "famous": ["Goree Island's Door of No Return", "mbalax music", "teranga hospitality"],
+    "culture": "Senegalese teranga, the art of boundless hospitality, welcomes guests with attaya tea poured in three rounds and thieboudienne, the beloved rice-and-fish dish. Mbalax drumming and traditional wrestling are national passions, and the call to prayer marks the day.",
+    "history": "The Wolof Jolof empire organized the region from the 1300s while Portuguese and then French traders worked the coast, turning Goree and Saint-Louis into Atlantic slave ports, and Saint-Louis became the first capital of French West Africa in 1895. Independence in 1960 brought Leopold Sedar Senghor, a world-famous poet, as the first president. Senegal has remained one of Africa's most stable democracies, and the Dakar Rally finished here for decades.",
+    "funFact": "Senegal is one of the few African countries never to have experienced a military coup since independence."
+  },
+  "SYC": {
+    "famous": ["giant tortoises and rare birds", "the coco de mer palm", "granite island beaches"],
+    "culture": "Seychellois Kreol blends French, African and Indian ingredients in dishes like octopus curry and breadfruit chips, eaten to the sway of sega and moutya music. Family Sundays, fishing and church festivals keep island life unhurried.",
+    "history": "Pirates and passing sailors used the empty islands until France claimed them in 1756, naming the archipelago for finance minister Jean Moreau de Sechelles. Britain seized them in 1810 and grew spices and coconuts with enslaved labor, then settled freed slaves here after abolition. Independence came in 1976, followed by a 1977 coup that brought France-Albert Rene's long socialist rule; free multiparty politics returned in 1993. Tourism and fishing now sustain one of Africa's highest incomes.",
+    "funFact": "The coco de mer palm produces the largest and heaviest seed of any plant on Earth, up to about 20 kilograms."
+  },
+  "SLE": {
+    "famous": ["Freetown", "diamonds", "one of the world's largest natural harbors"],
+    "culture": "Sierra Leoneans greet in Krio, a lively Creole that binds dozens of ethnic groups, over plates of cassava leaf stew and jollof rice. Islam and Christianity interweave comfortably, and gumbe rhythms fill Freetown nights.",
+    "history": "Temne and Mende kingdoms traded through the estuary the Portuguese named Serra Lyoa in 1462. In 1787 Britain helped settle freed slaves and London's Black Poor at Freetown, the Province of Freedom, and the colony became a beacon of return and a British stronghold. Independence in 1961 was followed by coups and the horrific civil war of 1991 to 2002, in which rebels financed by blood diamonds spread terror. Since then elections and peace have slowly rebuilt the country.",
+    "funFact": "Freetown was founded in the 1780s as a home for freed slaves from London, the Americas and the Caribbean, which is why it got its name."
+  },
+  "SOM": {
+    "famous": ["Africa's longest mainland coastline", "camels and poetry", "the cave paintings of Laas Geel"],
+    "culture": "Somalis are camel herders and poets at heart: a good poem can outshine a politician, and brides are celebrated with buraanbur verses. Meals feature camel milk, rice with goat and sabaayad flatbread, spiced with cardamom tea.",
+    "history": "Ancient Egyptians traded with the Land of Punt along this coast, and medieval sultanates like the Ajuran built stone cities and wells along the Indian Ocean ports. The British took the north and Italy the south in the late 1800s, and the two colonies united at independence in 1960. General Siad Barre's 1969 coup brought Soviet alignment, a war with Ethiopia and, after his fall in 1991, state collapse into civil war, famine and the piracy era. The breakaway region of Somaliland runs its own stable but unrecognized government, while Mogadishu slowly rebuilds.",
+    "funFact": "Somalia has the longest mainland coastline in Africa, stretching more than 3,000 kilometers along the Horn."
+  },
+  "ZAF": {
+    "famous": ["Table Mountain", "Kruger Park safaris", "gold and diamonds"],
+    "culture": "South Africa runs on braais (barbecues), biltong and eleven official languages, with church choirs that birthed genres from isicathamiya to gqom. Rugby and football divide and unite the country, and Cape Malay curries tell of enslaved people brought from the East.",
+    "history": "San hunter-gatherers and Khoikhoi herders met Bantu farmers moving south, and in 1652 the Dutch East India Company planted a refreshment station at the Cape under Jan van Riebeeck. British rule from 1806 pushed Boer settlers on the Great Trek, and the discovery of diamonds at Kimberley in 1867 and gold on the Witwatersrand in 1886 turned a backwater into an industrial powerhouse, provoking the Anglo-Boer wars. The Union of South Africa formed in 1910, and in 1948 the National Party entrenched apartheid, a system of racial segregation the world came to condemn. Nelson Mandela's release in 1990 and the 1994 all-race election began the Rainbow Nation era.",
+    "funFact": "South Africa has three capital cities: Pretoria (executive), Cape Town (legislative) and Bloemfontein (judicial)."
+  },
+  "SSD": {
+    "famous": ["the world's newest country", "the Sudd wetland", "the cattle camps of the Dinka"],
+    "culture": "Nuer and Dinka families measure wealth in cattle, whose horns and hides mark every dowry and funeral, and wrestling tournaments gather whole regions. Sorghum porridge, milk and river fish feed the camps along the Nile.",
+    "history": "Sudan's south suffered slave raids under Turco-Egyptian and Mahdist rule, and Britain governed it separately from the north, deepening the divide between the Arab-Islamic north and the African, largely Christian and animist south. Two civil wars, from 1955 to 1972 and from 1983 to 2005 under John Garang's SPLA, killed millions through fighting and famine. A 2005 peace deal promised a referendum, and in July 2011 South Sudan became the world's newest country, only to slide into its own civil war from 2013 to 2018 between rivals Salva Kiir and Riek Machar.",
+    "funFact": "South Sudan has existed as a country only since July 2011, making it the newest UN member state."
+  },
+  "SDN": {
+    "famous": ["more pyramids than Egypt", "the confluence of two Niles", "ancient Kush and Nubia"],
+    "culture": "Sudanese hospitality is legendary: guests share ful and kisra flatbread, spiced stews and endless glasses of jebena coffee and tea. Weddings pulse with music and henna nights, and Friday prayers fill Khartoum's grand mosques.",
+    "history": "The kingdom of Kush rose on the Nile by 2500 BC, conquered Egypt in the 700s BC as its 25th or black pharaoh dynasty, and later ruled from Meroe, an iron-smelting city with more pyramids than Egypt itself. Christian Nubian kingdoms held the river for a thousand years before Islamization under the Funj sultans. Ottoman-Egyptian rule from 1821, the Mahdist revolution that took Khartoum in 1885 and Britain's reconquest at Omdurman in 1898 led to Anglo-Egyptian Sudan. Independence in 1956 brought decades of north-south war that split the country in 2011, and a 2019 revolution finally toppled Omar al-Bashir's 30-year rule.",
+    "funFact": "Sudan has around 250 pyramids, more than Egypt, built by Kushite kings at Meroe and Nuri."
+  },
+  "TZA": {
+    "famous": ["the Serengeti wildebeest migration", "Mount Kilimanjaro", "Zanzibar's spice islands"],
+    "culture": "Tanzanian Swahili culture pairs ugali or pilau rice with coconut curries on the coast, and Swahili itself, the region's lingua franca, is enriched by Arabic and Indian words. Bongo flava hip-hop and taarab orchestras fill Dar es Salaam and Zanzibar nights.",
+    "history": "The Swahili sultanate of Kilwa traded Zimbabwe's gold to Arabia and India between the 1100s and 1500s, until the Portuguese and then the Omani sultans of Zanzibar dominated the coast and its clove and slave trades. Germany claimed the mainland as German East Africa in the 1880s, crushing the Maji Maji rebellion of 1905 to 1907, and Britain took over after World War I. Tanganyika won independence under Julius Nyerere in 1961, and in 1964 united with revolutionary Zanzibar to form Tanzania. Nyerere's ujamaa village socialism reshaped the countryside before multiparty democracy returned.",
+    "funFact": "Tanzania's name is a mash-up of Tanganyika and Zanzibar, the two states that united in 1964."
+  },
+  "TGO": {
+    "famous": ["the Akodessewa fetish market", "voodoo and divination traditions", "the palm-lined beach strip of Lome"],
+    "culture": "Togolese markets brim with charms, herbs and carved talismans, and Ewe drumming and voodoo ceremonies mark births and harvests. Maize dough, grilled tilapia from Lake Togo and spicy peanut sauces anchor the table.",
+    "history": "Ewe and other peoples farmed between the Volta and the mountains when German explorers signed the 1884 treaty of Lome, making Togoland Germany's first African colony. After World War I the League of Nations split it between France and Britain, and French Togoland became independent in 1960. Army officer Gnassingbe Eyadema seized power in 1967 and ruled for 38 years, one of Africa's longest reigns, and his son Faure Gnassingbe succeeded him in 2005. Protests for term limits have recurred ever since.",
+    "funFact": "Akodessewa in Lome is often called the world's largest voodoo market, where stalls sell charms for every conceivable problem."
+  },
+  "TUN": {
+    "famous": ["the ruins of Carthage", "Mediterranean beaches", "Star Wars filming locations"],
+    "culture": "Tunisians sip mint tea over baklava and brik pastries in whitewashed cafes between the medina and the sea. Malouf Andalusi music, hammam rituals and family Fridays define a culture at the crossroads of Arab and Mediterranean life.",
+    "history": "Phoenician traders founded Carthage around 814 BC, and Hannibal's elephants nearly toppled Rome before Carthage was razed in 146 BC; Roman Africa then became the empire's breadbasket. Arab armies founded Kairouan in 670, and from here the Fatimids launched their conquest of Egypt. Ottoman beys ruled until France imposed a protectorate in 1881, and Habib Bourguiba led independence in 1956. In 2010 the self-immolation of street vendor Mohamed Bouazizi ignited the Arab Spring, and Tunisia became the only Arab Spring country to keep its democracy.",
+    "funFact": "The Star Wars desert planet Tatooine was named after the real Tunisian town of Tataouine, where scenes were filmed."
+  },
+  "UGA": {
+    "famous": ["the mountain gorillas of Bwindi", "the source of the Nile", "the Pearl of Africa"],
+    "culture": "Ugandans eat matoke, steamed green bananas, with groundnut sauce, greet warmly in Luganda and English, and love the rolex, an egg-and-chapati wrap that is the beloved street snack. Kampala's music scene has launched afrobeats stars.",
+    "history": "Great Bantu kingdoms like Buganda and Bunyoro built centralized monarchies around the lake long before British explorers traced the Nile to its source at Jinja in 1862. Buganda's kabakas allied with Britain, which declared a protectorate in 1894. Independence in 1962 collapsed into Milton Obote's move against the king of Buganda, then Idi Amin's nightmare dictatorship from 1971 to 1979, when tens of thousands were killed and Asian Ugandans expelled. Yoweri Museveni's National Resistance Army ended the chaos in 1986 and has ruled ever since.",
+    "funFact": "Winston Churchill called Uganda the Pearl of Africa for its scenery and wildlife, a nickname it still wears proudly."
+  },
+  "ESH": {
+    "famous": ["a disputed desert land", "the phosphate mine of Bou Craa", "Dakhla's kitesurf lagoon"],
+    "culture": "Sahrawi nomads keep Hassaniya poetry, tented hospitality and camel culture alive, though decades of conflict have pushed many into refugee camps near Tindouf in Algeria. Mint tea ceremonies, poured and negotiated patiently, remain a desert art.",
+    "history": "Spain claimed the desert territories of Rio de Oro and Saguia el-Hamra in 1884 as Spanish Sahara. The Polisario Front, formed in 1973, fought for independence, and when Spain withdrew in 1975 Morocco and Mauritania divided the land; Mauritania gave up its share in 1979, leaving Morocco in control of most of the territory behind a huge sand berm. A 1991 UN-brokered ceasefire promised a referendum that has never happened. The United Nations still lists Western Sahara as a non-self-governing territory.",
+    "funFact": "A conveyor belt over 100 kilometers long carries phosphate from the Bou Craa mine across the desert to the coast."
+  },
+  "ZMB": {
+    "famous": ["Victoria Falls, Mosi-oa-Tunya", "the Copperbelt", "walking safaris in South Luangwa"],
+    "culture": "Zambians greet each other in Bemba, Nyanja and dozens of other languages, share nshima maize porridge with relishes, and cheer the Chipolopolo football team. The Ngoni Nc'wala first-fruits festival brings chiefs and dancing crowds together each February.",
+    "history": "Lozi kings of Barotseland and Ngoni warriors shaped the interior before Cecil Rhodes's British South Africa Company seized the territory in the 1890s, making it Northern Rhodesia. Copper discovered in the 1920s turned the Copperbelt into one of the world's mining hubs. Kenneth Kaunda led independence in 1964 and backed liberation movements across southern Africa, paying a heavy price for sanctions against apartheid South Africa and white-ruled Rhodesia. One-party rule gave way to multiparty democracy in 1991, and copper still powers the economy.",
+    "funFact": "Locals call Victoria Falls Mosi-oa-Tunya, the smoke that thunders, and it forms the largest sheet of falling water on Earth."
+  },
+  "ZWE": {
+    "famous": ["Great Zimbabwe's stone city", "Victoria Falls", "the elephants of Hwange"],
+    "culture": "Zimbabwean tables serve sadza with greens and beef stew, and the mbira thumb piano drives bira spiritual ceremonies and world music hits. Shona stone sculpture carries the country's creative fame abroad.",
+    "history": "The Shona builders of Great Zimbabwe constructed a stone city in the 1200s that traded gold as far as China, lending the modern nation its name. The Ndebele king Mzilikazi carved out a kingdom in the 1830s before Cecil Rhodes's Pioneer Column seized the land in 1890, naming it Southern Rhodesia. White minority rule declared illegal independence under Ian Smith in 1965, triggering a guerrilla war that ended with Robert Mugabe's election in 1980. Land seizures, hyperinflation that produced 100-trillion-dollar banknotes and the 2017 coup that removed Mugabe have defined its rocky recent story.",
+    "funFact": "During the 2008 hyperinflation Zimbabwe printed a 100-trillion-dollar banknote, now a prized collector's item."
+  }
+}

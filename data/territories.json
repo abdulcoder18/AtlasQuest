@@ -1,0 +1,866 @@
+[
+ {
+  "cca3": "GRL",
+  "sovereign": "Denmark",
+  "sovereignCca3": "DNK",
+  "type": "autonomous territory",
+  "famous": [
+   "icebergs & glaciers",
+   "the midnight sun",
+   "Inuit culture"
+  ],
+  "note": "The world's largest island, home to mostly Inuit Greenlanders; it controls its own affairs while Denmark handles defense and foreign policy."
+ },
+ {
+  "cca3": "PRI",
+  "sovereign": "United States",
+  "sovereignCca3": "USA",
+  "type": "territory",
+  "famous": [
+   "El Yunque rainforest",
+   "reggaeton & salsa",
+   "Old San Juan"
+  ],
+  "note": "A Caribbean island under the US flag since 1898; Puerto Ricans are US citizens with their own culture, baseball stars and booming music scene."
+ },
+ {
+  "cca3": "HKG",
+  "sovereign": "China",
+  "sovereignCca3": "CHN",
+  "type": "special administrative region",
+  "famous": [
+   "skyline of Victoria Harbour",
+   "dim sum",
+   "film & martial arts cinema"
+  ],
+  "note": "A former British colony handed back to China in 1997; it runs its own capitalist system under One Country, Two Systems."
+ },
+ {
+  "cca3": "TWN",
+  "sovereign": "",
+  "sovereignCca3": "",
+  "type": "disputed",
+  "famous": [
+   "semiconductor chips (TSMC)",
+   "night markets",
+   "Taipei 101"
+  ],
+  "note": "A self-governing island that China claims as its own; Taiwan built an Asian democracy and a tech powerhouse of its own."
+ },
+ {
+  "cca3": "PSE",
+  "sovereign": "",
+  "sovereignCca3": "",
+  "type": "disputed",
+  "famous": [
+   "the West Bank",
+   "olive groves & knafeh",
+   "Bethlehem"
+  ],
+  "note": "A state recognized by over 130 countries, governing Palestinian lands in the West Bank and Gaza amid a long conflict with Israel."
+ },
+ {
+  "cca3": "FRO",
+  "sovereign": "Denmark",
+  "sovereignCca3": "DNK",
+  "type": "autonomous territory",
+  "famous": [
+   "grass-roofed houses",
+   "puffins & sheep",
+   "whaling tradition"
+  ],
+  "note": "A North Atlantic archipelago of 18 volcanic islands with its own language; it governs itself while staying part of the Danish realm."
+ },
+ {
+  "cca3": "GIB",
+  "sovereign": "United Kingdom",
+  "sovereignCca3": "GBR",
+  "type": "territory",
+  "famous": [
+   "the Rock of Gibraltar",
+   "Barbary macaques",
+   "British-Spanish blend"
+  ],
+  "note": "A tiny peninsula Spain ceded to Britain in 1713; its famous Rock guards the entrance to the Mediterranean."
+ },
+ {
+  "cca3": "IMN",
+  "sovereign": "United Kingdom",
+  "sovereignCca3": "GBR",
+  "type": "crown dependency",
+  "famous": [
+   "the TT motorcycle race",
+   "manx cats",
+   "Viking heritage"
+  ],
+  "note": "A Celtic island in the Irish Sea with its own parliament, Tynwald, said to be over a thousand years old."
+ },
+ {
+  "cca3": "JEY",
+  "sovereign": "United Kingdom",
+  "sovereignCca3": "GBR",
+  "type": "crown dependency",
+  "famous": [
+   "Jersey cows",
+   "wartime occupation bunkers",
+   "cliff walks"
+  ],
+  "note": "The largest Channel Island, loyal to the English Crown since Norman times, just off the French coast."
+ },
+ {
+  "cca3": "GGY",
+  "sovereign": "United Kingdom",
+  "sovereignCca3": "GBR",
+  "type": "crown dependency",
+  "famous": [
+   "Guernsey cows",
+   "Fort Grey",
+   "Floral Guernsey"
+  ],
+  "note": "A Channel Island with a trading past and its own government; smaller sister islands Sark and Alderney sit nearby."
+ },
+ {
+  "cca3": "FLK",
+  "sovereign": "United Kingdom",
+  "sovereignCca3": "GBR",
+  "type": "territory",
+  "famous": [
+   "penguin colonies",
+   "sheep farming",
+   "the 1982 war"
+  ],
+  "note": "South Atlantic islands claimed by both Britain and Argentina; they fought a short war over them in 1982 and Britain holds them today."
+ },
+ {
+  "cca3": "BMU",
+  "sovereign": "United Kingdom",
+  "sovereignCca3": "GBR",
+  "type": "territory",
+  "famous": [
+   "pink sand beaches",
+   "Bermuda shorts",
+   "the Bermuda Triangle legend"
+  ],
+  "note": "A wealthy Atlantic island settled by the English in 1612, famous for shipwrecks, pastel houses and triangles of mystery."
+ },
+ {
+  "cca3": "CYM",
+  "sovereign": "United Kingdom",
+  "sovereignCca3": "GBR",
+  "type": "territory",
+  "famous": [
+   "Seven Mile Beach",
+   "stingray city",
+   "offshore finance"
+  ],
+  "note": "A Caribbean finance hub discovered by Columbus in 1503; turtles and pirates came first, banks came later."
+ },
+ {
+  "cca3": "VGB",
+  "sovereign": "United Kingdom",
+  "sovereignCca3": "GBR",
+  "type": "territory",
+  "famous": [
+   "Virgin Gorda's Baths",
+   "sailing grounds",
+   "white sands"
+  ],
+  "note": "A yacht-lover's paradise of Caribbean islands named by Columbus after Saint Ursula's 11,000 virgins."
+ },
+ {
+  "cca3": "AIA",
+  "sovereign": "United Kingdom",
+  "sovereignCca3": "GBR",
+  "type": "territory",
+  "famous": [
+   "Sandy Ground beach bars",
+   "shipwreck dives",
+   "gentle eels"
+  ],
+  "note": "A quiet coral Caribbean island, Britain's first colony in the region, now known for reefs and relaxed luxury."
+ },
+ {
+  "cca3": "MSR",
+  "sovereign": "United Kingdom",
+  "sovereignCca3": "GBR",
+  "type": "territory",
+  "famous": [
+   "the buried capital Plymouth",
+   "Soufrière volcano",
+   "green monkeys"
+  ],
+  "note": "Half the island was buried by its volcano in 1995; the old capital is a modern Pompeii."
+ },
+ {
+  "cca3": "TCA",
+  "sovereign": "United Kingdom",
+  "sovereignCca3": "GBR",
+  "type": "territory",
+  "famous": [
+   "Grace Bay beach",
+   "conch dishes",
+   "salt history"
+  ],
+  "note": "A chain of low-lying Caribbean islands whose salt pans once made fortunes; today its beaches top world rankings."
+ },
+ {
+  "cca3": "SHN",
+  "sovereign": "United Kingdom",
+  "sovereignCca3": "GBR",
+  "type": "territory",
+  "famous": [
+   "Napoleon's exile on St Helena",
+   "Ascension's green turtles",
+   "remote volcanoes"
+  ],
+  "note": "Three ultra-remote Atlantic islands; Napoleon died on St Helena in 1821, and Tristan da Cunha is the world's most isolated settlement."
+ },
+ {
+  "cca3": "ATF",
+  "sovereign": "France",
+  "sovereignCca3": "FRA",
+  "type": "territory",
+  "famous": [
+   "penguin colonies",
+   "howling subantarctic winds",
+   "science outposts"
+  ],
+  "note": "France's subantarctic lands, some of the most remote and storm-battered islands on Earth."
+ },
+ {
+  "cca3": "SGS",
+  "sovereign": "United Kingdom",
+  "sovereignCca3": "GBR",
+  "type": "territory",
+  "famous": [
+   "massive king penguin colonies",
+   "Shackleton's voyage",
+   "whaling ruins"
+  ],
+  "note": "The place where Ernest Shackleton reached rescue in 1916 after one of history's greatest survival journeys."
+ },
+ {
+  "cca3": "IOT",
+  "sovereign": "United Kingdom",
+  "sovereignCca3": "GBR",
+  "type": "territory",
+  "famous": [
+   "Diego Garcia naval base",
+   "pristine reefs",
+   "coconut plantations"
+  ],
+  "note": "A central Indian Ocean atoll chain; the largest island hosts a major UK-US military base, and its native islanders were relocated in the 1960s-70s."
+ },
+ {
+  "cca3": "NFK",
+  "sovereign": "Australia",
+  "sovereignCca3": "AUS",
+  "type": "territory",
+  "famous": [
+   "Norfolk pines",
+   "descendants of the Bounty mutineers",
+   "emerald seas"
+  ],
+  "note": "An Australian island settled by descendants of HMS Bounty mutineers, who still speak a Creole language from Tahiti and old English."
+ },
+ {
+  "cca3": "CCK",
+  "sovereign": "Australia",
+  "sovereignCca3": "AUS",
+  "type": "territory",
+  "famous": [
+   "Christmas Island red crabs",
+   "diving spots",
+   " phosphate mining"
+  ],
+  "note": "An Indian Ocean island famous for its millions of red crabs marching to the sea each November."
+ },
+ {
+  "cca3": "CXR",
+  "sovereign": "Australia",
+  "sovereignCca3": "AUS",
+  "type": "territory",
+  "famous": [
+   "coral lagoon",
+   "WWII wreck diving",
+   "Malay culture"
+  ],
+  "note": "Two atolls southwest of Java with a Malay-majority community and superb untouched reefs."
+ },
+ {
+  "cca3": "NCL",
+  "sovereign": "France",
+  "sovereignCca3": "FRA",
+  "type": "special collectivity",
+  "famous": [
+   "the world's largest lagoon",
+   "Kanak culture",
+   "nickel mining"
+  ],
+  "note": "A French Pacific territory with a huge reef lagoon and a strong indigenous Kanak identity, easing toward possible independence."
+ },
+ {
+  "cca3": "PYF",
+  "sovereign": "France",
+  "sovereignCca3": "FRA",
+  "type": "collectivity",
+  "famous": [
+   "Bora Bora & Tahiti",
+   "overwater bungalows",
+   "pearl farming"
+  ],
+  "note": "France's Polynesian paradise of 118 islands, once the site of French nuclear tests, now living on tourism and black pearls."
+ },
+ {
+  "cca3": "WLF",
+  "sovereign": "France",
+  "sovereignCca3": "FRA",
+  "type": "collectivity",
+  "famous": [
+   "Wallis's crater lakes",
+   "Futuna's kings",
+   "Polynesian traditions"
+  ],
+  "note": "Three Polynesian islands under the French flag where local kings still share power with French authority."
+ },
+ {
+  "cca3": "GLP",
+  "sovereign": "France",
+  "sovereignCca3": "FRA",
+  "type": "overseas region",
+  "famous": [
+   "Caribbean carnival",
+   "La Soufrière volcano",
+   "rum & beaches"
+  ],
+  "note": "A French Caribbean island that is legally as French as Paris, with EU euros, croissants and rum distilleries."
+ },
+ {
+  "cca3": "MTQ",
+  "sovereign": "France",
+  "sovereignCca3": "FRA",
+  "type": "overseas region",
+  "famous": [
+   "birthplace of Aimé Césaire",
+   "rum & rhum agricole",
+   "Mount Pelée"
+  ],
+  "note": "A French island in the Caribbean whose volcano destroyed its capital Saint-Pierre in 1902 in minutes."
+ },
+ {
+  "cca3": "REU",
+  "sovereign": "France",
+  "sovereignCca3": "FRA",
+  "type": "overseas region",
+  "famous": [
+   "Piton de la Fournaise volcano",
+   "cirques & waterfalls",
+   "Creole cuisine"
+  ],
+  "note": "A volcanic French island near Madagascar where lava flows, mountain cirques and Creole culture meet."
+ },
+ {
+  "cca3": "MYT",
+  "sovereign": "France",
+  "sovereignCca3": "FRA",
+  "type": "collectivity",
+  "famous": [
+   "one of the world's largest lagoons",
+   "yam festivals",
+   "dugongs"
+  ],
+  "note": "A French island between Madagascar and Mozambique, claimed also by Comoros, ringed by a stunning reef."
+ },
+ {
+  "cca3": "BLM",
+  "sovereign": "France",
+  "sovereignCca3": "FRA",
+  "type": "collectivity",
+  "famous": [
+   "gourmet capital of the Caribbean",
+   "beaches",
+   "Gustavia harbor"
+  ],
+  "note": "A tiny French-Swedish-flavored celebrity island in the Caribbean where yachts and baguettes mix."
+ },
+ {
+  "cca3": "MAF",
+  "sovereign": "France",
+  "sovereignCca3": "FRA",
+  "type": "collectivity",
+  "famous": [
+   "division with Dutch Sint Maarten",
+   "Orient Bay",
+   "butterfly shape"
+  ],
+  "note": "The north half of a Caribbean island shared with the Netherlands; the world's smallest land split between two nations."
+ },
+ {
+  "cca3": "SPM",
+  "sovereign": "France",
+  "sovereignCca3": "FRA",
+  "type": "collectivity",
+  "famous": [
+   "cod fishing heritage",
+   "foggy North Atlantic",
+   "baseline of Prohibition-era smuggling"
+  ],
+  "note": "Eight tiny islands south of Newfoundland that stayed French after Britain took Canada; locals still speak Norman French."
+ },
+ {
+  "cca3": "VAT",
+  "sovereign": "",
+  "sovereignCca3": "",
+  "type": "microstate",
+  "famous": [
+   "St Peter's Basilica",
+   "the Sistine Chapel",
+   "the Swiss Guard"
+  ],
+  "note": "The world's smallest country, a 0.5 km² enclave in Rome, seat of the Pope and the Catholic Church since 1929."
+ },
+ {
+  "cca3": "MCO",
+  "sovereign": "",
+  "sovereignCca3": "",
+  "type": "microstate",
+  "famous": [
+   "the Monte Carlo Casino",
+   "Formula 1 Grand Prix",
+   "the Grimaldi family"
+  ],
+  "note": "A tiny Mediterranean principality ruled by the Grimaldi dynasty for 700+ years, famed for luxury and racing."
+ },
+ {
+  "cca3": "SMR",
+  "sovereign": "",
+  "sovereignCca3": "",
+  "type": "microstate",
+  "famous": [
+   "Medieval towers of Monte Titano",
+   "one of the oldest republics",
+   "crossbow festival"
+  ],
+  "note": "Founded in AD 301 by a saint, San Marino claims to be the world's oldest surviving republic."
+ },
+ {
+  "cca3": "AND",
+  "sovereign": "",
+  "sovereignCca3": "",
+  "type": "microstate",
+  "famous": [
+   "skiing & duty-free shopping",
+   "Romanesque churches",
+   "co-principality"
+  ],
+  "note": "A Pyrenean state whose heads of state are, to this day, the President of France and the Bishop of Urgell in Spain."
+ },
+ {
+  "cca3": "LIE",
+  "sovereign": "",
+  "sovereignCca3": "",
+  "type": "microstate",
+  "famous": [
+   "Vaduz Castle",
+   "banks & stamps",
+   "the Rhine valley"
+  ],
+  "note": "A German-speaking Alpine principality ruled by the House of Liechtenstein, once nearly mistaken for Czechia on a map in 2013... actually a famous Swiss army exercise invaded it by mistake."
+ },
+ {
+  "cca3": "MLT",
+  "sovereign": "",
+  "sovereignCca3": "",
+  "type": "microstate",
+  "famous": [
+   "Valletta's golden fortresses",
+   "the Knights of St John",
+   "Megalithic temples"
+  ],
+  "note": "An island nation crossed by every Mediterranean empire, ruled famously by crusading Knights, now the EU's smallest member."
+ },
+ {
+  "cca3": "NRU",
+  "sovereign": "",
+  "sovereignCca3": "",
+  "type": "microstate",
+  "famous": [
+   "phosphate riches turned to ruin",
+   "the world's smallest republic",
+   "weightlifting fame"
+  ],
+  "note": "A tiny Pacific island that got rich then poor mining phosphate, and once had the world's highest obesity rates."
+ },
+ {
+  "cca3": "TUV",
+  "sovereign": "",
+  "sovereignCca3": "",
+  "type": "microstate",
+  "famous": [
+   "sinking atolls",
+   ".tv domain riches",
+   "Polynesian seafaring"
+  ],
+  "note": "One of the smallest and most remote countries, on the front line of rising seas it did little to cause."
+ },
+ {
+  "cca3": "PLW",
+  "sovereign": "",
+  "sovereignCca3": "",
+  "type": "microstate",
+  "famous": [
+   "the Rock Islands & Jellyfish Lake",
+   "customary chiefs",
+   "World War II wrecks"
+  ],
+  "note": "A Pacific nation of 340 islands with shark sanctuaries and a lake where you can swim with stingless jellyfish."
+ },
+ {
+  "cca3": "MHL",
+  "sovereign": "",
+  "sovereignCca3": "",
+  "type": "microstate",
+  "famous": [
+   "Bikini Atoll nuclear tests",
+   "outrigger canoes",
+   "magnificent diving"
+  ],
+  "note": "A scattered Pacific nation where the US tested 60+ nuclear bombs, including one larger than 1,000 Hiroshimas."
+ },
+ {
+  "cca3": "KNA",
+  "sovereign": "",
+  "sovereignCca3": "",
+  "type": "microstate",
+  "famous": [
+   "Brimstone Hill fortress",
+   "sugar history",
+   "sister island Nevis"
+  ],
+  "note": "The smallest nation in the Americas; St Kitts and Nevis were sugar islands where Britain and France dueled for centuries."
+ },
+ {
+  "cca3": "ATG",
+  "sovereign": "",
+  "sovereignCca3": "",
+  "type": "microstate",
+  "famous": [
+   "365 beaches",
+   "Nelson's Dockyard",
+   "Shirley Heights sunsets"
+  ],
+  "note": "An Antiguan-Barbudan twin-island nation whose English Harbour once sheltered Admiral Nelson's fleet."
+ },
+ {
+  "cca3": "DMA",
+  "sovereign": "",
+  "sovereignCca3": "",
+  "type": "microstate",
+  "famous": [
+   "Boiling Lake",
+   "the Kalinago territory",
+   "rum & rainforest"
+  ],
+  "note": "A green mountainous island still home to indigenous Kalinago people, the last in the Caribbean."
+ },
+ {
+  "cca3": "GRD",
+  "sovereign": "",
+  "sovereignCca3": "",
+  "type": "microstate",
+  "famous": [
+   "nutmeg (on the flag)",
+   "Grand Anse beach",
+   "the underwater sculpture park"
+  ],
+  "note": "The Spice Isle whose flag features a nutmeg; the US briefly invaded it in 1983 during a Cold War power struggle."
+ },
+ {
+  "cca3": "LCA",
+  "sovereign": "",
+  "sovereignCca3": "",
+  "type": "microstate",
+  "famous": [
+   "the Pitons",
+   "poet Derek Walcott",
+   "jazz festival"
+  ],
+  "note": "A Caribbean island that switched between French and British rule 14 times, keeping both Creole and cricket."
+ },
+ {
+  "cca3": "VCT",
+  "sovereign": "",
+  "sovereignCca3": "",
+  "type": "microstate",
+  "famous": [
+   "the Grenadines sailing chain",
+   "Bequia whaling tradition",
+   "Tobago Cays"
+  ],
+  "note": "A nation of 32 islands and cays where sailors island-hop between some of the Caribbean's best waters."
+ },
+ {
+  "cca3": "BRB",
+  "sovereign": "",
+  "sovereignCca3": "",
+  "type": "microstate",
+  "famous": [
+   "Rihanna",
+   "Mount Gay rum",
+   "Cricket & Crop Over"
+  ],
+  "note": "A coral island that kept British institutions after 1966 independence and became a republic in 2021, home of Rihanna."
+ },
+ {
+  "cca3": "SYC",
+  "sovereign": "",
+  "sovereignCca3": "",
+  "type": "microstate",
+  "famous": [
+   "the granite boulders of La Digue",
+   "giant tortoises",
+   "Aldabra atoll"
+  ],
+  "note": "A 115-island Indian Ocean nation, once a pirate hideout and later the playground of the rich."
+ },
+ {
+  "cca3": "COM",
+  "sovereign": "",
+  "sovereignCca3": "",
+  "type": "microstate",
+  "famous": [
+   "ylang-ylang perfume",
+   "volcanic islands",
+   "the 1975 split with Mayotte"
+  ],
+  "note": "Three islands that broke from France in 1975; the fourth, Mayotte, stayed French and is still disputed."
+ },
+ {
+  "cca3": "STP",
+  "sovereign": "",
+  "sovereignCca3": "",
+  "type": "microstate",
+  "famous": [
+   "cocoa plantations",
+   "Pico Cão Grande spire",
+   "equatorial rainforest"
+  ],
+  "note": "Two former Portuguese slave-and-cocoa islands near the equator, Africa's second-smallest country."
+ },
+ {
+  "cca3": "CPV",
+  "sovereign": "",
+  "sovereignCca3": "",
+  "type": "microstate",
+  "famous": [
+   "morna music of Cesária Évora",
+   "sahara-meets-sea vistas",
+   "sailing crossroads"
+  ],
+  "note": "Ten volcanic Atlantic islands off Senegal, uninhabited until the Portuguese arrived in 1456, now a stable democracy."
+ },
+ {
+  "cca3": "ASM",
+  "sovereign": "United States",
+  "sovereignCca3": "USA",
+  "type": "territory",
+  "famous": [
+   "National Park rainforest",
+   "tattoo traditions",
+   "fa'a Samoa culture"
+  ],
+  "note": "A South Pacific territory under the US flag since 1900, holding some of the world's last communal land systems."
+ },
+ {
+  "cca3": "VIR",
+  "sovereign": "United States",
+  "sovereignCca3": "USA",
+  "type": "territory",
+  "famous": [
+   "Magens Bay beach",
+   "Danish colonial towns",
+   "rum history"
+  ],
+  "note": "Caribbean islands Denmark sold to the US in 1917 for $25 million, fearing German U-boats."
+ },
+ {
+  "cca3": "GUM",
+  "sovereign": "United States",
+  "sovereignCca3": "USA",
+  "type": "territory",
+  "famous": [
+   "Two Lovers Point",
+   "CHamoru culture",
+   "big US bases"
+  ],
+  "note": "A Pacific island seized from Spain in 1898; Chamorro people have lived there for 4,000 years."
+ },
+ {
+  "cca3": "MNP",
+  "sovereign": "United States",
+  "sovereignCca3": "USA",
+  "type": "commonwealth",
+  "famous": [
+   "WWII battlefields of Saipan",
+   "migrating whale season",
+   "Managaha island"
+  ],
+  "note": "Northern Mariana islands that went from Spanish to German to Japanese to American rule over one century."
+ },
+ {
+  "cca3": "CUW",
+  "sovereign": "Netherlands",
+  "sovereignCca3": "NLD",
+  "type": "constituent country",
+  "famous": [
+   "colorful Willemstad",
+   "the floating pontoon bridge",
+   "blue curaçao liqueur"
+  ],
+  "note": "A Dutch Caribbean island famous for its pastel colonial capital, a UNESCO site, and the liqueur named after it."
+ },
+ {
+  "cca3": "ABW",
+  "sovereign": "Netherlands",
+  "sovereignCca3": "NLD",
+  "type": "constituent country",
+  "famous": [
+   "Eagle Beach",
+   "flamingos",
+   "Aloe & Carnival"
+  ],
+  "note": "A Dutch island outside the hurricane belt, with one of the Caribbean's most visited beaches."
+ },
+ {
+  "cca3": "SXM",
+  "sovereign": "Netherlands",
+  "sovereignCca3": "NLD",
+  "type": "constituent country",
+  "famous": [
+   "Maho beach jets",
+   "the Simpson Bay lagoon",
+   "the French border"
+  ],
+  "note": "The Dutch south half of St Martin island, sharing the smallest divided island in the world with France."
+ },
+ {
+  "cca3": "BES",
+  "sovereign": "Netherlands",
+  "sovereignCca3": "NLD",
+  "type": "special municipality",
+  "famous": [
+   "Bonaire's dive reefs",
+   "Statia's Golden Rock ruins",
+   "Saba's tiny runway"
+  ],
+  "note": "The Caribbean Netherlands: Bonaire, Sint Eustatius and Saba, islands that became direct Dutch municipalities in 2010."
+ },
+ {
+  "cca3": "ALA",
+  "sovereign": "Finland",
+  "sovereignCca3": "FIN",
+  "type": "autonomous region",
+  "famous": [
+   "Mariehamn ships",
+   "Swedish-speaking islanders",
+   "midsummer nights"
+  ],
+  "note": "A Swedish-speaking Finnish archipelago demilitarized by international treaty in 1921."
+ },
+ {
+  "cca3": "SJM",
+  "sovereign": "Norway",
+  "sovereignCca3": "NOR",
+  "type": "arctic territory",
+  "famous": [
+   "polar bears outnumber people",
+   "Longyearbyen",
+   "the Global Seed Vault"
+  ],
+  "note": "Norwegian Arctic islands where it is illegal to die (seriously, for practical reasons) and the world stores backup seeds."
+ },
+ {
+  "cca3": "COK",
+  "sovereign": "New Zealand",
+  "sovereignCca3": "NZL",
+  "type": "self-governing in free association",
+  "famous": [
+   "Aitutaki lagoon",
+   "drum dances (ura pa’u)",
+   "black pearls"
+  ],
+  "note": "Cook Islanders hold New Zealand citizenship and run their own affairs in free association with Wellington."
+ },
+ {
+  "cca3": "GUF",
+  "sovereign": "France",
+  "sovereignCca3": "FRA",
+  "type": "overseas region",
+  "famous": [
+   "the Guiana Space Centre",
+   "rainforest",
+   "Devils Island penal colony"
+  ],
+  "note": "A piece of France on the South American mainland that launches Europe’s rockets from Kourou."
+ },
+ {
+  "cca3": "NIU",
+  "sovereign": "New Zealand",
+  "sovereignCca3": "NZL",
+  "type": "self-governing in free association",
+  "famous": [
+   "one of the world’s smallest democracies",
+   "coral reefs",
+   "whale watching"
+  ],
+  "note": "A tiny raised coral atoll nation of about 1,600 people associated with New Zealand."
+ },
+ {
+  "cca3": "TKL",
+  "sovereign": "New Zealand",
+  "sovereignCca3": "NZL",
+  "type": "territory",
+  "famous": [
+   "three coral atolls",
+   "seafaring heritage",
+   "the stolen 1870s church bell"
+  ],
+  "note": "Three remote atolls whose people were brought to New Zealand in the 19th century, now self-governing under Wellington."
+ },
+ {
+  "cca3": "UNK",
+  "sovereign": "",
+  "sovereignCca3": "",
+  "type": "disputed",
+  "famous": [
+   "Pristina’s Bill Clinton statue",
+   "rugby and football passion",
+   "rugged mountain gorges"
+  ],
+  "note": "A breakaway province of Serbia that declared independence in 2008; many countries recognize Kosovo, Serbia and others do not."
+ },
+ {
+  "cca3": "PCN",
+  "sovereign": "United Kingdom",
+  "sovereignCca3": "GBR",
+  "type": "territory",
+  "famous": [
+   "descendants of HMS Bounty mutineers",
+   "one of the most isolated communities on Earth",
+   "Adamstown"
+  ],
+  "note": "Fifty or so islanders, mostly descended from the 1789 Bounty mutineers, live on one of the most remote islands on the planet."
+ },
+ {
+  "cca3": "ESH",
+  "sovereign": "",
+  "sovereignCca3": "",
+  "type": "disputed",
+  "famous": [
+   "the Western Sahara desert",
+   "the Berm (Moroccan Wall)",
+   "Sahrawi nomad culture"
+  ],
+  "note": "A desert territory mostly administered by Morocco after Spain left in 1975; the local Sahrawi republic is partially recognized."
+ }
+]

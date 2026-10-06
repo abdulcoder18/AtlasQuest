@@ -1,0 +1,27 @@
+[
+  {
+    "out": "assets/gen/poster-expedition.png",
+    "size": "1024x1536",
+    "prompt": "Retro 2D travel-manga poster of a young explorer with a round compass and a hot-air balloon over pine forests and mountains, sage paper texture background (#ECEFDF), deep pine-green ink linework (#22301F), leaf-green (#58A93C) and warm orange-red (#D95D39) accents, bold rounded title lettering reading ATLASQUEST, hand-drawn doodle margins of flags, stars and clouds, flat colors, thick rounded outlines, printed storybook feel"
+  },
+  {
+    "out": "assets/gen/banner-hero.png",
+    "size": "1920x1080",
+    "prompt": "Wide retro 2D game banner, a winding map trail across sage-green paper (#ECEFDF) connecting hand-drawn landmarks: a globe, a telescope on a hill, pine trees, a hot-air balloon and fluttering pennant flags, deep pine ink outlines (#22301F), leaf-green accents (#58A93C), halftone dot texture, soft sunlight, generous empty space on the left for a title, flat storybook illustration style"
+  },
+  {
+    "out": "assets/gen/button-compass.png",
+    "size": "512x512",
+    "prompt": "Game button icon of a cute compass with a smiling face, flat vector illustration, thick rounded dark-green outline (#22301F), sage-cream background (#ECEFDF), leaf-green needle (#58A93C), retro 2D mobile game asset style, centered, clean edges, no text"
+  },
+  {
+    "out": "assets/gen/button-pin.png",
+    "size": "512x512",
+    "prompt": "Game button icon of a round map pin with a star cutout, flat vector illustration, thick rounded dark-green outline (#22301F), sage-cream background (#ECEFDF), warm orange-red accent (#D95D39), retro 2D mobile game asset style, centered, clean edges, no text"
+  },
+  {
+    "out": "assets/gen/icon-globe-mascot.png",
+    "size": "1024x1024",
+    "prompt": "Retro 2D game mascot: a friendly cartoon globe character wearing a tiny explorer hat and scarf, waving, flat vector illustration, thick rounded pine-green outlines (#22301F), sage-cream flat background (#ECEFDF), leaf-green continents (#58A93C), blush cheeks, sticker style, centered, clean edges"
+  }
+]
