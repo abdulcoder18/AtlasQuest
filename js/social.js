@@ -62,11 +62,7 @@ export function openProfile() {
       el("div", { class: "sr-title" }, "Avatar color"), avaRow
     ),
     el("div", { class: "set-row", style: { flexDirection: "column", alignItems: "stretch", gap: "8px" } },
-      el("div", { class: "sr-title" }, "Apply changes"),
-      el("div", { class: "row" },
-        el("button", { class: "btn primary", id: "profileSaveBtn", onclick: applyChanges }, icon("check"), "OK, save"),
-        el("span", { class: "faint small" }, "or press Enter in the name field")
-      )
+      el("button", { class: "btn primary", id: "profileSaveBtn", onclick: applyChanges }, icon("check"), "Save")
     ),
     el("div", { class: "set-row", style: { flexDirection: "column", alignItems: "stretch", gap: "8px" } },
       el("div", { class: "sr-title" }, "Your friend code"),
