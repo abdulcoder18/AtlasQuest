@@ -75,15 +75,16 @@ export function openProfile() {
   function applyChanges() {
     const name = nameInput.value.trim() || "Explorer";
     updateProfile({ name, avatar: pendingAvatar });
-    renderAvatars(pendingAvatar);
     nameInput.value = name;
     refreshTopbar();
     toast("Profile saved!", "check");
+    modal.close();
   }
+  let modal = null;
   const saveBtn = body.querySelector("#profileSaveBtn");
   saveBtn.addEventListener("click", () => { sfxClickSave(); applyChanges(); });
   function sfxClickSave() { import("./ui.js").then(m => m.sfx.click()); }
-  openModal({ title: "Your profile", body });
+  modal = openModal({ title: "Your profile", body });
 }
 function statsBlock() {
   const s = gs().stats;
