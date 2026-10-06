@@ -76,7 +76,7 @@ begin
     and id not in (
       select id from public.match_results
       where player = new.player
-      order by created_at desc
+      order by created_at desc, id desc
       limit 10
     );
   return new;
