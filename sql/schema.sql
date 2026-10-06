@@ -48,7 +48,7 @@ drop policy if exists "results read" on public.match_results;
 create policy "results read" on public.match_results for select using (true);
 
 drop policy if exists "results insert own" on public.match_results;
-create policy "results insert own" on public.match_results for insert with check (auth.uid() = id);
+create policy "results insert own" on public.match_results for insert with check (auth.uid() = player);
 
 -- 4) Auto-create a profile whenever someone signs up
 create or replace function public.handle_new_user() returns trigger as $$
