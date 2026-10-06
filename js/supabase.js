@@ -101,7 +101,7 @@ export function openAuthModal() {
     el("div", { class: "divider" }),
     step1, step2, status,
     el("p", { class: "faint small", style: { margin: 0 } }, "No password needed — we email you a verification code."),
-    el("button", { class: "linklike", style: { alignSelf: "center" }, onclick: () => { localStorage.setItem("aq_guest", "1"); modal.close(); } }, "Continue as guest for now")
+    el("button", { class: "linklike", style: { alignSelf: "center" }, onclick: () => { localStorage.setItem("aq_guest", "1"); modal.close(); document.dispatchEvent(new CustomEvent("aq:gate-done")); } }, "Continue as guest for now")
   )});
 }
 

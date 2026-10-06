@@ -30,6 +30,8 @@ export function openProfile() {
 
   const avaRow = el("div", { class: "avatar-pick" });
   const nameInput = el("input", { class: "input", value: p.name, maxlength: "18", placeholder: "Your explorer name" });
+  let pendingName = p.name;
+  let pendingAvatar = p.avatar;
   function renderAvatars(selected) {
     avaRow.innerHTML = "";
     for (const c of AVATAR_COLORS) {
@@ -37,16 +39,13 @@ export function openProfile() {
         class: c === selected ? "on" : "",
         style: { background: c, borderColor: c === selected ? "var(--text)" : c },
         title: "Pick this color",
-        onclick: (e) => { updateProfile({ avatar: c }); renderAvatars(c); refreshTopbar(); },
+        onclick: (e) => { pendingAvatar = c; renderAvatars(c); },
       }));
     }
   }
   renderAvatars(p.avatar);
-  nameInput.addEventListener("change", () => {
-    updateProfile({ name: nameInput.value.trim() || "Explorer" });
-    refreshTopbar();
-    toast("Name saved!", "check");
-  });
+  nameInput.addEventListener("input", () => { pendingName = nameInput.value; });
+  nameInput.addEventListener("keydown", (e) => { if (e.key === "Enter") saveBtn.click(); });
 
   body.append(
     el("div", { class: "row", style: { gap: "16px", marginBottom: "16px" } },
@@ -63,6 +62,13 @@ export function openProfile() {
       el("div", { class: "sr-title" }, "Avatar color"), avaRow
     ),
     el("div", { class: "set-row", style: { flexDirection: "column", alignItems: "stretch", gap: "8px" } },
+      el("div", { class: "sr-title" }, "Apply changes"),
+      el("div", { class: "row" },
+        el("button", { class: "btn primary", id: "profileSaveBtn", onclick: applyChanges }, icon("check"), "OK, save"),
+        el("span", { class: "faint small" }, "or press Enter in the name field")
+      )
+    ),
+    el("div", { class: "set-row", style: { flexDirection: "column", alignItems: "stretch", gap: "8px" } },
       el("div", { class: "sr-title" }, "Your friend code"),
       el("div", { class: "code-box" }, p.code),
       el("p", { class: "faint small", style: { margin: 0 } }, "Share this code so friends can add you. Friends & challenges live on this device for now."),
@@ -70,6 +76,17 @@ export function openProfile() {
     ),
     statsBlock()
   );
+  function applyChanges() {
+    const name = nameInput.value.trim() || "Explorer";
+    updateProfile({ name, avatar: pendingAvatar });
+    renderAvatars(pendingAvatar);
+    nameInput.value = name;
+    refreshTopbar();
+    toast("Profile saved!", "check");
+  }
+  const saveBtn = body.querySelector("#profileSaveBtn");
+  saveBtn.addEventListener("click", () => { sfxClickSave(); applyChanges(); });
+  function sfxClickSave() { import("./ui.js").then(m => m.sfx.click()); }
   openModal({ title: "Your profile", body });
 }
 function statsBlock() {
