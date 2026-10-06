@@ -9,6 +9,7 @@ import { mappointPage, destroyActive as destroyMap } from "./games/mappoint.js";
 import { versusPage, destroyActive as destroyVersus } from "./games/versus.js";
 import { atlasPage, empiresPage, openLore, openEmpire } from "./lore.js";
 import { friendsPage, openProfile, openSettings, setRefreshTopbar, challengeResultCode, avatarCircle } from "./social.js";
+import { initCloud, cloudReady, cloudUser, openAuthModal } from "./supabase.js";
 
 const view = document.getElementById("view");
 const $ = (id) => document.getElementById(id);
@@ -61,11 +62,25 @@ function refreshTopbar() {
   $("xpChip").title = `${st.stats.xp} XP — ${lvl.need - lvl.into} to next level`;
   document.querySelector("#xpChip .xp-fill").style.width = `${Math.round((lvl.into / lvl.need) * 100)}%`;
   $("xpNum").textContent = `${st.stats.xp} XP`;
+  // cloud account row (hidden when Supabase isn't configured)
+  const acct = $("accountRow");
+  if (acct) import("./supabase.js").then(m => {
+    if (!m.cloudReady()) { acct.hidden = true; return; }
+    acct.hidden = false;
+    const u = m.cloudUser();
+    acct.innerHTML = "";
+    if (u) {
+      acct.append(icon("checkCircle"), el("span", { class: "account-label" }, "Cloud sync on"), el("span", { class: "account-email muted" }, u.email || ""));
+    } else {
+      acct.append(icon("zap"), el("span", { class: "account-label" }, "Save progress online"), el("span", { class: "account-email muted" }, "free · email or Google"));
+    }
+  }).catch(() => {});
 }
 setRefreshTopbar(refreshTopbar);
 
 function wireTopbar() {
   $("settingsBtn").innerHTML = icons.gear + '<span class="btn-label">Settings</span>';
+  $("accountRow").addEventListener("click", () => { sfx.click(); toggleDrawer(false); openAuthModal(); });
   $("settingsBtn").classList.add("with-label");
   $("drawerBtn").innerHTML = icons.menu + '<span class="btn-label">Menu</span>';
   $("drawerBtn").classList.add("with-label");
@@ -227,6 +242,7 @@ setLoreOpener((c) => openLore(c));
 /* ---------------- boot ---------------- */
 async function boot() {
   applyTheme(); // restore saved paper/night edition before first paint
+  initCloud();  // connect Supabase if configured (auth + global leaderboard)
   view.innerHTML = "";
   view.append(el("div", { class: "empty" },
     el("img", { src: "assets/gen/mascot-web.png", alt: "", style: { width: "92px", margin: "0 auto 10px", display: "block", animation: "mascotBob 2s ease-in-out infinite alternate" } }),

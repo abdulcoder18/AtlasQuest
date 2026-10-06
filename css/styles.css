@@ -267,6 +267,18 @@ html[data-theme="dark"] .orb { background: var(--paper-3); opacity: .55; }
 .drawer-xp .xp-bar { flex: 1; height: 11px; background: var(--paper-2); border: 2px solid var(--ink); border-radius: 99px; overflow: hidden; }
 .drawer-xp .xp-fill { display: block; height: 100%; background: var(--ink); border-radius: 99px; transition: width .5s cubic-bezier(.22,1,.36,1); }
 .drawer-xp-num { font-size: .68rem; font-weight: 700; color: var(--accent-ink); white-space: nowrap; }
+.account-row {
+  position: relative; display: flex; align-items: center; gap: 10px;
+  margin: 10px 14px 0; padding: 10px 12px; width: calc(100% - 28px);
+  background: var(--paper); border: 2px dashed var(--ink); border-radius: 13px;
+  color: var(--ink); cursor: pointer; text-align: left; font-family: var(--font-mono);
+  transition: transform var(--tr-fast), box-shadow var(--tr-fast), background var(--tr-fast);
+}
+.account-row:hover { transform: translate(-1px, -1px); box-shadow: 3px 3px 0 var(--shadow-ink); background: var(--accent); color: var(--accent-ink); }
+.account-row[hidden] { display: none; }
+.account-row .ico { width: 16px; height: 16px; flex: none; }
+.account-label { font-size: .72rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+.account-email { display: block; font-size: .66rem; opacity: .8; max-width: 150px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .drawer-nav {
   position: relative; display: flex; flex-direction: column; gap: 3px;
   margin: 14px 14px 0; padding: 8px; overflow-y: auto; flex: 1;
@@ -730,6 +742,14 @@ html[data-theme="dark"] .page-bg { opacity: .06; mix-blend-mode: luminosity; }
   border: var(--bw) solid var(--ink); box-shadow: var(--hard-shadow-sm);
 }
 .geo-setup { max-width: 560px; margin: 0 auto; }
+
+/* global leaderboard */
+.global-board { max-width: 640px; margin: 0 auto 26px; }
+.global-board .gb-row { display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-radius: 12px; border: 2px solid var(--ink); background: var(--paper-2); box-shadow: 2px 2px 0 var(--shadow-ink); }
+.global-board .gb-row + .gb-row { margin-top: 7px; }
+.global-board .gb-row.me { background: var(--accent); color: var(--accent-ink); }
+.global-board .gb-row.me .fr-meta { color: var(--accent-ink); }
+.gb-me-tag { font-size: .56rem; font-weight: 800; letter-spacing: .1em; background: var(--ink); color: var(--paper); padding: 2px 6px; border-radius: 99px; margin-left: 6px; }
 
 /* ---------- Versus (live matches) ---------- */
 .versus-card { max-width: 640px; margin: 0 auto; }

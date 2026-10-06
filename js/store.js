@@ -96,6 +96,7 @@ export function recordGame(key, { score, correct, total, bestStreak }) {
   pg.best = Math.max(pg.best, score);
   s.perGame[key] = pg;
   save();
+  if (typeof window !== "undefined") window.dispatchEvent(new CustomEvent("aq:game-recorded", { detail: { game: key, score, correct, total } }));
 }
 
 export function addXp(amount) {
