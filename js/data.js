@@ -1,5 +1,5 @@
 // AtlasQuest — data layer: loads datasets, builds indexes, generates quiz questions.
-import { el } from "./ui.js";
+import { el, icon } from "./ui.js";
 
 export const data = {
   countries: [], byCca3: new Map(), byCca2: new Map(),
@@ -123,6 +123,19 @@ function loreBlocks(c) {
   return { lore, chips, relText };
 }
 
+/**
+ * Collapsible body inside a reveal card. Uses <details> so it is keyboard
+ * accessible and works without JS. Defaults to collapsed.
+ */
+function revealBody(...children) {
+  const fold = el("details", { class: "reveal-fold" });
+  fold.append(
+    el("summary", { class: "reveal-fold-sum" }, icon("chevD"), el("span", { class: "rf-label" }, "Read the story")),
+    el("div", { class: "reveal-body" }, children.flat(9).filter(c => c != null && c !== false))
+  );
+  return fold;
+}
+
 /** Standard reveal card for a country. */
 export function revealFor(c, extra = {}) {
   const { lore, chips, relText } = loreBlocks(c);
@@ -134,15 +147,15 @@ export function revealFor(c, extra = {}) {
       el("div", { class: "reveal-sub" }, `${c.capital} · ${c.region}${relText ? " · " + relText : ""}`)
     )
   );
-  const body = el("div", { class: "reveal-body" });
-  if (chips.length) body.append(el("div", { class: "reveal-chips" }, chips));
-  if (lore?.funFact) body.append(el("p", { class: "small", style: { margin: "0 0 8px" } }, lore.funFact));
+  const inner = [];
+  if (chips.length) inner.push(el("div", { class: "reveal-chips" }, chips));
+  if (lore?.funFact) inner.push(el("p", { class: "small", style: { margin: "0 0 8px" } }, lore.funFact));
   if (lore?.history) {
     const short = lore.history.split(/(?<=[.!?])\s+/).slice(0, 2).join(" ");
-    body.append(el("p", { style: { margin: "0" } }, short));
+    inner.push(el("p", { style: { margin: "0" } }, short));
   }
-  if (extra.note) body.append(el("p", { class: "small muted", style: { margin: "8px 0 0" } }, extra.note));
-  reveal.append(head, body);
+  if (extra.note) inner.push(el("p", { class: "small muted", style: { margin: "8px 0 0" } }, extra.note));
+  reveal.append(head, revealBody(inner));
   return { node: reveal, lore, country: c };
 }
 
@@ -320,7 +333,7 @@ export function historyQuestions({ count = 8, rand = Math.random } = {}) {
           el("div", { class: "reveal-sub" }, `${hf.era} · ${hf.region}`)
         )
       ),
-      el("div", { class: "reveal-body" }, el("p", { style: { margin: 0 } }, hf.story))
+      revealBody(el("p", { style: { margin: 0 } }, hf.story))
     );
     return {
       kind: "mcq", id: hf.slug,

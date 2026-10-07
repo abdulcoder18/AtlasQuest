@@ -53,6 +53,7 @@ export const icons = {
   zap: I('<path d="M13 2 4.5 13.5H11L9.5 22 19 10h-6.5L13 2z"/>'),
   check: I('<path d="M4.5 12.5 10 18 19.5 6.5"/>'),
   chevR: I('<path d="M9 5l7 7-7 7"/>'),
+  chevD: I('<path d="M5 9l7 7 7-7"/>'),
   crown: I('<path d="M3 17 4.5 7l4.5 4L12 5l3 6 4.5-4L21 17z"/><path d="M3 17h18v3H3z"/>'),
   timer: I('<path d="M9.5 2h5"/><circle cx="12" cy="13.5" r="7.5"/><path d="M12 10v3.5l2.3 2.3"/>'),
   lightbulb: I('<path d="M9.5 18h5"/><path d="M10.5 21h3"/><path d="M12 3a6 6 0 0 0-3.9 10.6c.7.6 1.4 1.4 1.4 2.4v.5h5v-.5c0-1 .7-1.8 1.4-2.4A6 6 0 0 0 12 3z"/>'),

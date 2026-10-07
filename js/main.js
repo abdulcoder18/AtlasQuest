@@ -8,7 +8,7 @@ import { geoguesserPage, destroyActive as destroyGeo } from "./games/geoguesser.
 import { mappointPage, destroyActive as destroyMap } from "./games/mappoint.js";
 import { versusPage, destroyActive as destroyVersus } from "./games/versus.js";
 import { atlasPage, empiresPage, openLore, openEmpire } from "./lore.js";
-import { friendsPage, openProfile, openSettings, setRefreshTopbar, challengeResultCode, avatarCircle } from "./social.js";
+import { friendsPage, openProfile, openSettings, setRefreshTopbar, avatarCircle, initSocial } from "./social.js";
 import { initCloud, cloudReady, cloudUser, openAuthModal } from "./supabase.js";
 
 const view = document.getElementById("view");
@@ -33,7 +33,10 @@ function buildNav() {
   ];
   nav.innerHTML = "";
   for (const [href, label, ic] of links) {
-    nav.append(el("a", { class: "navlink", href, dataset: { href } }, icon(ic), label));
+    const a = el("a", { class: "navlink", href, dataset: { href } }, icon(ic), label);
+    // pending friend requests get a count badge on the Friends link
+    if (href === "#/friends") a.append(el("span", { class: "nav-badge", id: "friendReqBadge", hidden: true }, "0"));
+    nav.append(a);
   }
 }
 let hoverOpened = false;
@@ -263,7 +266,7 @@ const routes = {
   "#/versus": versusPage,
   "#/friends": friendsPage,
 };
-function route() {
+export function route() {
   destroyGeo();
   destroyMap();
   destroyVersus();
@@ -281,39 +284,40 @@ function route() {
 window.addEventListener("hashchange", route);
 
 /* ---------------- challenges ---------------- */
+/* Home has to work from a challenge result even though the hash is already
+   "#/" — assigning the same hash fires no hashchange, so the router never
+   re-ran and the button looked dead. Force the router either way. */
+function goHome() {
+  if (location.hash === "#/" || location.hash === "") {
+    route();
+  } else {
+    location.hash = "#/";
+  }
+}
+
 export function playChallenge(ch, code) {
-  location.hash = "#/"; // reset route visuals
-  let qs;
+  // reset route visuals without breaking Home later on
+  if (location.hash !== "#/") location.hash = "#/";
+  else route();
+
   const rand = rng(ch.seed);
+  let qs;
   if (ch.game === "capitals") qs = capitalQuestions({ count: ch.count, mode: "mcq", rand });
   else if (ch.game === "territories") qs = territoryQuestions({ count: ch.count, mode: "mcq", rand });
   else if (ch.game === "history") qs = historyQuestions({ count: ch.count, rand });
   else qs = flagQuestions({ count: ch.count, mode: "mcq", rand });
+
+  const gameKey = ["flags", "capitals", "territories", "history"].includes(ch.game) ? ch.game : "flags";
+
   // import runQuiz lazily to avoid cycles
   import("./games/quiz.js").then(({ runQuiz }) => {
     runQuiz({
-      title: "Challenge", gameKey: "flags", questions: qs, timerSec: null,
+      title: "Challenge", gameKey, questions: qs, timerSec: null,
+      exitHash: "#/friends",
       shareTitle: "AtlasQuest Challenge",
       onOpenLore: (c) => openLore(c),
       onReplay: () => playChallenge(ch, code),
-      onFinish: ({ score, correct, total }) => {
-        const st = gs();
-        st.challengeResults = st.challengeResults || {};
-        st.challengeResults[code] = { score, total, at: Date.now() };
-        save();
-        setTimeout(() => {
-          const rc = challengeResultCode(code, score, total);
-          toast("Send your result code to your friend!", "share");
-          // surface the code via a small modal
-          import("./ui.js").then(({ openModal }) => {
-            openModal({ title: "Your result", body: el("div", { class: "stack" },
-              el("p", { class: "sub" }, `You scored ${score}/${total}. Send this result code to whoever challenged you (or to your friend):`),
-              el("div", { class: "code-box" }, rc),
-              el("button", { class: "btn primary", onclick: () => { navigator.clipboard?.writeText(rc); toast("Copied!", "clipboard"); } }, "Copy result code")
-            ) });
-          });
-        }, 400);
-      },
+      onExit: goHome,
     });
   });
 }
@@ -347,6 +351,7 @@ function openGateModal() {
 async function boot() {
   applyTheme(); // restore saved paper/night edition before first paint
   initCloud();  // connect Supabase if configured (auth + global leaderboard)
+  initSocial(); // realtime bus for friend requests + challenge invites
   view.innerHTML = "";
   document.addEventListener("aq:auth", gateCheck);
   view.append(el("div", { class: "empty" },

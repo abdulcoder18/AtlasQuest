@@ -55,7 +55,18 @@ export function runQuiz(cfg) {
       if (confirm("Quit this quiz? Your progress will be lost.")) finish(true);
     } else goHome();
   }
-  function goHome() { location.hash = cfg.exitHash || "#/"; }
+  /* Assigning the same hash fires no hashchange, so the router would never
+     re-run and the button would look dead. cfg.onExit lets the caller handle
+     that case (challenges run while already on #/). */
+  function goHome() {
+    if (cfg.onExit) { cfg.onExit(); return; }
+    const target = cfg.exitHash || "#/";
+    if (location.hash === target || location.hash === "") {
+      window.dispatchEvent(new HashChangeEvent("hashchange"));
+    } else {
+      location.hash = target;
+    }
+  }
 
   /* ---------- question rendering ---------- */
   function showQuestion() {
