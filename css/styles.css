@@ -861,10 +861,12 @@ body.in-mapgame .paper-frame { margin: 0; border: none; border-radius: 0; box-sh
 }
 .ccard:hover { transform: translate(-2px, -3px) rotate(-.5deg); box-shadow: 6px 6px 0 var(--shadow-ink); }
 .ccard:active { transform: translate(1px, 1px); box-shadow: 2px 2px 0 var(--shadow-ink); }
-.ccard img {
-  width: 100%; height: auto; display: block;
-  border: 2px solid var(--ink); border-radius: 6px;
+.ccard .cc-photo {
+  width: 100%; background: #fff;
+  border: 2px solid var(--ink); border-radius: 8px; overflow: hidden;
 }
+.ccard .cc-photo img { width: 100%; height: auto; display: block; }
+.ccard .cc-name { color: #111; }
 .ccard .cc-name { font-weight: 700; font-size: .86rem; letter-spacing: .02em; text-transform: uppercase; }
 .ccard .cc-meta { font-size: .68rem; color: var(--ink-faint); margin-top: -5px; }
 

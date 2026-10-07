@@ -36,8 +36,10 @@ export function atlasPage(prefill = "") {
     grid.innerHTML = "";
     for (const c of list) {
       grid.append(el("button", { class: "ccard", onclick: () => openLore(c.cca3) },
-        el("img", { src: flagUrl(c.cca2), alt: "", loading: "lazy" }),
-        el("div", { class: "cc-name" }, c.name),
+        el("div", { class: "cc-photo" },
+          el("img", { src: flagUrl(c.cca2), alt: "", loading: "lazy" }),
+          el("div", { class: "cc-name" }, c.name)
+        ),
         el("div", { class: "cc-meta" }, `${c.capital} · ${c.region}`)
       ));
     }
