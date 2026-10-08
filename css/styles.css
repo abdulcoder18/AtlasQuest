@@ -847,7 +847,6 @@ body.in-versus .paper-frame { margin: 0; border: none; border-radius: 0; box-sha
 .vs-row-meta { font-size: .66rem; color: var(--ink-faint); font-weight: 700; }
 .vs-row-score { font-family: var(--font-display); font-size: 1.05rem; }
 .vs-timer { min-width: 52px; text-align: center; font-variant-numeric: tabular-nums; }
-.vs-waiting { animation: pulse 1.4s infinite; }
 /* map stage: Map Master + GeoGuesser share one clickable map */
 .vs-map {
   position: absolute; left: 0; right: 300px; top: 58px; bottom: 0;

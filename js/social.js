@@ -14,6 +14,7 @@ import {
   getSentRequests, sendFriendRequest, cancelSentRequest, upsertFriend,
 } from "./store.js";
 import { initBus, listenOn, onSignal, sendSignal, busReady } from "./realtime.js";
+import { requireAccount, isSignedIn } from "./supabase.js";
 
 /* monogram avatar node: legacy emoji avatars fall back to initials */
 export function avatarCircle(name, avatar, size = 44, fontSize = null) {
@@ -226,6 +227,7 @@ function openChallengeInvite(msg) {
   const { game = "flags", count = 10, seed, room, friend } = msg;
   const label = gameKeyToLabel(game);
   let decided = false;
+  let accepting = false;
   const decide = (accepted) => {
     if (decided) return;
     decided = true;
@@ -234,21 +236,31 @@ function openChallengeInvite(msg) {
       from: myCard(),
     });
   };
+  // Gate BEFORE telling the challenger we accepted — otherwise they think the
+  // match is starting while we're still asking for an account.
+  async function onAccept() {
+    accepting = true;                    // stop the dismiss handler declining for us
+    const allowed = await requireAccount("Challenges");
+    if (!allowed) { modal.close(); return; }   // onClose now sends the decline
+    decide(true);
+    modal.close();
+    acceptChallenge(msg);
+  }
   const body = el("div", { class: "stack center" },
     el("img", { src: "assets/gen/mascot-web.png", alt: "", style: { width: "92px", margin: "0 auto", borderRadius: "12px", border: "2px solid var(--ink)" } }),
     el("p", { class: "h3" }, `${friend?.name || msg.from?.name || "A friend"} challenges you!`),
     el("p", { class: "sub" }, `${label} · ${count} questions · identical questions for both of you.`),
     el("div", { class: "row", style: { justifyContent: "center", flexWrap: "wrap", gap: "10px" } },
-      el("button", { class: "btn primary big", onclick: () => { decide(true); modal.close(); acceptChallenge(msg); } }, icon("swords"), "Accept & play"),
+      el("button", { class: "btn primary big", onclick: onAccept }, icon("swords"), "Accept & play"),
       el("button", { class: "btn", onclick: () => { decide(false); modal.close(); } }, "Decline")
     )
   );
   // dismissing counts as declining, so the challenger isn't left hanging
-  const modal = openModal({ title: "Challenge incoming", body, onClose: () => { decide(false); incomingModalOpen = false; } });
+  const modal = openModal({ title: "Challenge incoming", body, onClose: () => { if (!accepting) decide(false); incomingModalOpen = false; } });
 }
 
 async function acceptChallenge(msg) {
-  // go to Versus, then auto-join the room the host already opened
+  // joinMatch opens its own activation popup if needed
   if (location.hash === "#/versus") (await import("./main.js")).route();
   else location.hash = "#/versus";
   const vs = await import("./games/versus.js");
@@ -349,7 +361,13 @@ export function friendsPage() {
   const addCard = el("div", { class: "card pad mt-2" });
   const codeInput = el("input", { class: "input", placeholder: "POTATO-4W2J", style: { textTransform: "uppercase" } });
   const addBtn = el("button", { class: "btn primary", onclick: doAdd }, icon("users"), "Send request");
+  const hintText = () => isSignedIn()
+    ? "Requests arrive live — they accept and you both get each other instantly."
+    : "You'll be asked to activate a free account before sending — live requests need both sides signed in.";
   const parsedHint = el("p", { class: "faint small mt-1", style: { margin: 0 } }, "Paste a friend's code. It looks like NAME-CODE, and the name comes with it.");
+  const busHint = el("p", { class: "faint small", style: { margin: "8px 0 0" } }, busReady()
+    ? "Requests arrive live — they accept and you both get each other instantly."
+    : "You're offline, so requests are queued. They'll see it once you're both back online.");
   codeInput.addEventListener("input", () => {
     const parsed = parseFriendCode(codeInput.value);
     parsedHint.textContent = parsed.name
@@ -361,9 +379,7 @@ export function friendsPage() {
     el("h3", { class: "h3" }, "Add a friend"),
     el("div", { class: "row wrap mt-1" }, codeInput, addBtn),
     parsedHint,
-    el("p", { class: "faint small", style: { margin: "8px 0 0" } }, busReady()
-      ? "Requests arrive live — they accept and you both get each other instantly."
-      : "You're offline, so requests are queued. They'll see it once you're both back online.")
+    isSignedIn() ? busHint : null
   );
   view.append(addCard);
 
@@ -426,6 +442,8 @@ export function friendsPage() {
   async function doAdd() {
     const parsed = parseFriendCode(codeInput.value);
     if (!parsed.valid) { toast("That doesn't look like a friend code.", "alert"); return; }
+    // requests travel over the realtime bus, so both sides need an account
+    if (!(await requireAccount("Friend requests"))) return;
     const me = myCard();
     if (parsed.code === me.code) { toast("That's your own code!", "alert"); return; }
     if (getFriends().some(f => f.code === parsed.code)) { toast("They're already your friend.", "users"); return; }
@@ -444,10 +462,12 @@ export function friendsPage() {
   /* start a live challenge — both players land in the same match */
   async function challengeFriend(f) {
     const vs = await import("./games/versus.js");
+    // hostChallenge opens its own activation popup if needed
     const match = await vs.hostChallenge(f, { game: pickGame(), count: 10 });
-    if (!match) return;
+    if (!match) return;                       // player backed out of activation
+    const me = myCard();
     const ok = await sendSignal(f.code, {
-      kind: "challenge", from: myCard(),
+      kind: "challenge", from: me,
       room: match.code, seed: match.seed, game: match.game, count: match.count,
       friend: { code: me.code, name: me.name },
     });

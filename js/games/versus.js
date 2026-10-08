@@ -5,6 +5,7 @@ import { el, icon, icons, sfx, confetti, toast } from "../ui.js";
 import { data, flagQuestions, capitalQuestions, territoryQuestions, historyQuestions, rng } from "../data.js";
 import { addXp, recordGame, getState as gs, levelFromXp, ensureProfile, upsertMetPlayer, getMetPlayers } from "../store.js";
 import { openLore } from "../lore.js";
+import { requireAccount, isSignedIn } from "../supabase.js";
 
 const PREFIX = "atlasquest-room-";
 let session = null; // active p2p session
@@ -86,7 +87,13 @@ export function versusPage() {
   const card = el("div", { class: "card pad versus-card" },
     el("div", { class: "game-head" }, el("span", { class: "gh-icon", html: icons.swords })),
     el("h1", { class: "h1" }, "Versus"),
-    el("p", { class: "sub" }, "Host a match, share the room code, and race your friends through the same questions live — scores update after every answer."));
+    el("p", { class: "sub" }, "Host a match, share the room code, and race your friends through the same questions live — answers advance at your own pace, and the result lands as soon as you both finish."));
+
+  if (!isSignedIn()) {
+    view.append(el("div", { class: "card pad mt-2 center" },
+      el("p", { class: "faint small", style: { margin: 0 } }, "Hosting and joining need a free account so the other player can reach you. You'll be asked once, then you're in.")
+    ));
+  }
 
   const lobbyZone = el("div", { class: "mt-3", id: "lobbyZone" });
   view.append(card, lobbyZone, el("h2", { class: "h2 mt-4" }, "Leaderboard"), board);
@@ -124,6 +131,7 @@ export function versusPage() {
    Same engine as a public room, but scoped to one friend code and started the
    moment they accept — no room code to copy around. */
 export async function hostChallenge(friend, opts = {}) {
+  if (!(await requireAccount("Challenges"))) return null;
   const code = makeCode();
   const zone = el("div", { class: "card pad lobby" });
   // mount next to whatever page asked for it, else fall back to the view
@@ -144,7 +152,7 @@ export async function hostChallenge(friend, opts = {}) {
     qi: 0, started: false, timerId: null, me, alive: true, lobbyZone: zone,
     challenge: { friendCode: friend.code, friendName: friend.name },
   };
-  session.players.set("me", { ...me, pid: "me", score: 0, correct: 0, answeredCur: false, connected: true });
+  session.players.set("me", { ...me, pid: "me", ...freshPlayerState(), connected: true });
 
   peer.on("connection", conn => {
     conn.on("data", msg => hostOnData(conn, msg));
@@ -197,6 +205,7 @@ function peerErrorMessage(e) {
 
 /* ---------------- HOST ---------------- */
 async function hostMatch(game, count, lobbyZone) {
+  if (!(await requireAccount("Versus matches"))) return;
   destroyActive();
   const code = makeCode();
   const zone = el("div", { class: "card pad lobby" });
@@ -214,7 +223,7 @@ async function hostMatch(game, count, lobbyZone) {
     region: "World", seed: Math.floor(Math.random() * 1e9), qi: 0, started: false,
     timerId: null, me, alive: true, lobbyZone,
   };
-  session.players.set("me", { ...me, pid: "me", score: 0, correct: 0, answeredCur: false, connected: true });
+  session.players.set("me", { ...me, pid: "me", ...freshPlayerState(), connected: true });
 
   peer.on("connection", conn => {
     conn.on("data", msg => hostOnData(conn, msg));
@@ -235,7 +244,7 @@ function hostOnData(conn, msg) {
       return;
     }
     rememberPlayer(msg);
-    const player = { ...msg, pid: conn.peer, score: 0, correct: 0, answeredCur: false, connected: true };
+    const player = { ...msg, ...freshPlayerState(), pid: conn.peer, connected: true };
     session.conns.set(conn.peer, conn);
     session.players.set(conn.peer, player);
     hostBroadcast({ type: "lobby", players: playersList(), host: session.me, settings: { game: session.game, count: session.count, region: session.region } });
@@ -248,12 +257,21 @@ function hostOnData(conn, msg) {
   }
   if (msg.type === "ans") {
     const p = session.players.get(conn.peer);
-    if (!p || msg.qi !== session.qi || p.answeredCur) return;
+    // players move at their own pace, so track each one against ITS OWN progress
+    if (!p || p.done || msg.qi !== p.nextExpected) return;
     p.score += msg.gained; p.correct += msg.correct ? 1 : 0;
-    p.answeredCur = true; p.lastCorrect = msg.correct;
-    hostBroadcast({ type: "scores", board: playersList(), answered: answeredCount(), total: session.count });
+    p.nextExpected++; p.lastCorrect = msg.correct;
+    hostBroadcast({ type: "scores", board: playersList() });
     updateLiveBoard();
-    maybeAdvance();
+    return;
+  }
+  if (msg.type === "done") {
+    const p = session.players.get(conn.peer);
+    if (!p || p.done) return;
+    p.done = true;
+    hostBroadcast({ type: "scores", board: playersList() });
+    updateLiveBoard();
+    maybeFinish();
   }
 }
 function hostOnLeave(conn) {
@@ -262,17 +280,18 @@ function hostOnLeave(conn) {
   if (!p) return;
   p.connected = false;
   session.conns.delete(conn.peer);
-  hostBroadcast({ type: "scores", board: playersList(), answered: answeredCount(), total: session.count });
+  // a player who drops out must not hold the result hostage
+  p.done = true;
+  hostBroadcast({ type: "scores", board: playersList() });
   updateLiveBoard();
   toast(`${p.name} left the room`, "users");
+  maybeFinish();
 }
+function freshPlayerState() { return { score: 0, correct: 0, nextExpected: 0, done: false }; }
 function playersList() {
   if (session?.role === "host") return [...session.players.values()].map(p => ({ ...p }));
   // guests mirror the board the host sends
   return [...(session?.players?.values() || [])].map(p => ({ ...p }));
-}
-function answeredCount() {
-  return [...(session?.players?.values() || [])].filter(p => p.connected && p.answeredCur).length;
 }
 /* Only the host relays. Guests have no conns map and must never broadcast. */
 function hostBroadcast(msg) {
@@ -283,49 +302,80 @@ function hostBroadcast(msg) {
 function hostStart() {
   if (!session?.alive || session.started) return;
   session.started = true;
+  session.finished = false;
   session.qi = 0;
   session.match = { seed: session.seed, game: session.game, count: session.count, region: session.region };
   session.questions = buildQuestions(session.game, session.count, session.region, session.seed);
-  for (const p of session.players.values()) { p.score = 0; p.correct = 0; p.answeredCur = false; }
+  for (const p of session.players.values()) Object.assign(p, freshPlayerState());
   hostBroadcast({ type: "start", seed: session.seed, game: session.game, count: session.count, region: session.region });
-  startQuestion();
-}
-function startQuestion() {
-  if (!session.alive) return;
-  for (const p of session.players.values()) p.answeredCur = false;
-  if (session.role === "host") hostBroadcast({ type: "next", qi: session.qi });
   enterQuestion();
-  clearInterval(session.timerId);
-  let left = QUESTION_SECONDS;
-  session.timerId = setInterval(() => {
-    left--;
-    const t = session.wrap?.querySelector(".vs-timer");
-    if (t) t.textContent = `${left}s`;
-    if (left <= 0) { clearInterval(session.timerId); maybeAdvance(true); }
-  }, 1000);
-}
-function maybeAdvance(force = false) {
-  if (!session?.alive || !session.started) return;
-  const connected = [...session.players.values()].filter(p => p.connected);
-  const allAnswered = connected.length > 0 && connected.every(p => p.answeredCur);
-  if (force || allAnswered) {
-    clearInterval(session.timerId);
-    if (session.qi + 1 >= session.count) {
-      finishMatch();
-    } else {
-      session.qi++;
-      startQuestion();
-    }
-  } else {
-    const waiting = session.wrap?.querySelector(".vs-waiting");
-    const left = connected.length - answeredCount();
-    if (waiting) waiting.textContent = `Waiting for ${left} player${left === 1 ? "" : "s"}…`;
-  }
 }
 
-/* End of the last question. The host decides the result so both screens agree,
-   and everyone sees the same podium at the same moment — no result codes. */
-function finishMatch() {
+/* Nobody waits during the match: the moment you answer, you get the next
+   question. Only the final result waits, and only for everyone to finish. */
+function advanceLocal(s) {
+  if (!s?.alive) return;
+  clearInterval(s.timerId); s.timerId = null;
+  if (s.qi + 1 >= s.match.count) {
+    s.finished = true;
+    onLocalFinish(s);
+    return;
+  }
+  s.qi++;
+  enterQuestion();
+}
+
+/* You are done — now wait for the others, showing who is still playing. */
+function onLocalFinish(s) {
+  const me = s.role === "host" ? s.players.get("me") : null;
+  if (me) { me.done = true; me.nextExpected = s.match.count; }
+  destroyStage();
+  const view = document.getElementById("view");
+  view.innerHTML = "";
+  const myPid = s.me?.pid || "me";
+  const mine = s.players.get(myPid);
+  const score = Number(mine?.score ?? s.score) || 0;
+  const hero = el("div", { class: "score-hero" },
+    el("div", { class: "faint small", style: { letterSpacing: ".12em", textTransform: "uppercase", fontWeight: "800" } }, "You finished"),
+    el("div", { class: "sh-num grad-text", style: { margin: "10px 0 4px" } }, score.toLocaleString()),
+    el("div", { class: "muted" }, `${mine?.correct ?? s.correct}/${s.match.count} correct · waiting for the others to finish…`)
+  );
+  const box = el("div", { class: "vs-standings", style: { position: "static", width: "min(420px,92vw)", margin: "18px auto 0" } });
+  view.append(el("div", { class: "result-wrap" }, hero, box));
+  renderWaitingBoard(box);
+  s.waitingBox = box;
+  if (s.role === "host") { maybeFinish(); }
+  else s.conn.send({ type: "done" });
+}
+
+function renderWaitingBoard(box) {
+  if (!box || !session?.players) return;
+  const rows = [...session.players.values()]
+    .sort((a, b) => (Number(b.score) || 0) - (Number(a.score) || 0))
+    .map(p => {
+      const total = session.match?.count || session.count || 0;
+      const pending = p.connected !== false && !p.done;
+      return el("div", { class: "vs-row" + (p.pid === (session.me?.pid || "me") ? " me" : "") },
+        avatarMini(p.avatar, p.name),
+        el("div", { class: "vs-row-info" },
+          el("div", { class: "vs-row-name" }, p.name),
+          el("div", { class: "vs-row-meta" }, pending ? `on question ${Math.min((p.nextExpected || 0) + 1, total)}/${total}` : "finished")),
+        el("span", { class: "vs-row-score" }, String(Math.round(Number(p.score) || 0)))
+      );
+    });
+  box.innerHTML = "";
+  box.append(el("h3", { class: "h3" }, "Live standings"), ...rows);
+}
+
+/* The one and only place the match waits: the end.
+   `session.finished` means "my own run is over"; `session.ended` means the
+   result has actually been published. Keeping them apart matters, or a player
+   who finishes first locks the match out of ever ending. */
+function maybeFinish() {
+  if (session?.role !== "host" || !session.started || session.ended) return;
+  const connected = [...session.players.values()].filter(p => p.connected);
+  if (!connected.length || !connected.every(p => p.done)) return;
+  session.ended = true;
   const board = playersList();
   hostBroadcast({ type: "end", board, seed: session.seed, game: session.game, count: session.count });
   showPodium(board);
@@ -352,14 +402,9 @@ function guestOnData(msg, lobbyZone) {
     return;
   }
 
-  if (msg.type === "scores") {
-    s.players = new Map((msg.board || []).map(p => [p.pid, p]));
-    updateLiveBoard();
-    return;
-  }
-
   if (msg.type === "start") {
     s.started = true;
+    s.finished = false;
     s.qi = 0;
     s.match = { seed: msg.seed, game: msg.game, count: msg.count, region: msg.region };
     // build the identical question set locally so the UI has something to show
@@ -368,13 +413,14 @@ function guestOnData(msg, lobbyZone) {
     const view = document.getElementById("view");
     if (view) view.innerHTML = "";
     toast("Match started — good luck!", "swords");
-    startQuestion();
+    enterQuestion();
     return;
   }
 
-  if (msg.type === "next") {
-    s.qi = msg.qi;
-    startQuestion();
+  if (msg.type === "scores") {
+    s.players = new Map((msg.board || []).map(p => [p.pid, p]));
+    if (s.finished) renderWaitingBoard(s.waitingBox);
+    else updateLiveBoard();
     return;
   }
 
@@ -386,6 +432,7 @@ function guestOnData(msg, lobbyZone) {
 }
 
 async function joinMatch(code, lobbyZone) {
+  if (!(await requireAccount("Versus matches"))) return;
   destroyActive();
   const zone = el("div", { class: "card pad lobby" });
   lobbyZone.innerHTML = "";
@@ -552,12 +599,32 @@ function enterQuestion() {
   if (q.kind === "map") renderMapQuestion(s, q, qzone, wrap);
   else renderMcqQuestion(s, q, qzone);
 
+  startOwnTimer(s, q);
+
   updateLiveBoard();
 }
 
 function quitMatch() {
   destroyActive();
   versusPage();
+}
+
+/* Each player runs their own clock. Questions are independent and seeded, so
+   nobody has to wait for anyone to get the next one. */
+function startOwnTimer(s, q) {
+  clearInterval(s.timerId);
+  let left = QUESTION_SECONDS;
+  s.timerId = setInterval(() => {
+    left--;
+    const t = s.wrap?.querySelector(".vs-timer");
+    if (t) t.textContent = `${left}s`;
+    if (left > 0) return;
+    clearInterval(s.timerId); s.timerId = null;
+    if (s.answered) return;
+    // out of time: lock in a miss and move on by yourself
+    if (q.kind === "map") submitMapAnswer(s, q, true);
+    else answerVs(s, null, null);
+  }, 1000);
 }
 
 function renderMcqQuestion(s, q, qzone) {
@@ -666,16 +733,17 @@ function colorsFor(s) {
   return { ink: cs.getPropertyValue("--ink").trim(), paper3: cs.getPropertyValue("--paper-3").trim(), accent: cs.getPropertyValue("--accent").trim() };
 }
 
-function submitMapAnswer(s, q) {
-  if (s.answered || !s.chosen) return;
+function submitMapAnswer(s, q, timedOut = false) {
+  if (s.answered) return;
+  if (!s.chosen && !timedOut) return;
   const correct = q.kind === "geo"
-    ? geoScore(haversineKm(s.chosen, { lat: q.lat, lng: q.lng }))
-    : (s.chosen.cca3 === q.cca3 ? 1000 : 0);
+    ? geoScore(haversineKm(s.chosen || {}, { lat: q.lat, lng: q.lng }))
+    : (s.chosen?.cca3 === q.cca3 ? 1000 : 0);
   const gained = Math.max(0, Math.round(correct));
-  const isHit = q.kind === "geo" ? gained > 0 : s.chosen.cca3 === q.cca3;
+  const isHit = q.kind === "geo" ? gained > 0 : s.chosen?.cca3 === q.cca3;
 
   s.answered = true;
-  if (s.answerBtn) { s.answerBtn.disabled = true; s.answerBtn.textContent = "Locked in"; }
+  if (s.answerBtn) { s.answerBtn.disabled = true; s.answerBtn.textContent = timedOut ? "Out of time" : "Locked in"; }
   if (gained > 0) { s.score = (Number(s.score) || 0) + gained; s.correct = (Number(s.correct) || 0) + 1; sfx.correct(2); confetti(innerWidth / 2, innerHeight / 2.4, 40); addXp(8); }
   else sfx.wrong();
 
@@ -688,16 +756,15 @@ function submitMapAnswer(s, q) {
 
   if (s.role === "host") {
     const me = s.players.get("me");
-    me.score = Number(s.score) || 0; me.correct = Number(s.correct) || 0; me.answeredCur = true;
-    hostBroadcast({ type: "scores", board: playersList(), answered: answeredCount(), total: s.match.count });
+    me.score = Number(s.score) || 0; me.correct = Number(s.correct) || 0;
+    me.nextExpected = s.qi + 1; me.lastCorrect = isHit;
+    hostBroadcast({ type: "scores", board: playersList() });
     updateLiveBoard();
-    maybeAdvance();
   } else {
     s.conn.send({ type: "ans", qi: s.qi, correct: isHit, gained, map: { cca3: s.chosen.cca3 ?? null, lat: s.chosen.lat, lng: s.chosen.lng } });
-    const waiting = el("p", { class: "vs-waiting muted small" }, "Waiting for other players…");
-    s.wrap?.querySelector(".vs-qzone").append(waiting);
     updateLiveBoard();
   }
+  advanceLocal(s);
 }
 
 function answerVs(s, idx, btn) {
@@ -721,16 +788,15 @@ function answerVs(s, idx, btn) {
 
   if (s.role === "host") {
     const me = s.players.get("me");
-    me.score = Number(s.score) || 0; me.correct = Number(s.correct) || 0; me.answeredCur = true;
-    hostBroadcast({ type: "scores", board: playersList(), answered: answeredCount(), total: s.match.count });
+    me.score = Number(s.score) || 0; me.correct = Number(s.correct) || 0;
+    me.nextExpected = s.qi + 1; me.lastCorrect = correct;
+    hostBroadcast({ type: "scores", board: playersList() });
     updateLiveBoard();
-    maybeAdvance();
   } else {
     s.conn.send({ type: "ans", qi: s.qi, correct, gained });
-    const waiting = el("p", { class: "vs-waiting muted small" }, "Waiting for other players…");
-    s.wrap?.querySelector(".vs-qzone").append(waiting);
     updateLiveBoard();
   }
+  advanceLocal(s);
 }
 
 function destroyStage() {
@@ -756,13 +822,16 @@ function updateLiveBoard() {
 function makeStandingsRow(p, i) {
   const score = Math.round(Number(p.score) || 0);
   const isMe = p.pid === (session.me?.pid || "me");
+  const total = session.match?.count || session.count || 0;
+  const done = p.connected !== false && p.done;
+  const progress = done ? "finished" : `Q${Math.min((p.nextExpected || 0) + 1, total)}/${total}`;
   const row = el("div", { class: "vs-row" + (isMe ? " me" : "") });
   row.append(
     el("span", { class: "vs-rank" }, "#" + (i + 1)),
     avatarMini(p.avatar, p.name),
     el("div", { class: "vs-row-info" },
       el("div", { class: "vs-row-name" }, p.name + (p.connected === false ? " (left)" : "")),
-      el("div", { class: "vs-row-meta" }, "Lv " + p.level)),
+      el("div", { class: "vs-row-meta" }, "Lv " + p.level + " · " + progress)),
     el("span", { class: "vs-row-score" }, String(score))
   );
   return row;

@@ -57,10 +57,10 @@ export async function signOutCloud() {
 }
 
 /* ---------------- auth UI ---------------- */
-export function openAuthModal() {
-  if (!cloudReady()) { toast("Cloud sign-in isn't configured yet.", "alert"); return; }
-  if (currentUser) { openAccountBox(); return; }
+let activeAuthModal = null;
 
+/* Shared sign-in form: Google button + email OTP. */
+function buildSignInBody({ lead = null, withGoogle = true } = {}) {
   const emailInput = el("input", { class: "input", type: "email", placeholder: "you@example.com", autocomplete: "email" });
   const codeInput = el("input", { class: "input", placeholder: "6-digit code", maxlength: "6", style: { letterSpacing: ".35em", textAlign: "center", fontWeight: "800", display: "none" } });
   const status = el("p", { class: "small muted", style: { margin: "6px 0 0", minHeight: "1.2em" } });
@@ -88,21 +88,66 @@ export function openAuthModal() {
       // first-time accounts: push the local profile so progress isn't lost
       await pushProfileNow();
       document.dispatchEvent(new CustomEvent("aq:auth"));
-      modal.close();
+      activeAuthModal?.close();
       toast("Signed in — your progress now syncs to the cloud!", "checkCircle");
       confettiBurst();
     }
   }
-  
 
-  const modal = openModal({ title: "Save your progress", body: el("div", { class: "stack" },
-    el("p", { class: "sub", style: { margin: 0 } }, "Create a free account to keep your XP and levels on any device, and appear on the world leaderboard."),
-    el("button", { class: "btn big", style: { width: "100%" }, onclick: () => signInGoogle() }, icon("users"), "Continue with Google"),
+  return el("div", { class: "stack" },
+    lead,
+    withGoogle ? el("button", { class: "btn big", style: { width: "100%" }, onclick: () => signInGoogle() }, icon("users"), "Continue with Google") : null,
     el("div", { class: "divider" }),
     step1, step2, status,
-    el("p", { class: "faint small", style: { margin: 0 } }, "No password needed — we email you a verification code."),
-    el("button", { class: "linklike", style: { alignSelf: "center" }, onclick: () => { localStorage.setItem("aq_guest", "1"); modal.close(); document.dispatchEvent(new CustomEvent("aq:gate-done")); } }, "Continue as guest for now")
-  )});
+    el("p", { class: "faint small", style: { margin: 0 } }, "No password needed — we email you a verification code.")
+  );
+}
+
+export function openAuthModal() {
+  if (!cloudReady()) { toast("Cloud sign-in isn't configured yet.", "alert"); return; }
+  if (currentUser) { openAccountBox(); return; }
+  const body = el("div", { class: "stack" },
+    buildSignInBody({
+      lead: el("p", { class: "sub", style: { margin: 0 } }, "Create a free account to keep your XP and levels on any device, and appear on the world leaderboard."),
+    }),
+    el("button", { class: "linklike", style: { alignSelf: "center" }, onclick: () => { localStorage.setItem("aq_guest", "1"); activeAuthModal.close(); document.dispatchEvent(new CustomEvent("aq:gate-done")); } }, "Continue as guest for now")
+  );
+  activeAuthModal = openModal({ title: "Save your progress", body });
+}
+
+/* ---------------- multiplayer account gate ---------------- */
+export const isSignedIn = () => cloudReady() && !!currentUser;
+
+/**
+ * Live multiplayer needs an account so the other player can actually reach you.
+ * Resolves true once signed in; dismissing the popup resolves false so the
+ * caller simply doesn't join.
+ *
+ * If the cloud isn't configured there is no account to activate, so we allow
+ * play-through rather than locking the whole game behind a signup.
+ */
+export function requireAccount(feature = "live matches") {
+  if (isSignedIn()) return Promise.resolve(true);
+  if (!cloudEnabled()) {
+    toast("Cloud is not configured — playing offline.", "alert");
+    return Promise.resolve(true);
+  }
+  return new Promise((resolve) => {
+    let settled = false;
+    const finish = (v) => { if (settled) return; settled = true; cleanup(); resolve(v); };
+    const onAuth = () => { if (isSignedIn()) { gate.close(); finish(true); } };
+    const cleanup = () => document.removeEventListener("aq:auth", onAuth);
+    document.addEventListener("aq:auth", onAuth);
+
+    const body = el("div", { class: "stack center" },
+      el("img", { src: "assets/gen/mascot-web.png", alt: "", style: { width: "86px", margin: "0 auto", borderRadius: "12px", border: "2px solid var(--ink)", background: "var(--paper-2)" } }),
+      el("p", { class: "h3" }, "Activate your account to play"),
+      el("p", { class: "sub" }, `${feature} connect you to another player in real time, so each side needs an account to reach the other.`),
+      buildSignInBody(),
+      el("button", { class: "btn ghost", style: { width: "100%" }, onclick: () => gate.close() }, "Not now")
+    );
+    const gate = openModal({ title: "Account required", body, onClose: () => finish(false) });
+  });
 }
 
 function openAccountBox() {
