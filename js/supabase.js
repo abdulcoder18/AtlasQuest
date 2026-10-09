@@ -38,17 +38,42 @@ export async function signInGoogle() {
 }
 
 let otpEmail = null;
+
+/* Supabase's auth errors are terse and rarely name the fix. Turn the ones a
+   player can actually act on into something actionable. */
+function explainAuthError(message) {
+  const m = (message || "").toLowerCase();
+  if (m.includes("sending confirmation email") || m.includes("sending magic link")) {
+    return "Supabase refused to send the email. If you own this project: turn OFF "
+      + "Authentication → Email → \"Confirm email\", then add this address under "
+      + "Authentication → Email → Email Rate Limits.";
+  }
+  if (m.includes("rate limit") || m.includes("too many")) {
+    return "Too many emails requested. Wait a moment and try again.";
+  }
+  if (m.includes("signups not allowed") || m.includes("not allowed to create")) {
+    return "New sign-ups are disabled on this project.";
+  }
+  if (m.includes("already registered") || m.includes("already been registered")) {
+    return "An account already uses that address — just request a new code.";
+  }
+  if (m.includes("expired") || m.includes("invalid")) {
+    return "That code has expired or is wrong. Request a new one.";
+  }
+  return message || "Something went wrong — try again.";
+}
+
 export async function sendEmailCode(email) {
   if (!cloudReady()) return false;
   otpEmail = email;
   const { error } = await client.auth.signInWithOtp({ email, options: { shouldCreateUser: true } });
-  if (error) { toast("Couldn't send the code: " + error.message, "alert"); return false; }
+  if (error) { toast(explainAuthError(error.message), "alert"); return false; }
   return true;
 }
 export async function verifyEmailCode(code) {
   if (!cloudReady() || !otpEmail) return false;
   const { error } = await client.auth.verifyOtp({ email: otpEmail, token: code, type: "email" });
-  if (error) { toast("Wrong or expired code: " + error.message, "alert"); return false; }
+  if (error) { toast(explainAuthError(error.message), "alert"); return false; }
   return true;
 }
 export async function signOutCloud() {
