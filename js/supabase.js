@@ -1,7 +1,7 @@
 // AtlasQuest × Supabase — cloud layer: auth (Google + email code), profile sync,
 // global leaderboard, match history. Everything degrades gracefully when unconfigured.
 import { SUPABASE_URL, SUPABASE_ANON_KEY, cloudEnabled } from "./supabase-config.js";
-import { el, icon, toast } from "./ui.js";
+import { el, icon, toast, confetti } from "./ui.js";
 import { ensureProfile, levelFromXp, getState as gs, save, addXp } from "./store.js";
 
 let client = null;
@@ -62,7 +62,12 @@ let activeAuthModal = null;
 /* Shared sign-in form: Google button + email OTP. */
 function buildSignInBody({ lead = null, withGoogle = true } = {}) {
   const emailInput = el("input", { class: "input", type: "email", placeholder: "you@example.com", autocomplete: "email" });
-  const codeInput = el("input", { class: "input", placeholder: "6-digit code", maxlength: "6", style: { letterSpacing: ".35em", textAlign: "center", fontWeight: "800", display: "none" } });
+  // NOTE: no display:none here — only the wrapper row is hidden until a code is sent
+  const codeInput = el("input", {
+    class: "input", type: "text", inputmode: "numeric", autocomplete: "one-time-code",
+    placeholder: "6-digit code", maxlength: "6",
+    style: { letterSpacing: ".35em", textAlign: "center", fontWeight: "800" },
+  });
   const status = el("p", { class: "small muted", style: { margin: "6px 0 0", minHeight: "1.2em" } });
   const step1 = el("div", { class: "row" }, emailInput,
     el("button", { class: "btn primary", onclick: sendCode }, icon("zap"), "Send code"));
@@ -77,11 +82,14 @@ function buildSignInBody({ lead = null, withGoogle = true } = {}) {
     if (ok) {
       status.textContent = "Code sent to " + email + " — check your inbox (and spam).";
       step1.style.display = "none"; step2.style.display = "flex";
+      codeInput.focus?.();
     }
   }
   async function verify() {
-    const code = codeInput.value.trim();
-    if (code.length < 6) { status.textContent = "Enter the 6-digit code from the email."; return; }
+    // tolerate pasted codes with spaces or a trailing newline
+    const code = codeInput.value.replace(/\D/g, "").slice(0, 6);
+    codeInput.value = code;
+    if (code.length < 6) { status.textContent = "That code looks too short — it should be 6 digits."; return; }
     status.textContent = "Verifying…";
     const ok = await verifyEmailCode(code);
     if (ok) {
@@ -90,7 +98,7 @@ function buildSignInBody({ lead = null, withGoogle = true } = {}) {
       document.dispatchEvent(new CustomEvent("aq:auth"));
       activeAuthModal?.close();
       toast("Signed in — your progress now syncs to the cloud!", "checkCircle");
-      confettiBurst();
+      confetti(innerWidth / 2, innerHeight / 2.4, 90);
     }
   }
 

@@ -22,23 +22,43 @@ export const SUPABASE_ANON_KEY = "eyJ...";   // the anon/public key
 The anon key is designed to be public — database access is controlled by the row-security
 rules from step 1. Then commit + push.
 
-## 3. Enable Google sign-in (optional but recommended)
+## 3. URL Configuration — do this or email links break
+
+Supabase → **Authentication → URL Configuration**
+
+| Field | Value |
+|---|---|
+| **Site URL** | `https://abdulcoder18.github.io/AtlasQuest` |
+| **Redirect URLs** | `https://abdulcoder18.github.io/AtlasQuest` and `http://localhost:5173` |
+
+**Site URL is where email links send people.** If it is left blank or pointing
+somewhere else, clicking "Confirm email address" (or the sign-in button in the
+email) lands on Supabase's default page instead of AtlasQuest. This is the
+single most common reason email links seem to go nowhere.
+
+## 4. Google sign-in (optional but recommended)
 
 Supabase Dashboard → **Authentication → Providers → Google** → enable, and paste a Google
 OAuth client ID/secret (create free at [console.cloud.google.com](https://console.cloud.google.com/apis/credentials)
 → OAuth client ID → Web application → authorized redirect URI:
 `https://<your-project-ref>.supabase.co/auth/v1/callback`).
 
-Also under **Authentication → URL Configuration**, set **Site URL** to
-`https://abdulcoder18.github.io/AtlasQuest` and add `http://localhost:5173` as a redirect
-URL so both the live site and local testing work.
-
-## 4. Email codes
+## 5. Email codes
 
 The **Email** provider is on by default — the game uses Supabase's built-in
 "sign in with email OTP", which emails a 6-digit code. No SMTP setup needed.
-(Optional: disable **Auth → Providers → Email → Confirm email** to avoid any duplicate
-confirmation emails — the code itself verifies the address.)
+
+### Turn OFF "Confirm email"
+
+**Authentication → Email → Confirm email** → leave this **off**. The game verifies
+the address with the code itself, so leaving it on makes new players receive two
+emails for one sign-up.
+
+### Brand the emails
+
+Both templates are plain Supabase defaults until you paste your own. See
+[`email/README.md`](email/README.md) — there are two templates and which one gets
+sent depends on the Confirm email setting above.
 
 ## What players get
 
