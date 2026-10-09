@@ -68,9 +68,10 @@ and host are filled in.
 
 ### 4. Check the rate limits
 
-Supabase → **Authentication → Email → Email Rate Limits**. With custom SMTP the
-"only send to team members" restriction is gone. Keep the defaults unless you
-expect abuse; for a public game you may want a lower global cap.
+Supabase → **Authentication → Rate Limits**. With custom SMTP the
+built-in mailer's tight quota no longer applies the same way, but the caps stay
+and are worth reviewing — keep the defaults unless you expect abuse, and for a
+public game consider a lower global cap to stop someone burning your quota.
 
 ---
 

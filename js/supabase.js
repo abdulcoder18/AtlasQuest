@@ -44,9 +44,10 @@ let otpEmail = null;
 function explainAuthError(message) {
   const m = (message || "").toLowerCase();
   if (m.includes("sending confirmation email") || m.includes("sending magic link")) {
-    return "Supabase refused to send the email. If you own this project: turn OFF "
-      + "Authentication → Email → \"Confirm email\", then add this address under "
-      + "Authentication → Email → Email Rate Limits.";
+    return "Supabase refused to send the email. The built-in mailer is capped at "
+      + "30 emails/hour (Authentication → Rate Limits) and only serves test addresses. "
+      + "Wait for the quota to reset, raise that limit, or turn OFF "
+      + "Authentication → Email → \"Confirm email\" to halve how many emails each signup needs.";
   }
   if (m.includes("rate limit") || m.includes("too many")) {
     return "Too many emails requested. Wait a moment and try again.";

@@ -144,10 +144,22 @@ Built for real inboxes, not just a dashboard preview:
 
 ## Testing
 
-The built-in Supabase mailer only sends to staff addresses. Add yours under
-**Authentication → Email → Email Rate Limits**, then run the flow on the live
-site: drawer's account row → *Save progress online*. Rendered output is under
-**Logs → Auth → Emails**.
+Supabase's built-in mailer is for testing only: it sends from
+`noreply@mail.app.supabase.io` and is capped by the **Rate limit for sending
+emails** figure in **Authentication → Rate Limits** (30 emails/hour by
+default). There is no allow-list on that page — it only holds numbers.
+
+Two things follow:
+
+- If sends start failing with `Error sending confirmation email` after a burst
+  of testing, you have simply used the hourly quota. Check the **Emails** page
+  under *Notifications* in the sidebar for the actual send log, wait for the
+  hour to roll over, or raise that number and press **Save changes**.
+- To email addresses outside your organisation at all, you need custom SMTP.
+  See [`SMTP-SETUP.md`](SMTP-SETUP.md).
+
+Then run the flow on the live site: drawer's account row → *Save progress
+online*. Rendered output appears under **Logs → Auth → Emails**.
 
 If an email still looks unstyled, check you edited the template the message
 actually came from — the confirmation email comes from the *Confirm signup*
