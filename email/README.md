@@ -1,33 +1,50 @@
-# Supabase email template — AtlasQuest
+# Supabase email templates — AtlasQuest
 
-The sign-in email players receive is Supabase's **Magic Link** template (the game
-calls `signInWithOtp`, so the email carries a 6-digit code, not just a link).
+## There are TWO templates, and which one arrives depends on a setting
 
-Everything here is dashboard-side. Supabase does not expose email templates to SQL
-or to the client SDK, so there is no code change to make — this file is the HTML you
-paste in.
+The game calls `signInWithOtp`, so sign-in uses a 6-digit code — but a new
+account can still receive **two** emails, because Supabase's *Confirm signup*
+step is separate and is on by default.
+
+| Setting | Emails a new player gets | Template to style |
+|---|---|---|
+| **Confirm email: OFF** | one — the sign-in code | `supabase-magic-link.html` |
+| **Confirm email: ON** | two — confirmation link *and* the code | both files |
+
+If you keep **Confirm email ON**, you must paste **both** templates or the
+second email still arrives looking like Supabase. If you turn it **OFF**, only
+the Magic Link one is ever sent.
+
+Turning it off is the simpler setup: the game already verifies the address with
+`verifyOtp`, so the confirmation click is redundant. See the second screenshot
+problem in Testing below.
 
 ## Files
 
 | Path | What it is |
 |---|---|
-| `email/supabase-magic-link.html` | the template to paste |
+| `email/supabase-magic-link.html` | sign-in code email — **always sent** |
+| `email/supabase-confirm-signup.html` | address confirmation — only if Confirm email is ON |
+| `email/preview.html` | local render of the magic link, sample values |
+| `email/preview-confirm-signup.html` | local render of the confirmation |
 | `assets/email/atlasquest-mascot.png` | 160×160 logo, 25 KB (downscaled from `assets/gen/mascot-web.png`) |
 
-## Apply it
+## Apply them
 
-1. Supabase Dashboard → **Authentication → Emails → Templates → Magic Link**
-2. Paste the entire contents of `email/supabase-magic-link.html` into the body.
-3. Set the subject to:
-   ```
-   Your AtlasQuest code: {{ .Token }}
-   ```
+For **each** template you need:
+   Supabase Dashboard → **Authentication → Emails → Templates** → pick the
+   template → paste the matching file into the body, then set its subject.
 
-### Optional: turn off the duplicate confirmation email
+| Template | Subject to use |
+|---|---|
+| Magic Link | `Your AtlasQuest code: {{ .Token }}` |
+| Confirm signup | `Confirm your AtlasQuest account` |
 
-Under **Authentication → Email → Confirm email**, leave this **off**. The game
-verifies the address with the code itself (`verifyOtp`), so enabling it makes new
-players receive two emails for one sign-up.
+### Turning off the duplicate email (recommended)
+
+**Authentication → Email → Confirm email** → leave this **off**. The game
+verifies the address with the code itself (`verifyOtp`), so leaving it on makes
+new players receive two emails for one sign-up.
 
 ### Sender name
 
@@ -77,6 +94,10 @@ Supabase's built-in SMTP is rate-limited to a handful of staff addresses per hou
 Add yours under **Authentication → Email → Email Rate Limits**, then use
 **Logs → Auth → Emails** to see the rendered output, or just run the flow on the
 live site: drawer's account row → *Save progress online*.
+
+If an email still looks unstyled, check you edited the template the message
+actually came from — the confirmation email comes from the *Confirm signup*
+template, not *Magic Link*.
 
 If the code arrives but the link 404s, check **URL Configuration → Redirect URLs**
 includes your Pages origin (see `SUPABASE-SETUP.md`).
