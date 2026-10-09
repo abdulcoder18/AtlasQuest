@@ -46,7 +46,16 @@ export async function signInGoogle() {
   if (error) toast("Google sign-in failed: " + explainAuthError(error.message), "alert");
 }
 
-const backToSite = () => window.location.origin + window.location.pathname;
+/* Where the emailed link should send them. Keeps the current route so someone
+   who started hosting a match lands back on Versus instead of the home page.
+   An auth callback is stripped rather than echoed, so a token can never be
+   carried into a redirect URL. */
+function backToSite() {
+  const base = window.location.origin + window.location.pathname;
+  const hash = window.location.hash || "";
+  const isCallback = /access_token=|refresh_token=|error_description=|error_code=/.test(hash);
+  return isCallback ? base : base + hash;
+}
 
 /* True when the page was opened from a successful emailed link: a PKCE ?code=
    or a legacy #access_token=. Must run before supabase-js cleans the URL.
