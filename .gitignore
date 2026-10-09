@@ -15,3 +15,6 @@ design/styles-backup-*.css
 Thumbs.db
 .DS_Store
 *.log
+
+# scratch files from one-off scripts/analysis
+_tmp_*

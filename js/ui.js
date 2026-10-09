@@ -120,7 +120,14 @@ export function animateNumber(node, to, { dur = 900, from = 0, format = (n) => S
 export function openModal({ title, body, wide = false, onClose }) {
   const root = document.getElementById("modalRoot");
   const scrim = el("div", { class: "modal-scrim" });
-  const close = () => { scrim.remove(); document.removeEventListener("keydown", onKey); onClose && onClose(); };
+  let closed = false;
+  const close = () => {
+    if (closed) return;
+    closed = true;
+    scrim.remove();
+    document.removeEventListener("keydown", onKey);
+    onClose && onClose();
+  };
   const onKey = (e) => { if (e.key === "Escape") close(); };
   const box = el("div", { class: `modal${wide ? " wide" : ""}`, role: "dialog", "aria-modal": "true" },
     el("div", { class: "modal-head" },
@@ -146,15 +153,17 @@ export function confirmDialog({
 }) {
   return new Promise((resolve) => {
     let settled = false;
-    const done = (v) => { if (settled) return; settled = true; resolve(v); };
+    // fire the matching callback exactly once: confirming must never run
+    // onCancel, and cancelling must not run it twice (button + onClose).
+    const finish = (v, cb) => { if (settled) return; settled = true; cb?.(); resolve(v); };
     const body = el("div", { class: "stack" },
       typeof message === "string" ? el("p", { class: "sub", style: { margin: 0 } }, message) : message,
       el("div", { class: "row", style: { justifyContent: "flex-end", gap: "10px", marginTop: "6px" } },
-        el("button", { class: "btn ghost", onclick: () => { onCancel?.(); done(false); modal.close(); } }, cancelLabel),
-        el("button", { class: `btn ${danger ? "danger" : "primary"}`, onclick: () => { done(true); modal.close(); onConfirm?.(); } }, confirmLabel)
+        el("button", { class: "btn ghost", onclick: () => modal.close() }, cancelLabel),
+        el("button", { class: `btn ${danger ? "danger" : "primary"}`, onclick: () => { finish(true, onConfirm); modal.close(); } }, confirmLabel)
       )
     );
-    const modal = openModal({ title, body, onClose: () => { onCancel?.(); done(false); } });
+    const modal = openModal({ title, body, onClose: () => finish(false, onCancel) });
   });
 }
 
