@@ -165,6 +165,11 @@ function wireTopbar() {
   $("lbBtn").innerHTML = icons.trophy;
   $("lbBtn").addEventListener("click", () => { sfx.click(); toggleLbPanel(); });
   $("accountRow").addEventListener("click", () => { sfx.click(); toggleDrawer(false); openAuthModal(); });
+  // Home is a plain hash link, so clicking it while already on #/ fires no
+  // hashchange and would look dead — same trap as the result-screen Home.
+  $("homeBtn").addEventListener("click", (e) => {
+    if (location.hash === "#/" || location.hash === "") { e.preventDefault(); route(); }
+  });
   $("settingsBtn").classList.add("with-label");
   $("drawerBtn").innerHTML = icons.menu + '<span class="btn-label">Menu</span>';
   $("drawerBtn").classList.add("with-label");
@@ -272,6 +277,8 @@ export function route() {
   destroyVersus();
   toggleDrawer(false);
   const hash = location.hash || "#/";
+  // drives the topbar Home button, which hides itself on the home page
+  document.documentElement.dataset.route = hash;
   const fn = routes[hash] || homePage;
   markActiveNav();
   window.scrollTo(0, 0);

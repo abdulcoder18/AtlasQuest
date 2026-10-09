@@ -226,6 +226,16 @@ html[data-theme="dark"] .orb { background: var(--paper-3); opacity: .55; }
 .iconbtn .ico { width: 17px; height: 17px; }
 .iconbtn.labeled, .iconbtn.with-label { width: auto; padding: 0 13px; gap: 8px; }
 .iconbtn .btn-label { font-size: .74rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+/* Home sits at the front of the topbar so every mode has a way back without
+   opening the drawer. Hidden on the home page itself, where it would be a
+   no-op, and in full-screen game modes where the whole topbar is hidden. */
+.home-btn:focus-visible { outline: none; box-shadow: var(--focus-ring), 2px 2px 0 var(--shadow-ink); }
+html[data-route="#/"] .home-btn { display: none; }
+@media (max-width: 560px) {
+  .home-btn .btn-label { display: none; }
+  .home-btn { width: 38px; padding: 0; }
+  .brand-name { font-size: 1.05rem; }
+}
 .chip {
   display: inline-flex; align-items: center; gap: 8px; height: 34px;
   padding: 0 11px; border: 2px solid var(--ink); border-radius: 10px;
