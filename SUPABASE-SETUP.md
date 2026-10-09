@@ -54,21 +54,16 @@ The **Email** provider is on by default — the game uses Supabase's built-in
 the address with the code itself, so leaving it on makes new players receive two
 emails for one sign-up.
 
-### Set up SMTP so real players get email
-
-The built-in Supabase mailer only sends to a few staff addresses per hour. To
-send to actual players, configure a provider — see
-[`email/SMTP-SETUP.md`](email/SMTP-SETUP.md) for the exact fields
-(Resend is free and recommended).
-
-Note you cannot send from `abdulcoder18.github.io`; a branded sender needs a
-domain you own.
-
 ### Brand the emails
 
 Both templates are plain Supabase defaults until you paste your own. See
 [`email/README.md`](email/README.md) — there are two templates and which one gets
-sent depends on the Confirm email setting above.
+sent depends on the Confirm email setting above. No SMTP setup is needed for
+this; the built-in mailer renders your pasted template as-is.
+
+*(Later, if you want to email real players rather than just yourself, the
+built-in mailer's staff-address limit applies — see
+[`email/SMTP-SETUP.md`](email/SMTP-SETUP.md). Optional.)*
 
 ## What players get
 

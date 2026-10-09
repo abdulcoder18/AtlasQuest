@@ -1,5 +1,23 @@
 # Supabase email templates — AtlasQuest
 
+## Just this, to customise the email
+
+No SMTP setup, no domain, no provider. The built-in Supabase mailer renders
+whatever template you paste, exactly as before — only the design changes.
+
+1. **Authentication → Emails → Templates → Confirm signup**
+   Paste all of `email/supabase-confirm-signup.html`.
+   Subject: `Confirm your AtlasQuest account`
+2. **Authentication → Emails → Templates → Magic Link**
+   Paste all of `email/supabase-magic-link.html`.
+   Subject: `Your AtlasQuest code: {{ .Token }}`
+3. **Authentication → URL Configuration → Site URL**
+   Set it to `https://abdulcoder18.github.io/AtlasQuest`.
+
+That is the whole job. Ignore [SMTP-SETUP.md](SMTP-SETUP.md) unless you later
+want to email *real* players — see [Why SMTP exists](#why-smtp-exists) at the
+bottom.
+
 ## There are TWO templates, and which one arrives depends on a setting
 
 The game calls `signInWithOtp`, so sign-in uses a 6-digit code — but a new
@@ -16,8 +34,7 @@ second email still arrives looking like Supabase. If you turn it **OFF**, only
 the Magic Link one is ever sent.
 
 Turning it off is the simpler setup: the game already verifies the address with
-`verifyOtp`, so the confirmation click is redundant. See the second screenshot
-problem in Testing below.
+`verifyOtp`, so the confirmation click is redundant.
 
 ## Files
 
@@ -90,13 +107,10 @@ Built to survive real inboxes, not just look right in a preview:
 
 ## Testing
 
-Supabase's built-in SMTP is rate-limited to a handful of staff addresses per hour,
-and that limit also blocks real players from signing up. Configure a proper
-provider first — see [`SMTP-SETUP.md`](SMTP-SETUP.md).
-
-Then add your own address under **Authentication → Email → Email Rate Limits**, and
-use **Logs → Auth → Emails** to see the rendered output, or just run the flow on
-the live site: drawer's account row → *Save progress online*.
+The built-in Supabase mailer only sends to staff addresses. Add yours under
+**Authentication → Email → Email Rate Limits**, then run the flow on the live
+site: drawer's account row → *Save progress online*. Rendered output is under
+**Logs → Auth → Emails**.
 
 If an email still looks unstyled, check you edited the template the message
 actually came from — the confirmation email comes from the *Confirm signup*
@@ -104,3 +118,14 @@ template, not *Magic Link*.
 
 If the code arrives but the link 404s, check **URL Configuration → Redirect URLs**
 includes your Pages origin (see `SUPABASE-SETUP.md`).
+
+## Why SMTP exists
+
+Nothing above requires it. It only matters once you want *real players*, not
+just yourself, to receive sign-in codes — the built-in mailer is capped at a
+few staff addresses per hour.
+
+Sending branded mail from `abdulcoder18.github.io` is impossible (GitHub owns
+that DNS), so this needs a domain you own plus a provider such as Resend.
+See [`SMTP-SETUP.md`](SMTP-SETUP.md). Until then, keep **Enable custom SMTP**
+switched off.
