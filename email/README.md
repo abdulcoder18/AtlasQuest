@@ -32,8 +32,23 @@ So paste exactly what is in our files — no `<!DOCTYPE>`, `<html>`, `<head>` or
 `<body>`, and no `<style>` block, since mail clients strip those. All styling in
 our templates is **inline**, which is the only kind every client honours.
 
-The `preview*.html` files add the missing wrapper locally so you can view them
-in a browser. Never paste those.
+There are also **no HTML comments** in them. Supabase's template editor mangles
+multi-line comments and leaks them as visible garbage text in the preview, so
+keep the instructions in this file rather than inside the markup.
+
+Copy the **whole file** — there is nothing to trim.
+
+### What the dashboard preview will and won't show
+
+| In the preview | Meaning |
+|---|---|
+| Two copies side by side | Normal. Supabase shows desktop **and** mobile widths. |
+| Broken image icons | The preview blocks remote images. The logo URL is fine. |
+| Literal `{{ .Email }}` | The preview does not substitute variables. |
+| Everything else | Accurate. |
+
+Variables and images only resolve on a real send. Test by triggering the actual
+flow on the live site.
 
 ## There are TWO templates, and which one arrives depends on a setting
 
@@ -124,6 +139,8 @@ Built for real inboxes, not just a dashboard preview:
 - The code is duplicated as text in the subject and in the body, so the most
   useful thing stays readable with images blocked.
 - A hidden preheader line sets the inbox preview text.
+- Sized for a 320px phone: 28px side padding, 30px headline, and a code block
+  that fits without clipping.
 
 ## Testing
 
