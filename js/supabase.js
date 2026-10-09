@@ -9,11 +9,19 @@ export const cloudReady = () => cloudEnabled() && client !== null;
 export const getUser = () => client?.auth?.getUser ? null : null; // placeholder, real state below
 let currentUser = null;
 let syncTimer = null;
-let subscribed = false;
+let subscribed = null;
+let cameBackFromLink = false;   // set when we land back from the email link
 
 export async function initCloud() {
   if (!cloudEnabled()) return null;
-  client = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  // PKCE keeps the session out of the URL fragment, which this app uses for
+  // routing - otherwise the token would land where #/flags is expected.
+  client = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+    flowType: "pkce",
+    detectSessionInUrl: true,
+  });
+  // detect before supabase-js consumes and strips the callback params
+  cameBackFromLink = hasAuthCallbackParams();
   const { data } = await client.auth.getSession();
   currentUser = data?.session?.user || null;
 
@@ -21,62 +29,96 @@ export async function initCloud() {
     if (event === "SIGNED_IN" && s?.user) { currentUser = s.user; onSignedIn(); }
     if (event === "SIGNED_OUT") { currentUser = null; document.dispatchEvent(new CustomEvent("aq:auth")); }
     if (event === "USER_UPDATED") { currentUser = s?.user || currentUser; }
+    if (event === "TOKEN_REFRESHED") return;
   });
   document.dispatchEvent(new CustomEvent("aq:auth"));
   return client;
 }
 export const cloudUser = () => currentUser;
 
-/* ---------------- auth: Google + email code ---------------- */
+/* ---------------- auth: Google + email confirmation link ---------------- */
 export async function signInGoogle() {
   if (!cloudReady()) return;
   const { error } = await client.auth.signInWithOAuth({
     provider: "google",
-    options: { redirectTo: window.location.origin + window.location.pathname },
+    options: { redirectTo: backToSite() },
   });
-  if (error) toast("Google sign-in failed: " + error.message, "alert");
+  if (error) toast("Google sign-in failed: " + explainAuthError(error.message), "alert");
 }
 
-let otpEmail = null;
+const backToSite = () => window.location.origin + window.location.pathname;
+
+/* True when the page was opened from a successful emailed link: a PKCE ?code=
+   or a legacy #access_token=. Must run before supabase-js cleans the URL.
+   An error redirect (expired link, already used) is deliberately excluded so
+   a failed attempt never claims the address was verified. */
+function hasAuthCallbackParams() {
+  try {
+    const search = window.location.search || "";
+    const hash = window.location.hash || "";
+    const failed = /[?&]error(?:_description|_code)?=/.test(search) || /error_description=|error_code=/.test(hash);
+    if (failed) return false;
+    return /[?&]code=/.test(search) || /access_token=|refresh_token=/.test(hash);
+  } catch { return false; }
+}
 
 /* Supabase's auth errors are terse and rarely name the fix. Turn the ones a
    player can actually act on into something actionable. */
 function explainAuthError(message) {
   const m = (message || "").toLowerCase();
   if (m.includes("sending confirmation email") || m.includes("sending magic link")) {
-    return "Supabase refused to send the email. The built-in mailer is capped at "
-      + "30 emails/hour (Authentication → Rate Limits) and only serves test addresses. "
-      + "Wait for the quota to reset, raise that limit, or turn OFF "
-      + "Authentication → Email → \"Confirm email\" to halve how many emails each signup needs.";
+    return "Supabase could not send the email. The built-in mailer is capped at "
+      + "30 emails/hour (Authentication → Rate Limits). Wait for the quota to "
+      + "reset, raise that number, or switch on Authentication → Email → \"Confirm email\".";
   }
   if (m.includes("rate limit") || m.includes("too many")) {
-    return "Too many emails requested. Wait a moment and try again.";
+    return "Too many emails requested. Wait a minute and try again.";
   }
   if (m.includes("signups not allowed") || m.includes("not allowed to create")) {
     return "New sign-ups are disabled on this project.";
   }
   if (m.includes("already registered") || m.includes("already been registered")) {
-    return "An account already uses that address — just request a new code.";
+    return "An account already uses that address.";
   }
   if (m.includes("expired") || m.includes("invalid")) {
-    return "That code has expired or is wrong. Request a new one.";
+    return "That link has expired — send yourself a new one.";
   }
   return message || "Something went wrong — try again.";
 }
 
-export async function sendEmailCode(email) {
+/**
+ * Send the player a link they click to finish signing in.
+ *
+ * Known accounts get a magic link, new ones get a confirmation link that also
+ * verifies the address. Both land back on this site already signed in, so the
+ * UI never has to ask for a code.
+ */
+export async function sendVerificationEmail(email) {
   if (!cloudReady()) return false;
-  otpEmail = email;
-  const { error } = await client.auth.signInWithOtp({ email, options: { shouldCreateUser: true } });
+  const redirectTo = backToSite();
+
+  // existing account -> sign-in link
+  const { error: otpErr } = await client.auth.signInWithOtp({
+    email, options: { shouldCreateUser: false, emailRedirectTo: redirectTo },
+  });
+  if (!otpErr) return true;
+
+  // not registered yet -> confirmation link, which also verifies the address
+  const { error: signErr } = await client.auth.signUp({ email, options: { emailRedirectTo: redirectTo } });
+  if (signErr) { toast(explainAuthError(signErr.message), "alert"); return false; }
+  return true;
+}
+
+/** Resend to an address we know nothing about - always a fresh confirmation. */
+export async function resendVerification(email) {
+  if (!cloudReady()) return false;
+  const { error } = await client.auth.resend({
+    type: "signup", email, options: { emailRedirectTo: backToSite() },
+  });
   if (error) { toast(explainAuthError(error.message), "alert"); return false; }
   return true;
 }
-export async function verifyEmailCode(code) {
-  if (!cloudReady() || !otpEmail) return false;
-  const { error } = await client.auth.verifyOtp({ email: otpEmail, token: code, type: "email" });
-  if (error) { toast(explainAuthError(error.message), "alert"); return false; }
-  return true;
-}
+
 export async function signOutCloud() {
   if (cloudReady()) { await pushProfileNow(); await client.auth.signOut(); }
   currentUser = null;
@@ -85,55 +127,69 @@ export async function signOutCloud() {
 /* ---------------- auth UI ---------------- */
 let activeAuthModal = null;
 
-/* Shared sign-in form: Google button + email OTP. */
+/* Shared sign-in form: Google button, or an email that receives a link.
+   There is no code field by design - the player clicks the emailed link and
+   lands back here already signed in. */
 function buildSignInBody({ lead = null, withGoogle = true } = {}) {
   const emailInput = el("input", { class: "input", type: "email", placeholder: "you@example.com", autocomplete: "email" });
-  // NOTE: no display:none here — only the wrapper row is hidden until a code is sent
-  const codeInput = el("input", {
-    class: "input", type: "text", inputmode: "numeric", autocomplete: "one-time-code",
-    placeholder: "6-digit code", maxlength: "6",
-    style: { letterSpacing: ".35em", textAlign: "center", fontWeight: "800" },
-  });
-  const status = el("p", { class: "small muted", style: { margin: "6px 0 0", minHeight: "1.2em" } });
-  const step1 = el("div", { class: "row" }, emailInput,
-    el("button", { class: "btn primary", onclick: sendCode }, icon("zap"), "Send code"));
-  const step2 = el("div", { class: "row", style: { display: "none" } }, codeInput,
-    el("button", { class: "btn primary", onclick: verify }, icon("check"), "Verify"));
+  const status = el("p", { class: "small muted", style: { margin: "8px 0 0", minHeight: "1.2em" } });
+  const askRow = el("div", { class: "row" }, emailInput,
+    el("button", { class: "btn primary", onclick: sendLink }, icon("zap"), "Send link"));
+  const sentBox = el("div", { style: { display: "none" } });
 
-  async function sendCode() {
+  function buildSent() {
+    sentBox.innerHTML = "";
+    sentBox.style.display = "block";
+    askRow.style.display = "none";
+    const to = emailInput.value.trim();
+    sentBox.append(
+      el("div", { class: "friend-row", style: { gap: "12px" } },
+        el("span", { class: "avatar-circle", style: { width: "44px", height: "44px", background: "var(--accent)", color: "#07121f" } }, icon("check")),
+        el("div", { class: "spread" },
+          el("div", {},
+            el("div", { class: "fr-name" }, "Check your inbox"),
+            el("div", { class: "fr-meta" }, "We sent a sign-in link to " + to)
+          )
+        )
+      ),
+      el("p", { class: "small muted", style: { margin: "12px 0 0" } },
+        "Open the email and click the link — you'll come straight back here, already verified."),
+      el("div", { class: "row wrap mt-2" },
+        el("button", { class: "btn small", onclick: doResend }, icon("refresh"), "Resend"),
+        el("button", { class: "btn small ghost", onclick: backToForm }, "Use a different email")
+      )
+    );
+  }
+
+  function backToForm() {
+    sentBox.style.display = "none";
+    askRow.style.display = "flex";
+    status.textContent = "";
+    emailInput.focus?.();
+  }
+
+  async function sendLink() {
     const email = emailInput.value.trim();
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { status.textContent = "That doesn't look like a valid email."; return; }
-    status.textContent = "Sending the code…";
-    const ok = await sendEmailCode(email);
-    if (ok) {
-      status.textContent = "Code sent to " + email + " — check your inbox (and spam).";
-      step1.style.display = "none"; step2.style.display = "flex";
-      codeInput.focus?.();
-    }
+    status.textContent = "Sending…";
+    const ok = await sendVerificationEmail(email);
+    if (ok) { status.textContent = ""; buildSent(); }
+    else status.textContent = "";
   }
-  async function verify() {
-    // tolerate pasted codes with spaces or a trailing newline
-    const code = codeInput.value.replace(/\D/g, "").slice(0, 6);
-    codeInput.value = code;
-    if (code.length < 6) { status.textContent = "That code looks too short — it should be 6 digits."; return; }
-    status.textContent = "Verifying…";
-    const ok = await verifyEmailCode(code);
-    if (ok) {
-      // first-time accounts: push the local profile so progress isn't lost
-      await pushProfileNow();
-      document.dispatchEvent(new CustomEvent("aq:auth"));
-      activeAuthModal?.close();
-      toast("Signed in — your progress now syncs to the cloud!", "checkCircle");
-      confetti(innerWidth / 2, innerHeight / 2.4, 90);
-    }
+
+  async function doResend() {
+    const email = emailInput.value.trim();
+    status.textContent = "Resending…";
+    const ok = await resendVerification(email);
+    status.textContent = ok ? "Sent again — check your inbox." : "";
   }
 
   return el("div", { class: "stack" },
     lead,
     withGoogle ? el("button", { class: "btn big", style: { width: "100%" }, onclick: () => signInGoogle() }, icon("users"), "Continue with Google") : null,
     el("div", { class: "divider" }),
-    step1, step2, status,
-    el("p", { class: "faint small", style: { margin: 0 } }, "No password needed — we email you a verification code.")
+    askRow, sentBox, status,
+    el("p", { class: "faint small", style: { margin: 0 } }, "No password needed — we email you a link.")
   );
 }
 
@@ -248,6 +304,31 @@ async function onSignedIn() {
   await pushProfileNow();
   document.dispatchEvent(new CustomEvent("aq:auth"));
   refreshDrawerIfPossible();
+  celebrateVerification();
+}
+
+/* They clicked the emailed link and came straight back — confirm it plainly. */
+let celebrating = false;
+function celebrateVerification() {
+  if (!cameBackFromLink || celebrating) return;
+  celebrating = true;
+  cameBackFromLink = false;
+  const who = currentUser?.user_metadata?.username
+    || currentUser?.user_metadata?.full_name
+    || currentUser?.email;
+
+  let modal;
+  const body = el("div", { class: "stack center" },
+    el("img", { src: "assets/gen/mascot-web.png", alt: "", style: { width: "86px", margin: "0 auto", borderRadius: "12px", border: "2px solid var(--ink)" } }),
+    el("p", { class: "h3" }, "You're verified!"),
+    el("p", { class: "sub", style: { margin: 0 } },
+      who ? `${who} is confirmed and signed in.` : "Your address is confirmed and you're signed in."),
+    el("p", { class: "faint small", style: { margin: 0 } },
+      "Your XP, levels and Versus scores now sync to the cloud on every device."),
+    el("button", { class: "btn primary big", style: { width: "100%" }, onclick: () => modal.close() }, icon("check"), "Start exploring")
+  );
+  modal = openModal({ title: "Email verified", body, onClose: () => { celebrating = false; } });
+  confetti(innerWidth / 2, innerHeight / 2.4, 120);
 }
 function refreshDrawerIfPossible() {
   import("./main.js").then(m => m.refreshTopbar?.()).catch(() => {});

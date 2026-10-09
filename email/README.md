@@ -52,48 +52,52 @@ flow on the live site.
 
 ## There are TWO templates, and which one arrives depends on a setting
 
-The game calls `signInWithOtp`, so sign-in uses a 6-digit code — but a new
-account can still receive **two** emails, because Supabase's *Confirm signup*
-step is separate and is on by default.
+Sign-in works by emailed **link**, not by code: the player enters their address,
+clicks the link in Gmail, and lands back on the site already signed in and
+verified. Which email they get depends on whether we've seen the address before.
 
-| Setting | Emails a new player gets | Template to style |
+| Address | Email sent | Template |
 |---|---|---|
-| **Confirm email: OFF** | one — the sign-in code | `supabase-magic-link.html` |
-| **Confirm email: ON** | two — confirmation link *and* the code | both files |
+| new | confirmation link (also verifies the address) | `supabase-confirm-signup.html` |
+| already registered | sign-in magic link | `supabase-magic-link.html` |
 
-If you keep **Confirm email ON**, you must paste **both** templates or the
-second email still arrives looking like Supabase. If you turn it **OFF**, only
-the Magic Link one is ever sent.
+So **style both** — otherwise half your players see an unstyled email.
 
-Turning it off is the simpler setup: the game already verifies the address with
-`verifyOtp`, so the confirmation click is redundant.
+> **"Confirm email" must be ON.** The confirmation link is what verifies a new
+> address. With it off, a new player's confirmation email never arrives and only
+> returning players can sign in. That is the opposite of the earlier advice in
+> this repo, which assumed a code-based flow.
 
 ## Files
 
 | Path | What it is |
 |---|---|
-| `email/supabase-magic-link.html` | sign-in code email — **always sent**. Fragment, paste this. |
-| `email/supabase-confirm-signup.html` | address confirmation — only if Confirm email is ON. Fragment, paste this. |
+| `email/supabase-confirm-signup.html` | confirmation link for new addresses. Fragment, paste this. |
+| `email/supabase-magic-link.html` | sign-in link for returning players. Fragment, paste this. |
 | `email/preview.html` | the magic-link fragment wrapped in a document, for local viewing only |
 | `email/preview-confirm-signup.html` | same for the confirmation |
 | `assets/email/atlasquest-mascot.png` | 160×160 logo, 25 KB (downscaled from `assets/gen/mascot-web.png`) |
 
 ## Apply them
 
-For **each** template you need:
+For **each** template:
    Supabase Dashboard → **Authentication → Emails → Templates** → pick the
    template → paste the matching file into the body, then set its subject.
 
 | Template | Subject to use |
 |---|---|
-| Magic Link | `Your AtlasQuest code: {{ .Token }}` |
 | Confirm signup | `Confirm your AtlasQuest account` |
+| Magic Link | `Sign in to AtlasQuest` |
 
-### Turning off the duplicate email (recommended)
+### "Confirm email" must stay ON
 
-**Authentication → Email → Confirm email** → leave this **off**. The game
-verifies the address with the code itself (`verifyOtp`), so leaving it on makes
-new players receive two emails for one sign-up.
+**Authentication → Email → Confirm email** → leave this **on**. It is what sends
+the confirmation link that verifies a brand-new address. With it off, a new
+player's verification email never arrives — only returning players can sign in.
+
+Because the flow is link-based, a signup produces exactly **one** email, not
+two: unknown addresses get the confirmation, known addresses get the magic link
+and are never re-registered.
 
 ### Sender name
 
@@ -106,11 +110,13 @@ Postmark, etc.).
 
 | Variable | Where | Notes |
 |---|---|---|
-| `{{ .Token }}` | subject, big code block | the 6-digit code |
 | `{{ .Email }}` | "Hello …!" greeting | the address they typed |
-| `{{ .ConfirmationURL }}` | CTA button, footer link | signs in on this device |
+| `{{ .ConfirmationURL }}` | CTA button, footer link | the link that signs them in |
 | `{{ .SiteUrl }}` | footer link | set in **URL Configuration** |
 | `{{ .RedirectTo }}` | footer Unsubscribe | falls back to Site URL |
+
+`{{ .Token }}` is unused by the game now, but the magic-link template still
+tolerates it if you want to reinstate a code later.
 
 ## If you fork the repo
 
@@ -136,11 +142,10 @@ Built for real inboxes, not just a dashboard preview:
   the app's light sage background and has no transparent border, so on the dark
   canvas it reads as a badge — same position and weight as the Steam mark.
 - 25 KB image, one request, no tracking pixels.
-- The code is duplicated as text in the subject and in the body, so the most
-  useful thing stays readable with images blocked.
+- The button is a real link styled as a button, so it still works when images
+  are blocked or the whole email renders as plain text.
 - A hidden preheader line sets the inbox preview text.
-- Sized for a 320px phone: 28px side padding, 30px headline, and a code block
-  that fits without clipping.
+- Sized for a 320px phone: 28px side padding and a 30px headline.
 
 ## Testing
 
@@ -171,8 +176,8 @@ includes your Pages origin (see `SUPABASE-SETUP.md`).
 ## Why SMTP exists
 
 Nothing above requires it. It only matters once you want *real players*, not
-just yourself, to receive sign-in codes — the built-in mailer is capped at a
-few staff addresses per hour.
+just yourself, to receive sign-in links — the built-in mailer is capped at 30
+emails per hour.
 
 Sending branded mail from `abdulcoder18.github.io` is impossible (GitHub owns
 that DNS), so this needs a domain you own plus a provider such as Resend.

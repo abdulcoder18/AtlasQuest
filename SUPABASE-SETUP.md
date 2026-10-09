@@ -43,31 +43,38 @@ OAuth client ID/secret (create free at [console.cloud.google.com](https://consol
 → OAuth client ID → Web application → authorized redirect URI:
 `https://<your-project-ref>.supabase.co/auth/v1/callback`).
 
-## 5. Email codes
+## 5. Email sign-in links
 
-The **Email** provider is on by default — the game uses Supabase's built-in
-"sign in with email OTP", which emails a 6-digit code. No SMTP setup needed.
+The **Email** provider is on by default, and no SMTP setup is needed to use it.
+Players type their address, click a link in their inbox, and land back on the
+site already signed in.
 
-### Turn OFF "Confirm email"
+| Situation | Email they get |
+|---|---|
+| address we have not seen | **Confirm signup** link — this also verifies the address |
+| address already registered | **Magic Link** sign-in link |
 
-**Authentication → Email → Confirm email** → leave this **off**. The game verifies
-the address with the code itself, so leaving it on makes new players receive two
-emails for one sign-up.
+### Keep "Confirm email" ON
+
+**Authentication → Email → Confirm email** → leave this **on**. It is what sends
+the confirmation link that verifies a new address. With it off, first-time
+players never receive a verification email.
+
+Because the flow is link-based, a signup sends exactly **one** email, not two.
 
 ### Brand the emails
 
 Both templates are plain Supabase defaults until you paste your own. See
-[`email/README.md`](email/README.md) — there are two templates and which one gets
-sent depends on the Confirm email setting above. No SMTP setup is needed for
-this; the built-in mailer renders your pasted template as-is.
+[`email/README.md`](email/README.md) — style both, or half your players see an
+unstyled email. The built-in mailer renders your pasted template as-is.
 
 *(Later, if you want to email real players rather than just yourself, the
-built-in mailer's staff-address limit applies — see
+built-in mailer is capped at 30 emails/hour — see
 [`email/SMTP-SETUP.md`](email/SMTP-SETUP.md). Optional.)*
 
 ## What players get
 
-- **Sign in with Google** or **email + 6-digit code** (no password) — one tap in the drawer
+- **Sign in with Google** or **an emailed link** (no password, no code to type) — one tap in the drawer
 - **Progress everywhere**: XP, level, streaks and stats sync to their account and come back
   when they sign in on any device
 - **World leaderboard**: top 50 explorers by XP, updating live as people play
