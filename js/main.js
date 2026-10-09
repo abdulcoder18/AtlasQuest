@@ -277,8 +277,6 @@ export function route() {
   destroyVersus();
   toggleDrawer(false);
   const hash = location.hash || "#/";
-  // drives the topbar Home button, which hides itself on the home page
-  document.documentElement.dataset.route = hash;
   const fn = routes[hash] || homePage;
   markActiveNav();
   window.scrollTo(0, 0);
