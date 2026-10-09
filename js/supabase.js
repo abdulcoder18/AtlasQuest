@@ -86,6 +86,10 @@ function explainAuthError(message) {
   if (m.includes("signups not allowed") || m.includes("not allowed to create")) {
     return "New sign-ups are disabled on this project.";
   }
+  if (m.includes("requires a valid password")) {
+    return "Something is asking for a password. AtlasQuest never uses passwords — "
+      + "please report this.";
+  }
   if (m.includes("already registered") || m.includes("already been registered")) {
     return "An account already uses that address.";
   }
@@ -98,23 +102,18 @@ function explainAuthError(message) {
 /**
  * Send the player a link they click to finish signing in.
  *
- * Known accounts get a magic link, new ones get a confirmation link that also
- * verifies the address. Both land back on this site already signed in, so the
- * UI never has to ask for a code.
+ * signInWithOtp with shouldCreateUser covers both cases in one call: a known
+ * address gets a sign-in link, an unknown one is registered and gets its
+ * confirmation link. No password is involved, and deliberately no signUp call -
+ * signUp refuses to create an account without one.
  */
 export async function sendVerificationEmail(email) {
   if (!cloudReady()) return false;
-  const redirectTo = backToSite();
-
-  // existing account -> sign-in link
-  const { error: otpErr } = await client.auth.signInWithOtp({
-    email, options: { shouldCreateUser: false, emailRedirectTo: redirectTo },
+  const { error } = await client.auth.signInWithOtp({
+    email,
+    options: { shouldCreateUser: true, emailRedirectTo: backToSite() },
   });
-  if (!otpErr) return true;
-
-  // not registered yet -> confirmation link, which also verifies the address
-  const { error: signErr } = await client.auth.signUp({ email, options: { emailRedirectTo: redirectTo } });
-  if (signErr) { toast(explainAuthError(signErr.message), "alert"); return false; }
+  if (error) { toast(explainAuthError(error.message), "alert"); return false; }
   return true;
 }
 

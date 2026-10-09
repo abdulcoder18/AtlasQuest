@@ -60,7 +60,13 @@ site already signed in.
 the confirmation link that verifies a new address. With it off, first-time
 players never receive a verification email.
 
-Because the flow is link-based, a signup sends exactly **one** email, not two.
+Because the flow is link-based, the game asks for no password and no code —
+one click in the inbox finishes sign-in.
+
+⚠️ Never turn on "Enable email (email/password) authentication" expecting it
+to be needed. The game deliberately avoids `signUp`, because Supabase rejects
+creating an account with no password. Everything runs through the passwordless
+magic-link path.
 
 ### Brand the emails
 

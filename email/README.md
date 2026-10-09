@@ -50,23 +50,27 @@ Copy the **whole file** — there is nothing to trim.
 Variables and images only resolve on a real send. Test by triggering the actual
 flow on the live site.
 
-## There are TWO templates, and which one arrives depends on a setting
+## There are TWO templates, and which one arrives depends on the address
 
-Sign-in works by emailed **link**, not by code: the player enters their address,
-clicks the link in Gmail, and lands back on the site already signed in and
-verified. Which email they get depends on whether we've seen the address before.
+Sign-in works by emailed **link**, not by code and not by password: the player
+enters their address, clicks the link in Gmail, and lands back on the site
+already signed in. One call covers both cases — Supabase registers the address
+if it is new, otherwise it just sends a sign-in link.
 
 | Address | Email sent | Template |
 |---|---|---|
-| new | confirmation link (also verifies the address) | `supabase-confirm-signup.html` |
-| already registered | sign-in magic link | `supabase-magic-link.html` |
+| new | **Confirm signup** link — this also verifies the address | `supabase-confirm-signup.html` |
+| already registered | **Magic Link** sign-in | `supabase-magic-link.html` |
 
 So **style both** — otherwise half your players see an unstyled email.
 
 > **"Confirm email" must be ON.** The confirmation link is what verifies a new
-> address. With it off, a new player's confirmation email never arrives and only
-> returning players can sign in. That is the opposite of the earlier advice in
-> this repo, which assumed a code-based flow.
+> address. With it off, a new player's verification email never arrives.
+>
+> There is deliberately **no password anywhere**. AtlasQuest never calls
+> `signUp`, because Supabase's `signUp` rejects an account created without one
+> (`Signup requires a valid password`). Everything goes through the
+> passwordless magic-link path.
 
 ## Files
 
@@ -95,9 +99,8 @@ For **each** template:
 the confirmation link that verifies a brand-new address. With it off, a new
 player's verification email never arrives — only returning players can sign in.
 
-Because the flow is link-based, a signup produces exactly **one** email, not
-two: unknown addresses get the confirmation, known addresses get the magic link
-and are never re-registered.
+Because the flow is link-based, the game asks for nothing else — no password,
+no code to type. One click in the inbox finishes it.
 
 ### Sender name
 
