@@ -3,7 +3,7 @@
 ## Just this, to customise the email
 
 No SMTP setup, no domain, no provider. The built-in Supabase mailer renders
-whatever template you paste, exactly as before — only the design changes.
+whatever you paste, exactly as before — only the design changes.
 
 1. **Authentication → Emails → Templates → Confirm signup**
    Paste all of `email/supabase-confirm-signup.html`.
@@ -15,8 +15,25 @@ whatever template you paste, exactly as before — only the design changes.
    Set it to `https://abdulcoder18.github.io/AtlasQuest`.
 
 That is the whole job. Ignore [SMTP-SETUP.md](SMTP-SETUP.md) unless you later
-want to email *real* players — see [Why SMTP exists](#why-smtp-exists) at the
-bottom.
+want to email *real* players — see [Why SMTP exists](#why-smtp-exists) below.
+
+## The templates are FRAGMENTS, not full pages
+
+The Supabase editor takes an HTML **fragment** — it wraps your body in its own
+`<html>`/`<head>`/`<body>`. The default template it shows you is just:
+
+```html
+<h2>Confirm Your AtlasQuest Account</h2>
+<p>Follow the link below to confirm this email address and finish signing up.</p>
+<p><a href="{{ .ConfirmationURL }}">Confirm Your AtlasQuest Account</a></p>
+```
+
+So paste exactly what is in our files — no `<!DOCTYPE>`, `<html>`, `<head>` or
+`<body>`, and no `<style>` block, since mail clients strip those. All styling in
+our templates is **inline**, which is the only kind every client honours.
+
+The `preview*.html` files add the missing wrapper locally so you can view them
+in a browser. Never paste those.
 
 ## There are TWO templates, and which one arrives depends on a setting
 
@@ -40,10 +57,10 @@ Turning it off is the simpler setup: the game already verifies the address with
 
 | Path | What it is |
 |---|---|
-| `email/supabase-magic-link.html` | sign-in code email — **always sent** |
-| `email/supabase-confirm-signup.html` | address confirmation — only if Confirm email is ON |
-| `email/preview.html` | local render of the magic link, sample values |
-| `email/preview-confirm-signup.html` | local render of the confirmation |
+| `email/supabase-magic-link.html` | sign-in code email — **always sent**. Fragment, paste this. |
+| `email/supabase-confirm-signup.html` | address confirmation — only if Confirm email is ON. Fragment, paste this. |
+| `email/preview.html` | the magic-link fragment wrapped in a document, for local viewing only |
+| `email/preview-confirm-signup.html` | same for the confirmation |
 | `assets/email/atlasquest-mascot.png` | 160×160 logo, 25 KB (downscaled from `assets/gen/mascot-web.png`) |
 
 ## Apply them
@@ -93,17 +110,20 @@ Replace `abdulcoder18` with your own GitHub Pages origin, or drop your own file 
 
 ## Notes on the design
 
-Built to survive real inboxes, not just look right in a preview:
+Built for real inboxes, not just a dashboard preview:
 
-- Tables + inline CSS only; no external stylesheet, no web fonts, no JS.
-- `color-scheme` / `supported-color-schemes` declared so Apple Mail and Outlook.com
-  do not force-invert the dark background.
-- The logo is a light rounded tile on purpose. The mascot artwork is drawn on the
-  app's light sage background and has no transparent border, so on the dark canvas
-  it reads as a badge — same position and weight as the Steam mark.
+- Tables + **inline** CSS only — no `<style>` block, no web fonts, no JS, no
+  flex/grid. That is the only combination Outlook, Gmail and Apple Mail all
+  honour.
+- Dark fills use both `bgcolor="…"` attributes and inline `background-color`,
+  since Outlook ignores one or the other depending on version.
+- The logo is a light rounded tile on purpose. The mascot artwork is drawn on
+  the app's light sage background and has no transparent border, so on the dark
+  canvas it reads as a badge — same position and weight as the Steam mark.
 - 25 KB image, one request, no tracking pixels.
-- The code is duplicated as text in the subject and in the body, so the most useful
-  thing is readable with images blocked.
+- The code is duplicated as text in the subject and in the body, so the most
+  useful thing stays readable with images blocked.
+- A hidden preheader line sets the inbox preview text.
 
 ## Testing
 
