@@ -33,4 +33,6 @@ export, grep the importing modules.
 - Dark mode: theme text colours (`--ink*`) must never be used on the fixed
   white flag plates (`--plate`). Use `--ink-on-white*` there instead.
 - Supabase email templates are dashboard-only. See `email/README.md`; there are
-  two of them and which one is sent depends on the Confirm email setting.
+  two of them and which one is sent depends on the Confirm email setting. Custom
+  SMTP is set up per `email/SMTP-SETUP.md`. Neither is reachable from code, so
+  never claim a fix landed in the app for these — they need dashboard changes.

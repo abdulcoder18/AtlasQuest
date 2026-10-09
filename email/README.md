@@ -90,10 +90,13 @@ Built to survive real inboxes, not just look right in a preview:
 
 ## Testing
 
-Supabase's built-in SMTP is rate-limited to a handful of staff addresses per hour.
-Add yours under **Authentication → Email → Email Rate Limits**, then use
-**Logs → Auth → Emails** to see the rendered output, or just run the flow on the
-live site: drawer's account row → *Save progress online*.
+Supabase's built-in SMTP is rate-limited to a handful of staff addresses per hour,
+and that limit also blocks real players from signing up. Configure a proper
+provider first — see [`SMTP-SETUP.md`](SMTP-SETUP.md).
+
+Then add your own address under **Authentication → Email → Email Rate Limits**, and
+use **Logs → Auth → Emails** to see the rendered output, or just run the flow on
+the live site: drawer's account row → *Save progress online*.
 
 If an email still looks unstyled, check you edited the template the message
 actually came from — the confirmation email comes from the *Confirm signup*
