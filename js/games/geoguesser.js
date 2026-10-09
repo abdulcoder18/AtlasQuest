@@ -1,7 +1,7 @@
 // AtlasQuest — GeoGuesser: drop into a random place, find it on the map, score by distance.
 // Satellite mode works with zero keys (Esri World Imagery). Street View mode uses the
 // player's own Google Maps JS API key (set in Settings), like WorldGuessr's BYO-key flow.
-import { el, icon, icons, sfx, confetti, toast, fmtKm } from "../ui.js";
+import { el, icon, icons, sfx, confetti, toast, fmtKm, confirmDialog } from "../ui.js";
 import { data, rng } from "../data.js";
 import { getState as gs, recordGame, addXp } from "../store.js";
 import { getMapillaryToken } from "../secure-tokens.js";
@@ -150,10 +150,16 @@ async function startGame(o) {
   game.destroy = () => {
     game.alive = false;
     clearInterval(game.timerId);
+    if (game.keyHandler) document.removeEventListener("keydown", game.keyHandler);
+    game.keyHandler = null;
     wrap.remove();
     document.body.classList.remove("in-geo");
     try { game.guessMap?.remove(); game.worldMap?.remove(); } catch {}
   };
+
+  // the HUD is the only visible chrome during a run, so Escape is the way out
+  game.keyHandler = (e) => { if (e.key === "Escape") confirmExit(game); };
+  document.addEventListener("keydown", game.keyHandler);
 
   nextRound(game);
 }
@@ -400,11 +406,19 @@ function destroyWorldMap(game) {
   if (game.pano) { game.pano = null; }
 }
 
-function confirmExit(game) {
-  if (confirm("Quit this GeoGuesser game? Progress will be lost.")) {
-    game.destroy(); active = null;
-    geoguesserPage();
-  }
+let exiting = false;
+async function confirmExit(game) {
+  if (!game || !game.alive || exiting) return;
+  exiting = true;
+  const ok = await confirmDialog({
+    title: "Quit GeoGuesser?",
+    message: "Progress on this run will be lost.",
+    confirmLabel: "Quit run",
+  });
+  exiting = false;
+  if (!ok) return;
+  game.destroy(); active = null;
+  geoguesserPage();
 }
 
 async function finishGame(game) {

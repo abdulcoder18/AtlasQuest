@@ -1,5 +1,5 @@
 // AtlasQuest — shared quiz engine used by flags / capitals / territories / history / daily.
-import { el, icon, icons, sfx, confetti, toast, openModal, animateNumber } from "../ui.js";
+import { el, icon, icons, sfx, confetti, toast, openModal, animateNumber, confirmDialog } from "../ui.js";
 import { addXp, recordGame, levelFromXp, getState } from "../store.js";
 
 /**
@@ -37,6 +37,7 @@ export function runQuiz(cfg) {
   shell.append(topbar);
 
   let cardEl = null;
+let quitting = false;
   function setProgress() {
     progressFill.style.width = `${(state.i / cfg.questions.length) * 100}%`;
   }
@@ -50,11 +51,22 @@ export function runQuiz(cfg) {
     }
   }
 
-  function confirmQuit() {
-    if (state.i > 0 && state.i < cfg.questions.length) {
-      if (confirm("Quit this quiz? Your progress will be lost.")) finish(true);
-    } else goHome();
+/* Exit uses the in-app dialog, never window.confirm — browsers suppress the
+   native one when the page loses focus, which left players unable to quit. */
+async function confirmQuit() {
+  if (quitting) return;
+  if (state.i > 0 && state.i < cfg.questions.length) {
+    quitting = true;
+    const ok = await confirmDialog({
+      title: "Quit this quiz?",
+      message: "Your progress on this run will be lost.",
+      confirmLabel: "Quit quiz",
+    });
+    quitting = false;
+    if (!ok) return;
   }
+  finish(true);
+}
   /* Assigning the same hash fires no hashchange, so the router would never
      re-run and the button would look dead. cfg.onExit lets the caller handle
      that case (challenges run while already on #/). */

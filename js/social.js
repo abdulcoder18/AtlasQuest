@@ -5,7 +5,7 @@
 // Adding a friend is mutual: the request lands on their side, they accept, and
 // both lists update. Challenges arrive live and both players drop straight into
 // the same seeded match.
-import { el, icon, icons, toast, openModal, fmtInt } from "./ui.js";
+import { el, icon, icons, toast, openModal, fmtInt, confirmDialog } from "./ui.js";
 import {
   getState as gs, ensureProfile, updateProfile, getFriends, removeFriend,
   AVATAR_COLORS, levelFromXp, makeCode, gameKeyToLabel, toggleTheme, save,
@@ -270,24 +270,9 @@ async function acceptChallenge(msg) {
   }, 300);
 }
 
-/* ---------------- in-app confirm (no native confirm) ---------------- */
-export function confirmDialog({ title, message, confirmLabel = "Confirm", cancelLabel = "Cancel", danger = true }) {
-  return new Promise((resolve) => {
-    let settled = false;
-    const done = (v) => { if (settled) return; settled = true; resolve(v); };
-    const body = el("div", { class: "stack" },
-      el("p", { class: "sub", style: { margin: 0 } }, message),
-      el("div", { class: "row", style: { justifyContent: "flex-end", gap: "10px", marginTop: "6px" } },
-        el("button", { class: "btn ghost", onclick: () => { done(false); modal.close(); } }, cancelLabel),
-        el("button", {
-          class: `btn ${danger ? "danger" : "primary"}`,
-          onclick: () => { done(true); modal.close(); },
-        }, confirmLabel)
-      )
-    );
-    const modal = openModal({ title, body, onClose: () => done(false) });
-  });
-}
+/* ---------------- in-app confirm (no native confirm) ----------------
+   Implemented in ui.js so every game can reach it without importing social. */
+export { confirmDialog };
 
 /* ---------------- friends page ---------------- */
 export function friendsPage() {

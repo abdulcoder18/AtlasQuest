@@ -136,6 +136,28 @@ export function openModal({ title, body, wide = false, onClose }) {
   return { close, box };
 }
 
+/* ---------- Confirmed action (in-app, never window.confirm) ----------
+   Native confirm() is unreliable: browsers suppress it when the page is not
+   focused, and it blocks the whole event loop. Every "are you sure?" in the
+   game goes through here so it always renders and always responds. */
+export function confirmDialog({
+  title, message, confirmLabel = "Confirm", cancelLabel = "Cancel",
+  danger = true, onConfirm, onCancel,
+}) {
+  return new Promise((resolve) => {
+    let settled = false;
+    const done = (v) => { if (settled) return; settled = true; resolve(v); };
+    const body = el("div", { class: "stack" },
+      typeof message === "string" ? el("p", { class: "sub", style: { margin: 0 } }, message) : message,
+      el("div", { class: "row", style: { justifyContent: "flex-end", gap: "10px", marginTop: "6px" } },
+        el("button", { class: "btn ghost", onclick: () => { onCancel?.(); done(false); modal.close(); } }, cancelLabel),
+        el("button", { class: `btn ${danger ? "danger" : "primary"}`, onclick: () => { done(true); modal.close(); onConfirm?.(); } }, confirmLabel)
+      )
+    );
+    const modal = openModal({ title, body, onClose: () => { onCancel?.(); done(false); } });
+  });
+}
+
 /* ---------- Confetti ---------- */
 let confettiParticles = [], confettiRunning = false;
 export function confetti(cx = innerWidth / 2, cy = innerHeight / 2.6, count = 90, spread = 1) {

@@ -1,6 +1,6 @@
 // AtlasQuest — Map Master: find countries on a real world map (click) or name the highlighted one.
 // Uses the vendored world-atlas TopoJSON (50m) rendered as vector GeoJSON through Leaflet — no tiles, works offline.
-import { el, icon, icons, sfx, confetti, toast } from "../ui.js";
+import { el, icon, icons, sfx, confetti, toast, confirmDialog } from "../ui.js";
 import { data, rng, dateSeed, shuffle, pickDistinct, flagUrl, revealFor } from "../data.js";
 import { addXp, recordGame, getState } from "../store.js";
 import { openLore } from "../lore.js";
@@ -162,18 +162,33 @@ async function startGame(o) {
   game.destroy = () => {
     game.alive = false;
     clearInterval(game.timerId);
+    if (game.keyHandler) document.removeEventListener("keydown", game.keyHandler);
+    game.keyHandler = null;
     wrap.remove();
     document.body.classList.remove("in-mapgame");
     try { game.map.remove(); } catch {}
   };
 
+  // Escape is the safety net: the topbar and drawer are hidden during a run,
+  // so the HUD Quit button is otherwise the only way out.
+  game.keyHandler = (e) => { if (e.key === "Escape") confirmExit(game); };
+  document.addEventListener("keydown", game.keyHandler);
+
   nextRound(game);
 }
 
-function confirmExit(game) {
-  if (confirm("Leave Map Master? Progress on this run is lost.")) {
-    game.destroy(); active = null; mappointPage();
-  }
+let exiting = false;
+async function confirmExit(game) {
+  if (!game || !game.alive || exiting) return;
+  exiting = true;
+  const ok = await confirmDialog({
+    title: "Leave Map Master?",
+    message: "Progress on this run is lost.",
+    confirmLabel: "Leave run",
+  });
+  exiting = false;
+  if (!ok) return;
+  game.destroy(); active = null; mappointPage();
 }
 
 function buildQuestions(o, pool) {
