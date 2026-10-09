@@ -1,4 +1,4 @@
-// AtlasQuest × Supabase — cloud layer: auth (Google + email code), profile sync,
+// AtlasQuest × Supabase — cloud layer: Google sign-in, profile sync,
 // global leaderboard, match history. Everything degrades gracefully when unconfigured.
 import { SUPABASE_URL, SUPABASE_ANON_KEY, cloudEnabled } from "./supabase-config.js";
 import { el, icon, toast, confetti } from "./ui.js";
@@ -57,10 +57,10 @@ function backToSite() {
   return isCallback ? base : base + hash;
 }
 
-/* True when the page was opened from a successful emailed link: a PKCE ?code=
-   or a legacy #access_token=. Must run before supabase-js cleans the URL.
-   An error redirect (expired link, already used) is deliberately excluded so
-   a failed attempt never claims the address was verified. */
+/* True when the page was opened from a Google sign-in redirect: a PKCE
+   ?code= or legacy #access_token=. Must run before supabase-js cleans the URL.
+   An error redirect is excluded so a cancelled or failed sign-in never claims
+   success. */
 function hasAuthCallbackParams() {
   try {
     const search = window.location.search || "";
@@ -71,60 +71,20 @@ function hasAuthCallbackParams() {
   } catch { return false; }
 }
 
-/* Supabase's auth errors are terse and rarely name the fix. Turn the ones a
-   player can actually act on into something actionable. */
+/* Supabase's auth errors are terse and rarely name the fix. */
 function explainAuthError(message) {
   const m = (message || "").toLowerCase();
-  if (m.includes("sending confirmation email") || m.includes("sending magic link")) {
-    return "Supabase could not send the email. The built-in mailer is capped at "
-      + "30 emails/hour (Authentication → Rate Limits). Wait for the quota to "
-      + "reset, raise that number, or switch on Authentication → Email → \"Confirm email\".";
+  if (m.includes("provider is not enabled") || m.includes("provider not enabled")) {
+    return "Google sign-in is switched off on this project. Turn it on under "
+      + "Authentication → Sign In / Providers → Google.";
   }
-  if (m.includes("rate limit") || m.includes("too many")) {
-    return "Too many emails requested. Wait a minute and try again.";
-  }
-  if (m.includes("signups not allowed") || m.includes("not allowed to create")) {
-    return "New sign-ups are disabled on this project.";
-  }
-  if (m.includes("requires a valid password")) {
-    return "Something is asking for a password. AtlasQuest never uses passwords — "
-      + "please report this.";
-  }
-  if (m.includes("already registered") || m.includes("already been registered")) {
-    return "An account already uses that address.";
+  if (m.includes("access_denied") || m.includes("cancelled")) {
+    return "Google sign-in was cancelled.";
   }
   if (m.includes("expired") || m.includes("invalid")) {
-    return "That link has expired — send yourself a new one.";
+    return "That sign-in link has expired — try again.";
   }
   return message || "Something went wrong — try again.";
-}
-
-/**
- * Send the player a link they click to finish signing in.
- *
- * signInWithOtp with shouldCreateUser covers both cases in one call: a known
- * address gets a sign-in link, an unknown one is registered and gets its
- * confirmation link. No password is involved, and deliberately no signUp call -
- * signUp refuses to create an account without one.
- */
-export async function sendVerificationEmail(email) {
-  if (!cloudReady()) return false;
-  const { error } = await client.auth.signInWithOtp({
-    email,
-    options: { shouldCreateUser: true, emailRedirectTo: backToSite() },
-  });
-  if (error) { toast(explainAuthError(error.message), "alert"); return false; }
-  return true;
-}
-
-/** Resend to an address we know nothing about - always a fresh confirmation. */
-export async function resendVerification(email) {
-  if (!cloudReady()) return false;
-  const { error } = await client.auth.resend({
-    type: "signup", email, options: { emailRedirectTo: backToSite() },
-  });
-  if (error) { toast(explainAuthError(error.message), "alert"); return false; }
-  return true;
 }
 
 export async function signOutCloud() {
@@ -132,83 +92,32 @@ export async function signOutCloud() {
   currentUser = null;
 }
 
-/* ---------------- auth UI ---------------- */
+/* ---------------- auth UI ----------------
+   Google only. There is no email, code or password flow anywhere in the game. */
 let activeAuthModal = null;
 
-/* Shared sign-in form: Google button, or an email that receives a link.
-   There is no code field by design - the player clicks the emailed link and
-   lands back here already signed in. */
-function buildSignInBody({ lead = null, withGoogle = true } = {}) {
-  const emailInput = el("input", { class: "input", type: "email", placeholder: "you@example.com", autocomplete: "email" });
-  const status = el("p", { class: "small muted", style: { margin: "8px 0 0", minHeight: "1.2em" } });
-  const askRow = el("div", { class: "row" }, emailInput,
-    el("button", { class: "btn primary", onclick: sendLink }, icon("zap"), "Send link"));
-  const sentBox = el("div", { style: { display: "none" } });
-
-  function buildSent() {
-    sentBox.innerHTML = "";
-    sentBox.style.display = "block";
-    askRow.style.display = "none";
-    const to = emailInput.value.trim();
-    sentBox.append(
-      el("div", { class: "friend-row", style: { gap: "12px" } },
-        el("span", { class: "avatar-circle", style: { width: "44px", height: "44px", background: "var(--accent)", color: "#07121f" } }, icon("check")),
-        el("div", { class: "spread" },
-          el("div", {},
-            el("div", { class: "fr-name" }, "Check your inbox"),
-            el("div", { class: "fr-meta" }, "We sent a sign-in link to " + to)
-          )
-        )
-      ),
-      el("p", { class: "small muted", style: { margin: "12px 0 0" } },
-        "Open the email and click the link — you'll come straight back here, already verified."),
-      el("div", { class: "row wrap mt-2" },
-        el("button", { class: "btn small", onclick: doResend }, icon("refresh"), "Resend"),
-        el("button", { class: "btn small ghost", onclick: backToForm }, "Use a different email")
-      )
-    );
-  }
-
-  function backToForm() {
-    sentBox.style.display = "none";
-    askRow.style.display = "flex";
-    status.textContent = "";
-    emailInput.focus?.();
-  }
-
-  async function sendLink() {
-    const email = emailInput.value.trim();
-    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { status.textContent = "That doesn't look like a valid email."; return; }
-    status.textContent = "Sending…";
-    const ok = await sendVerificationEmail(email);
-    if (ok) { status.textContent = ""; buildSent(); }
-    else status.textContent = "";
-  }
-
-  async function doResend() {
-    const email = emailInput.value.trim();
-    status.textContent = "Resending…";
-    const ok = await resendVerification(email);
-    status.textContent = ok ? "Sent again — check your inbox." : "";
-  }
-
-  return el("div", { class: "stack" },
-    lead,
-    withGoogle ? el("button", { class: "btn big", style: { width: "100%" }, onclick: () => signInGoogle() }, icon("users"), "Continue with Google") : null,
-    el("div", { class: "divider" }),
-    askRow, sentBox, status,
-    el("p", { class: "faint small", style: { margin: 0 } }, "No password needed — we email you a link.")
-  );
+function googleButton(label = "Continue with Google") {
+  return el("button", {
+    class: "btn big", style: { width: "100%" },
+    onclick: () => signInGoogle(),
+  }, icon("users"), label);
 }
 
 export function openAuthModal() {
   if (!cloudReady()) { toast("Cloud sign-in isn't configured yet.", "alert"); return; }
   if (currentUser) { openAccountBox(); return; }
   const body = el("div", { class: "stack" },
-    buildSignInBody({
-      lead: el("p", { class: "sub", style: { margin: 0 } }, "Create a free account to keep your XP and levels on any device, and appear on the world leaderboard."),
-    }),
-    el("button", { class: "linklike", style: { alignSelf: "center" }, onclick: () => { localStorage.setItem("aq_guest", "1"); activeAuthModal.close(); document.dispatchEvent(new CustomEvent("aq:gate-done")); } }, "Continue as guest for now")
+    el("p", { class: "sub", style: { margin: 0 } },
+      "Sign in to keep your XP and levels on any device, and appear on the world leaderboard."),
+    googleButton(),
+    el("button", {
+      class: "linklike", style: { alignSelf: "center" },
+      onclick: () => {
+        localStorage.setItem("aq_guest", "1");
+        activeAuthModal.close();
+        document.dispatchEvent(new CustomEvent("aq:gate-done"));
+      },
+    }, "Continue as guest for now")
   );
   activeAuthModal = openModal({ title: "Save your progress", body });
 }
@@ -218,11 +127,11 @@ export const isSignedIn = () => cloudReady() && !!currentUser;
 
 /**
  * Live multiplayer needs an account so the other player can actually reach you.
- * Resolves true once signed in; dismissing the popup resolves false so the
- * caller simply doesn't join.
+ * Google is the only way in. Resolves true once signed in; dismissing the popup
+ * resolves false so the caller simply doesn't join.
  *
  * If the cloud isn't configured there is no account to activate, so we allow
- * play-through rather than locking the whole game behind a signup.
+ * play-through rather than locking the whole game behind a sign-in.
  */
 export function requireAccount(feature = "live matches") {
   if (isSignedIn()) return Promise.resolve(true);
@@ -239,9 +148,9 @@ export function requireAccount(feature = "live matches") {
 
     const body = el("div", { class: "stack center" },
       el("img", { src: "assets/gen/mascot-web.png", alt: "", style: { width: "86px", margin: "0 auto", borderRadius: "12px", border: "2px solid var(--ink)", background: "var(--paper-2)" } }),
-      el("p", { class: "h3" }, "Activate your account to play"),
+      el("p", { class: "h3" }, "Sign in to play"),
       el("p", { class: "sub" }, `${feature} connect you to another player in real time, so each side needs an account to reach the other.`),
-      buildSignInBody(),
+      googleButton("Continue with Google"),
       el("button", { class: "btn ghost", style: { width: "100%" }, onclick: () => gate.close() }, "Not now")
     );
     const gate = openModal({ title: "Account required", body, onClose: () => finish(false) });
@@ -312,30 +221,31 @@ async function onSignedIn() {
   await pushProfileNow();
   document.dispatchEvent(new CustomEvent("aq:auth"));
   refreshDrawerIfPossible();
-  celebrateVerification();
+  celebrateSignIn();
 }
 
-/* They clicked the emailed link and came straight back — confirm it plainly. */
+/* They came back from Google — confirm it plainly. */
 let celebrating = false;
-function celebrateVerification() {
+function celebrateSignIn() {
   if (!cameBackFromLink || celebrating) return;
   celebrating = true;
   cameBackFromLink = false;
-  const who = currentUser?.user_metadata?.username
-    || currentUser?.user_metadata?.full_name
-    || currentUser?.email;
+  // the name the player chose in their profile beats whatever Google sent
+  const local = ensureProfile()?.name;
+  const who = (local && local !== "Explorer")
+    ? local
+    : (currentUser?.user_metadata?.full_name || currentUser?.user_metadata?.name);
 
   let modal;
   const body = el("div", { class: "stack center" },
     el("img", { src: "assets/gen/mascot-web.png", alt: "", style: { width: "86px", margin: "0 auto", borderRadius: "12px", border: "2px solid var(--ink)" } }),
-    el("p", { class: "h3" }, "You're verified!"),
-    el("p", { class: "sub", style: { margin: 0 } },
-      who ? `${who} is confirmed and signed in.` : "Your address is confirmed and you're signed in."),
+    el("p", { class: "h3" }, "You're signed in!"),
+    el("p", { class: "sub", style: { margin: 0 } }, who ? `Welcome, ${who}.` : "Welcome back to AtlasQuest."),
     el("p", { class: "faint small", style: { margin: 0 } },
       "Your XP, levels and Versus scores now sync to the cloud on every device."),
     el("button", { class: "btn primary big", style: { width: "100%" }, onclick: () => modal.close() }, icon("check"), "Start exploring")
   );
-  modal = openModal({ title: "Email verified", body, onClose: () => { celebrating = false; } });
+  modal = openModal({ title: "Signed in", body, onClose: () => { celebrating = false; } });
   confetti(innerWidth / 2, innerHeight / 2.4, 120);
 }
 function refreshDrawerIfPossible() {

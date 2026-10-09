@@ -1,5 +1,10 @@
 # Supabase email templates — AtlasQuest
 
+> ⚠️ **Currently unused.** AtlasQuest no longer sends any email. Sign-in is
+> Google-only, so the *Confirm signup* and *Magic Link* templates below are
+> never sent. They are kept in case email sign-in is ever brought back —
+> delete this whole folder if not.
+
 ## Just this, to customise the email
 
 No SMTP setup, no domain, no provider. The built-in Supabase mailer renders
@@ -10,7 +15,7 @@ whatever you paste, exactly as before — only the design changes.
    Subject: `Confirm your AtlasQuest account`
 2. **Authentication → Emails → Templates → Magic Link**
    Paste all of `email/supabase-magic-link.html`.
-   Subject: `Your AtlasQuest code: {{ .Token }}`
+   Subject: `Sign in to AtlasQuest`
 3. **Authentication → URL Configuration → Site URL**
    Set it to `https://abdulcoder18.github.io/AtlasQuest`.
 
@@ -50,12 +55,12 @@ Copy the **whole file** — there is nothing to trim.
 Variables and images only resolve on a real send. Test by triggering the actual
 flow on the live site.
 
-## There are TWO templates, and which one arrives depends on the address
+## Which template, if you ever turn it back on
 
-Sign-in works by emailed **link**, not by code and not by password: the player
-enters their address, clicks the link in Gmail, and lands back on the site
-already signed in. One call covers both cases — Supabase registers the address
-if it is new, otherwise it just sends a sign-in link.
+Sign-in by link (no code, no password): the player enters their address, clicks
+the link in their inbox, and lands back on the site already signed in. One call
+covers both cases — Supabase registers the address if it is new, otherwise it
+just sends a sign-in link.
 
 | Address | Email sent | Template |
 |---|---|---|
@@ -64,13 +69,13 @@ if it is new, otherwise it just sends a sign-in link.
 
 So **style both** — otherwise half your players see an unstyled email.
 
-> **"Confirm email" must be ON.** The confirmation link is what verifies a new
-> address. With it off, a new player's verification email never arrives.
+> If reinstated, **"Confirm email" must be ON**. The confirmation link is what
+> verifies a new address; with it off, a new player's verification email never
+> arrives.
 >
-> There is deliberately **no password anywhere**. AtlasQuest never calls
-> `signUp`, because Supabase's `signUp` rejects an account created without one
-> (`Signup requires a valid password`). Everything goes through the
-> passwordless magic-link path.
+> There is deliberately **no password anywhere**, and no `signUp` call —
+> Supabase rejects creating an account without one (`Signup requires a valid
+> password`). Everything goes through the passwordless magic-link path.
 
 ## Files
 
@@ -84,6 +89,8 @@ So **style both** — otherwise half your players see an unstyled email.
 
 ## Apply them
 
+## Applying them (only if you turn email back on)
+
 For **each** template:
    Supabase Dashboard → **Authentication → Emails → Templates** → pick the
    template → paste the matching file into the body, then set its subject.
@@ -93,13 +100,13 @@ For **each** template:
 | Confirm signup | `Confirm your AtlasQuest account` |
 | Magic Link | `Sign in to AtlasQuest` |
 
-### "Confirm email" must stay ON
+### "Confirm email" would need to be ON
 
-**Authentication → Email → Confirm email** → leave this **on**. It is what sends
-the confirmation link that verifies a brand-new address. With it off, a new
-player's verification email never arrives — only returning players can sign in.
+**Authentication → Email → Confirm email**. It is what sends the confirmation
+link that verifies a brand-new address; with it off, new players would never
+receive a verification email.
 
-Because the flow is link-based, the game asks for nothing else — no password,
+Because the flow is link-based, the game would ask for nothing else — no password,
 no code to type. One click in the inbox finishes it.
 
 ### Sender name
@@ -152,12 +159,12 @@ Built for real inboxes, not just a dashboard preview:
 
 ## Testing
 
-Supabase's built-in mailer is for testing only: it sends from
-`noreply@mail.app.supabase.io` and is capped by the **Rate limit for sending
-emails** figure in **Authentication → Rate Limits** (30 emails/hour by
-default). There is no allow-list on that page — it only holds numbers.
-
-Two things follow:
+⚠️ The game sends no email today, so there is nothing to test end-to-end. If
+you re-enable email sign-in, note that Supabase's built-in mailer is for
+testing only: it sends from `noreply@mail.app.supabase.io` and is capped by the
+**Rate limit for sending emails** figure in **Authentication → Rate Limits**
+(30 emails/hour by default). There is no allow-list on that page — it only
+holds numbers.
 
 - If sends start failing with `Error sending confirmation email` after a burst
   of testing, you have simply used the hourly quota. Check the **Emails** page
@@ -166,8 +173,7 @@ Two things follow:
 - To email addresses outside your organisation at all, you need custom SMTP.
   See [`SMTP-SETUP.md`](SMTP-SETUP.md).
 
-Then run the flow on the live site: drawer's account row → *Save progress
-online*. Rendered output appears under **Logs → Auth → Emails**.
+Rendered output, if you ever send one, appears under **Logs → Auth → Emails**.
 
 If an email still looks unstyled, check you edited the template the message
 actually came from — the confirmation email comes from the *Confirm signup*

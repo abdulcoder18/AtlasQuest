@@ -344,8 +344,8 @@ function openGateModal() {
     const body = el("div", { class: "stack", style: { textAlign: "center" } },
       el("img", { src: "assets/gen/mascot-web.png", alt: "", style: { width: "110px", margin: "0 auto", borderRadius: "12px", border: "2px solid var(--ink)", background: "var(--paper-2)" } }),
       el("h2", { class: "h2", style: { margin: "10px 0 4px" } }, "Welcome, explorer"),
-      el("p", { class: "sub", style: { margin: "0 auto", maxWidth: "400px" } }, "Play everything as a guest — or save your XP, levels and leaderboard rank with a free account."),
-      el("button", { class: "btn primary big", style: { width: "100%" }, onclick: () => { modalHandle.close(); openAuthModal(); } }, icon("zap"), "Save my progress — free"),
+      el("p", { class: "sub", style: { margin: "0 auto", maxWidth: "400px" } }, "Play everything as a guest — or sign in to keep your XP, levels and leaderboard rank safe on every device."),
+      el("button", { class: "btn primary big", style: { width: "100%" }, onclick: () => { modalHandle.close(); openAuthModal(); } }, icon("zap"), "Sign in with Google"),
       el("button", { class: "btn ghost", style: { width: "100%" }, onclick: () => { localStorage.setItem("aq_guest", "1"); modalHandle.close(); toast("Playing as guest — progress stays on this device.", "check"); document.dispatchEvent(new CustomEvent("aq:gate-done")); } }, "Continue as guest")
     );
     modalHandle = openModal({ title: null, body });

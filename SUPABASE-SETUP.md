@@ -31,10 +31,9 @@ Supabase → **Authentication → URL Configuration**
 | **Site URL** | `https://abdulcoder18.github.io/AtlasQuest` |
 | **Redirect URLs** | `https://abdulcoder18.github.io/AtlasQuest` and `http://localhost:5173` |
 
-**Site URL is where email links send people.** If it is left blank or pointing
-somewhere else, clicking "Confirm email address" (or the sign-in button in the
-email) lands on Supabase's default page instead of AtlasQuest. This is the
-single most common reason email links seem to go nowhere.
+**Site URL is where Google sign-in returns people.** If it is blank or pointing
+somewhere else, finishing Google sign-in lands on Supabase's default page
+instead of AtlasQuest — the game then looks like sign-in silently failed.
 
 ## 4. Google sign-in (optional but recommended)
 
@@ -43,44 +42,19 @@ OAuth client ID/secret (create free at [console.cloud.google.com](https://consol
 → OAuth client ID → Web application → authorized redirect URI:
 `https://<your-project-ref>.supabase.co/auth/v1/callback`).
 
-## 5. Email sign-in links
+## 5. Email is not used
 
-The **Email** provider is on by default, and no SMTP setup is needed to use it.
-Players type their address, click a link in their inbox, and land back on the
-site already signed in.
+The game sends **no email at all**. Sign-in is Google-only, so the *Confirm
+signup* and *Magic Link* templates never fire and no SMTP configuration is
+needed — the built-in mailer can stay exactly as it is.
 
-| Situation | Email they get |
-|---|---|
-| address we have not seen | **Confirm signup** link — this also verifies the address |
-| address already registered | **Magic Link** sign-in link |
-
-### Keep "Confirm email" ON
-
-**Authentication → Email → Confirm email** → leave this **on**. It is what sends
-the confirmation link that verifies a new address. With it off, first-time
-players never receive a verification email.
-
-Because the flow is link-based, the game asks for no password and no code —
-one click in the inbox finishes sign-in.
-
-⚠️ Never turn on "Enable email (email/password) authentication" expecting it
-to be needed. The game deliberately avoids `signUp`, because Supabase rejects
-creating an account with no password. Everything runs through the passwordless
-magic-link path.
-
-### Brand the emails
-
-Both templates are plain Supabase defaults until you paste your own. See
-[`email/README.md`](email/README.md) — style both, or half your players see an
-unstyled email. The built-in mailer renders your pasted template as-is.
-
-*(Later, if you want to email real players rather than just yourself, the
-built-in mailer is capped at 30 emails/hour — see
-[`email/SMTP-SETUP.md`](email/SMTP-SETUP.md). Optional.)*
+Turning **Confirm email** off or on makes no difference to the game. If email
+sign-in is ever brought back, the templates in [`email/README.md`](email/README.md)
+already exist and only need pasting.
 
 ## What players get
 
-- **Sign in with Google** or **an emailed link** (no password, no code to type) — one tap in the drawer
+- **Sign in with Google** (or play as a guest, no account at all) — one tap in the drawer
 - **Progress everywhere**: XP, level, streaks and stats sync to their account and come back
   when they sign in on any device
 - **World leaderboard**: top 50 explorers by XP, updating live as people play
